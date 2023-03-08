@@ -1,7 +1,7 @@
+/src/main/webapp/template/web/storage
 /target/
 /.settings
 *.classpath
 *.project
 .idea
 *.iml
-/main/webapp/template/web/storage
