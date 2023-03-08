@@ -4,3 +4,4 @@
 *.project
 .idea
 *.iml
+/main/webapp/template/web/storage
