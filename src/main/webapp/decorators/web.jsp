@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Website Tin Tức</title>
+
+<!-- Import CSS  -->
+<%@ include file="/common/web/css.jsp"%>
+
+</head>
+
+<body class="boxed"
+	data-bg-img="./public/kcnew/frontend/img/bg_website.png">
+
+	<!-- Import header  -->
+	<%@ include file="/common/web/header.jsp"%>
+
+	<dec:body />
+
+	<!-- Import header  -->
+	<%@ include file="/common/web/footer.jsp"%>
+
+	<!-- Import JS  -->
+	<%@ include file="/common/web/js.jsp"%>
+
+</body>
+
+</html>

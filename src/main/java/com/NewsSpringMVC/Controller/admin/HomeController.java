@@ -1,15 +1,15 @@
-package com.NewsSpringMVC.Controller;
+package com.NewsSpringMVC.Controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller(value="homeControllerOfAdmin")
 public class HomeController {
- @RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
+ @RequestMapping(value = "/admin", method = RequestMethod.GET)
  	public ModelAndView homePage() {
-	      ModelAndView mav = new ModelAndView("home");
+	      ModelAndView mav = new ModelAndView("admin/home");
 	      return mav;
  	}
 }
