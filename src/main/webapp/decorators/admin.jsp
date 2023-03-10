@@ -15,17 +15,17 @@
     <%@include file = "/common/admin/header.jsp" %>
     
     <!--Import Sidebar-->
-    <%@include file = "/common/admin/sidebar.jsp" %>%>
+    <%@include file = "/common/admin/sidebar.jsp" %>
     
     <!-- Lấy nội dung file JSP từ home.jsp từ views thong qua decorator-->
     <dec:body />
     
     <!--Import Footer--> 
-    <%@include file = "/common/admin/footer.jsp" %>%>
+    <%@include file = "/common/admin/footer.jsp" %>
     
     <!--Import switcher--> 
     <%@include file = "/common/admin/switcher.jsp"%>
   
-    <%@include file = "/common/admin/js.jsp" %>%>
+    <%@include file="/common/admin/js.jsp"%>
 </body>
 </html>

@@ -1,14 +1,17 @@
 <?xml version ="1.0" encoding="UTF-8" ?>
 <decorators defaultdir="/decorators">
-	
 	<!-- apply web template -->
-	<decorator name="trang-chu" page="web.jsp">
-		<pattern>/trang-chu</pattern>
+	<decorator name="web" page="web.jsp">
+		<pattern>/*</pattern>
 	</decorator>
-	
-	<!-- apply admin template -->
+        
+	 <!-- apply admin template--> 
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/admin</pattern>
 	</decorator>
+
+        <decorator name="/dang-nhap" page="login.jsp">
+            <pattern>/dang-nhap</pattern>
+        </decorator>
 
 </decorators>

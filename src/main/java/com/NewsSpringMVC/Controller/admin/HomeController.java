@@ -12,4 +12,5 @@ public class HomeController {
 	      ModelAndView mav = new ModelAndView("admin/home");
 	      return mav;
  	}
+
 }

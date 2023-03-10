@@ -13,7 +13,7 @@
 </head>
 
 <body class="boxed"
-	data-bg-img="./public/kcnew/frontend/img/bg_website.png">
+	data-bg-img="template/web/public/kcnew/frontend/img/bg_website.PNG">
 
 	<!-- Import header  -->
 	<%@ include file="/common/web/header.jsp"%>
