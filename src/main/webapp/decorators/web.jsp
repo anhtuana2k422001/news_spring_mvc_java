@@ -17,7 +17,7 @@
 
 	<!-- Import header  -->
 	<%@ include file="/common/web/header.jsp"%>
-
+        <h1>Số lượng user: ${listUsers.size()}</h1>
 	<dec:body />
 
 	<!-- Import header  -->

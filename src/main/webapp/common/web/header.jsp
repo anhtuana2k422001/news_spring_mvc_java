@@ -24,8 +24,8 @@
 				<!-- Header Topbar Action Start -->
 				<ul class="header--topbar-action nav">
 					<!-- @guest -->
-					<li class="btn-cta"><a href="./login.php"> <i
-							class="fa fm fa-user-o"></i> <span> Hồ Anh Tuấn</span>
+					<li class="btn-cta"><a href="dang-nhap"> <i
+							class="fa fm fa-user-o"></i> <span> Đăng Nhập</span>
 					</a></li>
 					<!-- @endguest -->
 

@@ -33,7 +33,7 @@
                                                     <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
+                                                            <li><a href="javascript:;">Số lượng user: ${listUsers.size()}</a></li>
                                                             <li><a href="javascript:;">19/02/2023</a></li>
                                                         </ul>
                                                         <div class="title">
