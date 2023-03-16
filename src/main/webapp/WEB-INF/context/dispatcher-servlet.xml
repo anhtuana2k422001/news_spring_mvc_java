@@ -30,17 +30,13 @@
       base-package="com.NewsSpringMVC.Controller" />
 
    <mvc:annotation-driven />
-
-   <bean
-      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-
-      <property name="prefix" value="/WEB-INF/views/" />
-
-      <property name="suffix" value=".jsp" />
-
-   </bean>
-   
-   <!--Cấu hình kết nối cơ sở dữ liệu Mysql driverManagerDatasource-->
+<context:component-scan base-package="com.NewsSpringMvc" />
+    
+    <context:component-scan base-package="com.NewsSpringMvc.Controller" />
+    <context:component-scan base-package="com.NewsSpringMvc.Dao" />
+    <bean id="UserDao" class="com.NewsSpringMVC.Dao.UserDao" />
+    
+    <!--Cấu hình kết nối cơ sở dữ liệu Mysql driverManagerDatasource-->
   	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/javadbnews"></property>
@@ -52,6 +48,16 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+   <bean
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+      <property name="prefix" value="/WEB-INF/views/" />
+
+      <property name="suffix" value=".jsp" />
+
+   </bean>
+   
+   
         
         <mvc:resources mapping="/template/**"
 		location="/template/" />
