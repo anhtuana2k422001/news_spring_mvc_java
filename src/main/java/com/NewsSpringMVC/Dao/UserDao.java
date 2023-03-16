@@ -3,10 +3,7 @@ import com.NewsSpringMVC.Entity.User;
 import com.NewsSpringMVC.Mapper.UserMapper;
 import java.util.ArrayList;
 import java.util.List;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,10 +19,4 @@ public class UserDao {
         listUser = _jdbcTemplate.query(sql, new UserMapper());
         return listUser;
     }
-    
-    public static void main(String [] args){
-        UserDao userDao = new UserDao();
-         List<User> list = userDao.getDataList();
-    }
-    
 }
