@@ -18,32 +18,31 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form method="post" autocomplete="on">
+                          <form:form action="dang-nhap" method="POST" modelAttribute="user">  
                                 <h1>ĐĂNG NHẬP</h1>
                                 <p>
                                     <label for="username" class="uname" data-icon="u"> Email của bạn </label>
-                                    <input id="username" name="username" required="required" type="email" placeholder="mymail@mail.com" value=""  />
+                                    <form:input id="username" name="username" required="required" type="email" placeholder="Mời nhập mật khẩu" path="email" />
                                 </p>
                                 <p>
                                     <label for="password" class="youpasswd" data-icon="p"> Mật khẩu </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" value=""/>
+                                    <form:input id="password" name="password" required="required" type="password" placeholder="Mời nhập email" path="password"/>
                                 </p>
                                 <p class="keeplogin">
-                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
-                                    <label for="loginkeeping">Lưu mật khẩu</label>
+                                    <!--<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />-->
+                                    <!--<label for="loginkeeping">Lưu mật khẩu</label>-->
                                 </p>
                                 <p>
                                     <label></label>
                                 </p>
                                 <p class="login button">
-                                    <input type="submit" value="Tiếp theo" />
+                                	<input type="submit" name="submit" value="Tiếp theo"/>
                                 </p>
                                 <p class="change_link">
                                     Chưa có tài khoản ?
                                     <a href="#toregister" class="to_register">Tham gia với chúng tôi</a>
                                 </p>
-                            </form>
-
+                            </form:form>
                         </div>
 
                         <div id="register" class="animate form">
@@ -72,6 +71,7 @@
                                     Đã có tài khoản?
                                     <a href="#tologin" class="to_register"> Đi tới đăng nhập </a>
                                 </p>
+                      
                             </form>
                         </div>
 

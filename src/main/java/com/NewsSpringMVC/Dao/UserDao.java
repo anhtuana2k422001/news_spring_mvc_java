@@ -20,4 +20,11 @@ public class UserDao {
         listUser = _jdbcTemplate.query(sql, new UserMapper());
         return listUser;
     }
+    
+    // Trả về một user lấy từ người dùng ánh xạ tới cơ sở dữ liệu
+    public User GetUserByAcc(User user) {
+    	String sql = "SELECT * FROM users WHERE email = '"+user.getEmail()+"'";
+    	User result = _jdbcTemplate.queryForObject(sql, new UserMapper());
+    	return result;
+    }
 }

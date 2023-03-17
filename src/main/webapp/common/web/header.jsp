@@ -99,7 +99,7 @@
 					</a></li>
                                         <c:forEach var="category" items="${listCategory}" varStatus="loop">
                                             <c:if test="${loop.index < 10}">
-                                                    <li><a href='404.php'>${category.name}</a></li>
+                                                    <li><a href='post'>${category.name}</a></li>
                                             </c:if>
                                         </c:forEach>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -107,7 +107,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="{{ route('about">Giới thiệu</a></li>
 							<li><a href="{{ route('contact.create">Liên hệ</a></li>
-							<li><a href="/404.php">404</a></li>
+							<li><a href="404">404</a></li>
 						</ul></li>
 					<li><a href="{{ route('categories.index"> <span
 							style="color: #ccc; margin-right: 10px;">Tất cả</span> <img
