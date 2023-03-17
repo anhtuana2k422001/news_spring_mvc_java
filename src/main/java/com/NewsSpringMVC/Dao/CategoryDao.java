@@ -15,7 +15,7 @@ public class CategoryDao {
    public List<Category> getDataCategory(){
         @SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
         List<Category> listCategory = new ArrayList<Category>();
-        String sql = "SELECT * FROM categories";
+        String sql = "SELECT * FROM `categories` WHERE name != N'Chưa phân loại';";
         listCategory = _jdbcTemplate.query(sql, new CategoryMapper());
         return listCategory;
     }

@@ -52,7 +52,6 @@
 				</ul>
 				<!-- Header Topbar Action End -->
 
-
 				<!-- Header Topbar Social Start -->
 				<ul class="header--topbar-social nav hidden-sm hidden-xxs">
 					<li><a
@@ -95,25 +94,20 @@
 				<!-- Header Menu Links Start -->
 				<ul class="header--menu-links nav navbar-nav"
 					data-trigger="hoverIntent">
-					<li><a href="{{ route('home"> <i
+					<li><a href="trang-chu"> <i
 							class="icon_home fa fa-home"></i>
 					</a></li>
-					<li><a href='404.php'>Thế giới</a></li>
-					<li><a href='404.php'>Xã hội</a></li>
-					<li><a href='404.php'>Kinh tế</a></li>
-					<li><a href='404.php'>Sức Khỏe</a></li>
-					<li><a href='404.php'>Giáo dục</a></li>
-					<li><a href='404.php'>Thể thao</a></li>
-					<li><a href='404.php'>Giải trí</a></li>
-					<li><a href='404.php'>Pháp luật</a></li>
-					<li><a href='404.php'>Công nghệ</a></li>
-					<li><a href='404.php'>Khoa học</a></li>
+                                        <c:forEach var="category" items="${listCategory}" varStatus="loop">
+                                            <c:if test="${loop.index < 10}">
+                                                    <li><a href='404.php'>${category.name}</a></li>
+                                            </c:if>
+                                        </c:forEach>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Trang<i class="fa flm fa-angle-down"></i></a>
 						<ul class="dropdown-menu">
 							<li><a href="{{ route('about">Giới thiệu</a></li>
 							<li><a href="{{ route('contact.create">Liên hệ</a></li>
-							<li><a href="404.php">404</a></li>
+							<li><a href="/404.php">404</a></li>
 						</ul></li>
 					<li><a href="{{ route('categories.index"> <span
 							style="color: #ccc; margin-right: 10px;">Tất cả</span> <img

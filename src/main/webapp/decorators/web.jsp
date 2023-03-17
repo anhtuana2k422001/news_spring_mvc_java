@@ -17,11 +17,7 @@
 
 	<!-- Import header  -->
 	<%@ include file="/common/web/header.jsp"%>
-        <h1>Số lượng user: ${listUsers.size()}</h1>
-         <h1>Số lượng danh mục:  ${listCates.size()}</h1>
-   
 	<dec:body />
-
 	<!-- Import header  -->
 	<%@ include file="/common/web/footer.jsp"%>
 
