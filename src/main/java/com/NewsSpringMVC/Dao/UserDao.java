@@ -1,4 +1,5 @@
 package com.NewsSpringMVC.Dao;
+
 import com.NewsSpringMVC.Entity.User;
 import com.NewsSpringMVC.Mapper.UserMapper;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class UserDao {
     @Autowired
     JdbcTemplate _jdbcTemplate;
 
-    public List<User> getDataList(){
+    public List<User> getDataUser(){
         @SuppressWarnings({"Convert2Diamond", "UnusedAssignment"})
         List<User> listUser = new ArrayList<User>();
         String sql = "SELECT * FROM users";

@@ -27,9 +27,12 @@
         http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd ">
 
     <!-- Activates scanning of @Repository and @Service and @Component -->
-   <context:component-scan base-package="com.NewsSpringMVC.Controller" />
-   <context:component-scan base-package="com.NewsSpringMVC.Dao" />
-    <!--<bean id="UserDao" class="com.NewsSpringMVC.Dao.UserDao" />-->
+   	 <context:component-scan base-package="com.NewsSpringMVC.Controller" />
+   	 <context:component-scan base-package="com.NewsSpringMVC.Service" />   
+  	 <context:component-scan base-package="com.NewsSpringMVC.Dao" />   
+
+ 
+      <!--  <bean id="UserDao" class="com.NewsSpringMVC.Dao.UserDao" /> -->
      
 
    <bean
