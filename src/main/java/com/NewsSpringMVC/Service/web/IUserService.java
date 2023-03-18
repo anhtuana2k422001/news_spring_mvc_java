@@ -7,5 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IUserService {
     @Autowired
-    public boolean CheckAcount(User user);
+    public boolean CheckAcount(User user);    
+    public User UserLogin(User user);
+
 }

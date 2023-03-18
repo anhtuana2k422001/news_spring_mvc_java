@@ -23,7 +23,7 @@ public class UserDao {
     
     // Trả về một user lấy từ người dùng ánh xạ tới cơ sở dữ liệu
     public User GetUserByAcc(User user) {
-    	String sql = "SELECT * FROM users WHERE email = '"+user.getEmail()+"'";
+    	String sql = "SELECT * FROM users WHERE email = N'"+user.getEmail()+"'";
     	User result = _jdbcTemplate.queryForObject(sql, new UserMapper());
     	return result;
     }

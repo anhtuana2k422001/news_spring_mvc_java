@@ -11,16 +11,23 @@ public class UserServiceImpl implements IUserService {
     UserDao userDao = new UserDao();
    
     @SuppressWarnings("unused")
-	public boolean CheckAcount(User user) {
+    @Override
+    public boolean CheckAcount(User user) {
     	String pass = user.getPassword();
     	User userata = userDao.GetUserByAcc(user);
-    	if(user != null) {
-    		if(pass == userata.getPassword())
-    			return true;
+    	if(userata != null) {
+    		if(pass.equals(userata.getPassword()))
+                    return true;
     		else 
-    			return false;
+                    return false;
     	}
     	return false;
+    }
+
+    @Override
+    public User UserLogin(User user) {
+        User userlogin = userDao.GetUserByAcc(user);
+        return userlogin;
     }
     
 }

@@ -29,11 +29,13 @@
                                     <form:input id="password" name="password" required="required" type="password" placeholder="Mời nhập email" path="password"/>
                                 </p>
                                 <p class="keeplogin">
-                                    <!--<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />-->
-                                    <!--<label for="loginkeeping">Lưu mật khẩu</label>-->
+                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                                    <label for="loginkeeping">Lưu mật khẩu</label>
                                 </p>
-                                <p>
-                                    <label></label>
+                                <p span style=" text-align: center">
+                                    <label>
+                                         <span style="color: red">${statusLogin}</span>
+                                    </label>
                                 </p>
                                 <p class="login button">
                                 	<input type="submit" name="submit" value="Tiếp theo"/>

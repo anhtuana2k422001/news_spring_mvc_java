@@ -3,6 +3,9 @@ package com.NewsSpringMVC.Controller.web;
 import com.NewsSpringMVC.Entity.User;
 import com.NewsSpringMVC.Service.web.HomeServiceImpl;
 import com.NewsSpringMVC.Service.web.UserServiceImpl;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,20 +32,25 @@ public class UserController {
     
     /* Controller đăng nhập cho người dùng và quản trị viên */
     @RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
-    public ModelAndView loginUser(@ModelAttribute("user") User user) {
+    public ModelAndView loginUser( HttpSession session, @ModelAttribute("user") User user) {
         ModelAndView mav = new ModelAndView();
         boolean check = UserService.CheckAcount(user);
+        User userlogin = UserService.UserLogin(user);
         if(check) {
-            mav.addObject("statusLogin", "Đăng nhập thành công !");
             mav.setViewName("redirect:/trang-chu");
-        
+            session.setAttribute("UserLogin", userlogin);
         }else {
-        	mav.addObject("statusLogin", "Đăng nhập thất bại !");
-        	mav.setViewName("redirect:/trang-chu");   
+            mav.setViewName("login");
+            mav.addObject("statusLogin", "Incorrect account or password");  
         }
-        //để xóa sạch các giá trị đã nhập trước đó.
-        mav.addObject("user", new User()); // Thêm đối tượng 'user' vào Model
         return mav;
+    }
+    
+    // Đăng xuất user
+    @RequestMapping(value = "/dang-xuat", method = RequestMethod.GET)
+    public String logoutUser( HttpSession session, HttpServletRequest request) {
+        session.removeAttribute("UserLogin");
+        return "redirect:" + request.getHeader("Referer");
     }
 
 }

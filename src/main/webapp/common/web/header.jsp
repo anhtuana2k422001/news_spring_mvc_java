@@ -24,9 +24,16 @@
 				<!-- Header Topbar Action Start -->
 				<ul class="header--topbar-action nav">
 					<!-- @guest -->
-					<li class="btn-cta"><a href="dang-nhap"> <i
-							class="fa fm fa-user-o"></i> <span> Đăng Nhập</span>
-					</a></li>
+					<li class="btn-cta">
+                                                       <c:if test="${not empty UserLogin and not empty UserLogin.getName()}">
+                                                            <a href="javascript:;"> <i class="fa fm fa-user-o"></i><span>${UserLogin.getName()}</span>   </a>
+                                                      </c:if>
+                                                      
+                                                      <c:if test="${empty UserLogin}">
+                                                          <a href="dang-nhap"> <i class="fa fm fa-user-o"></i><span>Đăng nhập</span></a>
+                                                      </c:if>
+                                         
+                                        </li>
 					<!-- @endguest -->
 
 					<!-- @auth -->
@@ -39,13 +46,12 @@
 							<li><a href="">Admin - Dashbroad</a></li>
 							<!-- @endif -->
 							<li><a href="">Tài khoản của tôi</a></li>
-							<li><a href="../logout.php">Đăng xuất <i
-									class="fa fm fa-arrow-circle-right"></i>
-							</a>
-
-								<form id="nav-logout-form" action="" method="POST">
-									<!-- @csrf -->
-								</form></li>
+							<li>
+                                                            <c:url var="logoutUrl" value="/dang-xuat" />
+                                                            <a href="${logoutUrl}">Đăng xuất 
+                                                                <i class="fa fm fa-arrow-circle-right"></i>
+                                                            </a>
+                                                        </li>
 						</ul></li>
 					<!-- @endauth -->
 
