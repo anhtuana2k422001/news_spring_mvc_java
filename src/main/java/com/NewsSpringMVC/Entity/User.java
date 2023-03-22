@@ -4,7 +4,7 @@ public class User {
     private int id;    
     private String name;
     private String email;
-    private String email_verified_at;
+    private String password_confirm;
     private String password;
     private int status;
     private int role_id;
@@ -40,12 +40,12 @@ public class User {
         this.email = email;
     }
 
-    public String getEmail_verified_at() {
-        return email_verified_at;
+    public String getPassword_confirm() {
+        return password_confirm;
     }
 
-    public void setEmail_verified_at(String email_verified_at) {
-        this.email_verified_at = email_verified_at;
+    public void setPassword_confirm(String password_confirm) {
+        this.password_confirm = password_confirm;
     }
 
     public String getPassword() {

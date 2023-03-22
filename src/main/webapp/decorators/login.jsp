@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Đăng nhập </title>
+        <title>Đăng nhập / Đăng ký</title>
         <link rel="stylesheet" type="text/css"
 	href="<c:url value='/template/web/public/blog_template/css/animate.css'/>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

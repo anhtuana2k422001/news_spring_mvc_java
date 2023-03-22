@@ -42,7 +42,7 @@
                                 </p>
                                 <p class="change_link">
                                     Chưa có tài khoản ?
-                                    <a href="#toregister" class="to_register">Tham gia với chúng tôi</a>
+                                    <a href="dang-ky" class="to_register">Tham gia với chúng tôi</a>
                                 </p>
                             </form:form>
                         </div>
