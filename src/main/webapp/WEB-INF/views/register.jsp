@@ -22,7 +22,7 @@
                                 <h1> ĐĂNG KÝ </h1>
                                 <p>
                                     <label for="usernamesignup" class="uname" data-icon="u">Tên của bạn</label>
-                                    <form:input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" path="password" />
+                                    <form:input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" path="name" />
                                 </p>
                                 <p>
                                     <label for="emailsignup" class="youmail" data-icon="e"> Email của bạn</label>

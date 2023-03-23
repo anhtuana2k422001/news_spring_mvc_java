@@ -51,15 +51,9 @@ public class UserController {
     }
     
      @RequestMapping(value = "/dang-ky", method = RequestMethod.POST)
-    public ModelAndView resgisterUser( HttpSession session, @ModelAttribute("user") User user) {
-        ModelAndView mav = new ModelAndView();
-        boolean check = UserService.CheckAcount(user);
-        User userlogin = UserService.UserLogin(user);
-        if(check) {
-            mav.setViewName("redirect:/trang-chu");
-        }else {
-            mav.setViewName("login");
-        }
+    public ModelAndView CreateAcc( HttpSession session, @ModelAttribute("user") User user) {
+        ModelAndView mav = new ModelAndView("register");
+        int count = UserService.AddAcount(user);
         return mav;
     }
     
