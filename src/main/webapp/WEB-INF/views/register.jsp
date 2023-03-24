@@ -36,6 +36,22 @@
                                     <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Nhập lại mật khẩu </label>
                                   <form:input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO" path="password_confirm" />
                                 </p>
+                                <p style=" text-align: center">
+                                    <label>
+                                        <c:if test="${not empty errorInUseEmail}">
+                                            <span style="color: red">Địa chỉ email này đã được sử dụng!</span>
+                                        </c:if>
+                                        <c:if test="${not empty errorPassword}">
+                                            <span style="color: red">Mật khẩu xác nhận không trùng khớp!</span>
+                                        </c:if>
+                                        <c:if test="${not empty errorPassSecurity}">
+                                            <span style="color: red">Mật khẩu phải chứa ít nhất một chữ cái và một số!</span>
+                                        </c:if>
+                                            <c:if test="${not empty errorPassword}">
+                                            <span style="color: red">Mật khẩu phải có độ dài tối thiểu là 6 ký tự!</span>
+                                        </c:if>
+                                    </label>
+                                </p>
                                 <p class="signin button">
                                     <input type="submit" value="Tiếp theo" />
                                 </p>

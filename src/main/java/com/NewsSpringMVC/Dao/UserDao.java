@@ -7,6 +7,8 @@ import com.NewsSpringMVC.Mapper.UserMapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -61,5 +63,16 @@ public class UserDao {
         sql.append(")");
         int insert = _jdbcTemplate.update(sql.toString());
         return insert; // cập nhật được bao nhiêu dòng
+    }
+    
+    // Kiểm tra email đã sử dụng hay chưa
+    public User GetUserByEmail(String email) {
+        try {
+            String sql = "SELECT * FROM users WHERE email = ?";
+            User user = _jdbcTemplate.queryForObject(sql, new Object[]{email}, new BeanPropertyRowMapper<>(User.class));
+            return user;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 }

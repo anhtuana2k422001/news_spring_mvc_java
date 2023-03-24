@@ -17,12 +17,9 @@ public class UserServiceImpl implements IUserService {
     	String pass = user.getPassword();
     	User userata = userDao.GetUserByAcc(user);
     	if(userata != null) {
-    		if(pass.equals(userata.getPassword()))
-                    return true;
-    		else 
-                    return false;
-    	}
-    	return false;
+                return BCrypt.checkpw(pass, userata.getPassword());
+    	}else 
+            return false;
     }
 
     @Override
@@ -38,5 +35,13 @@ public class UserServiceImpl implements IUserService {
        user.setPassword_confirm(BCrypt.hashpw(user.getPassword_confirm(), BCrypt.gensalt(8)));
        return userDao.AddAccount(user);
     }
+
+    @Override
+    public boolean isEmailAlreadyInUse(String userEmail) {
+       User user = userDao.GetUserByEmail(userEmail);
+       return user != null;
+    }
+    
+    
     
 }

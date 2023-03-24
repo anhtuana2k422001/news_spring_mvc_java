@@ -29,7 +29,8 @@
     <!-- Activates scanning of @Repository and @Service and @Component -->
    	 <context:component-scan base-package="com.NewsSpringMVC.Controller" />
    	 <context:component-scan base-package="com.NewsSpringMVC.Service" />   
-  	 <context:component-scan base-package="com.NewsSpringMVC.Dao" />   
+  	 <context:component-scan base-package="com.NewsSpringMVC.Dao" />  	 
+   
 
  
       <!--  <bean id="UserDao" class="com.NewsSpringMVC.Dao.UserDao" /> -->

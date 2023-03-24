@@ -32,9 +32,14 @@
                                     <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
                                     <label for="loginkeeping">Lưu mật khẩu</label>
                                 </p>
-                                <p span style=" text-align: center">
-                                    <label>
-                                         <span style="color: red">${statusLogin}</span>
+                                <p style=" text-align: center">
+                                     <label>
+                                        <c:if test="${not empty statusEmail}">
+                                            <span style="color: red">Không tìm thấy tài khoản email!</span>
+                                        </c:if>
+                                        <c:if test="${not empty statusPassword}">
+                                            <span style="color: red">Mật khẩu không chính xác!</span>
+                                        </c:if>
                                     </label>
                                 </p>
                                 <p class="login button">
