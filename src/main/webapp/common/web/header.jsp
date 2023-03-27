@@ -37,22 +37,26 @@
 					<!-- @endguest -->
 
 					<!-- @auth -->
-					<li class="has-dropdown"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <!-- <i class="fa fm fa-user-o"></i> -->
-							<!-- {{ auth()->user()->name }}  --> <span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<!-- @if(auth()->user()->role->name !== 'user') -->
-							<li><a href="">Admin - Dashbroad</a></li>
-							<!-- @endif -->
-							<li><a href="">Tài khoản của tôi</a></li>
-							<li>
-                                                            <c:url var="logoutUrl" value="/dang-xuat" />
-                                                            <a href="${logoutUrl}">Đăng xuất 
-                                                                <i class="fa fm fa-arrow-circle-right"></i>
-                                                            </a>
-                                                        </li>
-						</ul></li>
+					<li class="has-dropdown">
+                                            <c:if test="${not empty UserLogin and not empty UserLogin.getName()}">
+                                                    <a data-toggle="dropdown"
+                                                        class="dropdown-toggle" href="#"> 
+                                                                 <span class="caret"></span>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                            <!-- @if(auth()->user()->role->name !== 'user') -->
+                                                            <li><a href="">Admin - Dashbroad</a></li>
+                                                            <!-- @endif -->
+                                                            <li><a href="">Tài khoản của tôi</a></li>
+                                                            <li>
+                                                                <c:url var="logoutUrl" value="/dang-xuat" />
+                                                                <a href="${logoutUrl}">Đăng xuất 
+                                                                    <i class="fa fm fa-arrow-circle-right"></i>
+                                                                </a>
+                                                            </li>
+                                                    </ul>
+                                            </c:if>
+                                        </li>
 					<!-- @endauth -->
 
 				</ul>
@@ -104,8 +108,8 @@
 							class="icon_home fa fa-home"></i>
 					</a></li>
                                         <c:forEach var="category" items="${listCategory}" varStatus="loop">
-                                            <c:if test="${loop.index < 10}">
-                                                    <li><a href='post'>${category.name}</a></li>
+                                            <c:if test="${loop.index < 11 && category.name ne 'Chưa phân loại'}">
+                                                  <li><a href="<c:url value='/chuyen-muc/${category.slug}'/>">${category.name}</a></li>
                                             </c:if>
                                         </c:forEach>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
