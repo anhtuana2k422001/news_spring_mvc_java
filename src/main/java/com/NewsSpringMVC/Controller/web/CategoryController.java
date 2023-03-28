@@ -14,12 +14,12 @@ public class CategoryController extends BaseController {
     @RequestMapping(value = "/chuyen-muc/{slug}", method = RequestMethod.GET)
     public ModelAndView category(@PathVariable("slug") String slug) {
         _mvShare.setViewName("web/categorypost");
-        Category cate = categoryService.getCategory(slug);
+        Category cate = categoryService.getCategoryBySlug(slug);
         if (cate == null) {
             _mvShare.setViewName("redirect:/error");
         }else{
             _mvShare.addObject("categoryName", cate.getName());
-            _mvShare.addObject("listPostCate", categoryService.listPostCategory(cate.getId()));
+            _mvShare.addObject("listPostCate", postService.listPostCategory(cate.getId()));
         }
         return _mvShare;
     }

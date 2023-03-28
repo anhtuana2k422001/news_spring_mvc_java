@@ -172,10 +172,10 @@
 
 			<div class="news-updates--list" data-marquee="true">
 				<ul class="nav">
-                                    <c:forEach var="postDetail" items="${listNewPost}" >
+                                    <c:forEach var="post" items="${listNewPostNav}" >
 					<li>
 						<h3 class='h3'>
-							<a href="<c:url value='/${postDetail.slug}'/>">${postDetail.title}</a>
+							<a href="<c:url value='/${post.slug}'/>">${post.title}</a>
 						</h3>
 					</li>
                                     </c:forEach>

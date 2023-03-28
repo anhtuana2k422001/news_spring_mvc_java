@@ -16,6 +16,7 @@ public class HomeController extends BaseController {
         User user = (User) session.getAttribute("UserInfo");
         _mvShare.setViewName("web/home");
         _mvShare.addObject("UserInfo", user); // nếu user đăng nhập lấy thông tin
+        _mvShare.addObject("listNewPostHome", postService.newPostCategory(4));
         return _mvShare;
     }
 

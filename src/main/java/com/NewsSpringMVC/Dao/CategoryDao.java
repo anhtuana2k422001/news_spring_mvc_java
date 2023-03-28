@@ -1,12 +1,11 @@
 package com.NewsSpringMVC.Dao;
 
 import com.NewsSpringMVC.Entity.Category;
-import com.NewsSpringMVC.Entity.Post;
 import com.NewsSpringMVC.Mapper.CategoryMapper;
-import com.NewsSpringMVC.Mapper.PostMapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -24,23 +23,25 @@ public class CategoryDao {
     }
    
     // Lấy tên chuyên mục theo slug
-    public Category getCategory(String slugCate) {
-        String sql = "SELECT * FROM categories WHERE slug = ?";
-        List<Category> categories = _jdbcTemplate.query(sql, new Object[]{slugCate}, new CategoryMapper());
-        if (categories.isEmpty()) {
-            return null; // hoặc đưa ra một thông báo lỗi thích hợp
-        } else {
-            return categories.get(0);
+    public Category getCategoryBySlug(String slugCate) {
+        try {
+            String sql = "SELECT * FROM categories WHERE slug = ?";
+            Category category = _jdbcTemplate.queryForObject(sql, new Object[]{slugCate}, new CategoryMapper());
+            return category;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
         }
     }
      
-    // Lấy danh sách bài viết theo id chuyên mục
-     @SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
-     public List<Post> listPostCategory(int idCate){
-        List<Post> listPost = new ArrayList<Post>();
-        String sql = "SELECT * FROM posts WHERE category_id = '" + idCate + "'	;";
-        listPost = _jdbcTemplate.query(sql, new PostMapper());
-        return listPost;
+    // Lấy tên danh mục từ id bài viết
+    public String getNameCategoryById(int category_id) {
+        try {
+            String sql = "SELECT * FROM categories WHERE id = ?";
+            Category category = _jdbcTemplate.queryForObject(sql, new Object[]{category_id}, new CategoryMapper());
+            return category.getName();
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
    
 }

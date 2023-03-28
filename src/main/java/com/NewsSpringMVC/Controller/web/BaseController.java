@@ -36,6 +36,8 @@ public class BaseController {
         _mvShare.addObject("listCategory", homeService.getDataCategory());
         // Lấy 5 bài viết mới nhất theo danh mục
         _mvShare.addObject("listNewPost", postService.newPostCategory(5));
+         // Lấy 10 bài viết mới nhất theo danh mục
+        _mvShare.addObject("listNewPostNav", postService.newPostCategory(10));
     }
     
     @ModelAttribute("userService")
@@ -51,5 +53,15 @@ public class BaseController {
     @ModelAttribute("commentService")
     public CommentServiceImpl commentService() {
         return commentService;
+    }
+    
+    @ModelAttribute("categoryService")
+    public CategoryServiceImpl categoryService() {
+        return categoryService;
+    }
+    
+    @ModelAttribute("postService")
+    public PostServiceImpl postService() {
+        return postService;
     }
 }

@@ -41,4 +41,15 @@ public class PostDao {
             return posts.get(0);
         }
     }
+    
+    // Lấy danh sách bài viết theo id chuyên mục
+     @SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
+     public List<Post> listPostCategory(int idCate){
+        List<Post> listPost = new ArrayList<Post>();
+        String sql = "SELECT * FROM posts WHERE category_id = '" + idCate + "'	;";
+        listPost = _jdbcTemplate.query(sql, new PostMapper());
+        return listPost;
+    }
+    
+    
 }

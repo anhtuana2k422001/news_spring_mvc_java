@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8">
         <title>Website Tin Tức</title>
@@ -20,118 +20,104 @@
                             <div class="row gutter--15">
                                 <div class="col-md-6">
                                     <div class="row gutter--15">
-                                        <div class="col-xs-6 col-xss-12">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-1 post--title-large">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $posts_new[$i][0]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/ihIHB7UhkbXmuiRvPFzdxEF6hmHI3avWEtZ0WPBj.jpg"
-                                                            alt=""></a>
-                                                    <a href="{{ route('categories.show', $posts_new[$i][0]->category) }}" class="cat">Công nghệ</a>
+                                        <c:forEach items="${listNewPostHome}" var="post" varStatus="loop">
+                                            <c:if test="${loop.index < 2}">
+                                                <div class="col-xs-6 col-xss-12">
+                                                    <!-- Post Item Start -->
+                                                    <div class="post--item post--layout-1 post--title-large">
+                                                        <div class="post--img">
+                                                            <a href="<c:url value='/${post.slug}'/>"
+                                                               class="thumb"><img
+                                                                    src="<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>"
+                                                                    alt=""></a>
+                                                            <a href="javascript:;" class="cat">${categoryService.getNameCategoryById(post.category_id)}</a>
 
-                                                    <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a></li>
-                                                            <li><a href="javascript:;">19/02/2023</a></li>
-                                                        </ul>
-                                                        <div class="title">
-                                                            <h2 class="h4"><a href="{{ route('posts.show', $posts_new[$i][0]) }}" class="btn-link">Bậc thầy quan hệ của Microsoft</a>
-                                                            </h2>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
+                                                            <div class="post--info">
+                                                                <ul class="nav meta">
+                                                                    <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                </ul>
+                                                                <div class="title">
+                                                                    <h2 class="h4"><a href="<c:url value='/${post.slug}'/>" class="btn-link">${post.title}</a>
+                                                                    </h2>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <!-- Post Item End -->
                                                 </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </div>
-                                        <div class="col-xs-6 col-xss-12">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-1 post--title-large">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $posts_new[$i][0]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/lnqFGxndAIxaWyeTILls4P1knlSMbXFx1DQkWPJn.jpg"
-                                                            alt=""></a>
-                                                    <a href="{{ route('categories.show', $posts_new[$i][0]->category) }}" class="cat">Công nghệ</a>
+                                            </c:if>
+                                         </c:forEach>
 
-                                                    <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Võ Anh Quân</a></li>
-                                                            <li><a href="javascript:;">19/02/2023</a></li>
-                                                        </ul>
-                                                        <div class="title">
-                                                            <h2 class="h4"><a href="{{ route('posts.show', $posts_new[$i][0]) }}" class="btn-link">Bếp từ Sakura với công nghệ HEATTECH, chinh phục mọi công thức, nấu món nào cũng ngon</a>
-                                                            </h2>
+                                        <c:forEach items="${listNewPostHome}" var="post" varStatus="loop">
+                                            <c:if test="${loop.index == 2}">
+                                                <div class="col-sm-12 hidden-sm hidden-xs">
+                                                    <!-- Post Item Start -->
+                                                    <div class="post--item post--layout-1 post--title-larger">
+                                                        <div class="post--img">
+                                                            <a href="<c:url value='/${post.slug}'/>"
+                                                               class="thumb"><img
+                                                                    src="<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>"
+                                                                    style="height:200px" alt=""></a>
+
+                                                            <a href="javascript:;" class="cat">${categoryService.getNameCategoryById(post.category_id)}</a>
+
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-fire"></i></a>
+
+                                                            <div class="post--info">
+                                                                <ul class="nav meta">
+                                                                    <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                </ul>
+                                                                 <p class="excerpt">${post.excerpt}</p>
+                                                                <div class="title">
+                                                                    <h2 class="h4"><a
+                                                                            href="<c:url value='/${post.slug}'/>"
+                                                                            class="btn-link">${post.title}</a></h2>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <!-- Post Item End -->
                                                 </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </div>
-
-
-                                        <div class="col-sm-12 hidden-sm hidden-xs">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-1 post--title-larger">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $posts_new[2][0]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/8yXdkrA7omqqNJEqQzxTD3aVKAs08Xj2ZaFmEszw.jpg"
-                                                            style="height:200px" alt=""></a>
-
-                                                    <a href="{{ route('categories.show', $posts_new[2][0]->category) }}" class="cat">Kinh Doanh</a>
-
-                                                    <a href="javascript:;" class="icon"><i class="fa fa-fire"></i></a>
-
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a></li>
-                                                            <li><a href="javascript:;">19/01/2023</a></li>
-                                                        </ul>
-
-                                                        <div class="title">
-                                                            <h2 class="h4"><a
-                                                                    href="{{ route('posts.show', $posts_new[2][0]) }}"
-                                                                    class="btn-link">Liên tục bốc hơi tài khoản: Nhà đầu tư chứng khoán nên làm gì lúc này?</a></h2>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </div>
+                                            </c:if>
+                                        </c:forEach>
 
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
+                                 <c:forEach items="${listNewPostHome}" var="post" varStatus="loop">
+                                    <c:if test="${loop.index == 3}">
                                     <!-- Post Item Start -->
-                                    <div class="post--item post--layout-1 post--title-larger">
-                                        <div class="post--img">
-                                            <a href="{{ route('posts.show', $posts_new[3][0]) }}"
-                                               class="thumb"><img src="template/web/storage/images/j0xVrz1hu4da1PFr2C0Dx7GYSjEGtBKSytQ5bE5z.jpg" alt=""></a>
+                                        <div class="post--item post--layout-1 post--title-larger">
+                                            <div class="post--img">
+                                                    <a href="<c:url value='/${post.slug}'/>"
+                                                   class="thumb"><img src="<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>" alt=""></a>
 
-                                            <a href="{{ route('categories.show', $posts_new[3][0]->category ) }}" class="cat">Thế giới</a>
+                                                <a href="javascript:;" class="cat">${categoryService.getNameCategoryById(post.category_id)}</a>
 
-                                            <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
+                                                <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
-                                            <div class="post--info">
-                                                <ul class="nav meta">
-                                                    <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
-                                                    <li><a href="javascript:;">25/06/2022</a></li>
-                                                </ul>
-
-                                                <div class="title">
-                                                    <h2 class="h4"><a
-                                                            href="{{ route('posts.show', $posts_new[3][0]) }}"
-                                                            class="btn-link">Nga chỉ trích EU trao tư cách ứng viên cho Ukraine</a>
-                                                    </h2>
+                                                <div class="post--info">
+                                                    <ul class="nav meta">
+                                                        <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                        <li><a href="javascript:;">${post.created_at}</a></li>
+                                                    </ul>
+                                                      <p class="excerpt">${post.excerpt}</p>
+                                                    <div class="title">
+                                                        <h2 class="h4"><a
+                                                                href="<c:url value='/${post.slug}'/>"
+                                                                class="btn-link">${post.title}</a>
+                                                        </h2>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <!-- Post Item End -->
+                                    </c:if>
+                                </c:forEach>
                                 </div>
 
                             </div>
@@ -150,7 +136,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">	Thế giới</h2>
+                                            <h2 class="h4">${listCategory.get(1).name}</h2>
                                         </div>
                                         <!-- Post Items Title End -->
 
@@ -163,8 +149,8 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home0[0]) }}"
-                                                               class="thumb"><img src="template/web/storage/images/w9je6lri2JhyJbehSnsJInbpZXdZ2x3FPhv0Ya6A.jpg"
+                                                            <a href="<c:url value='/${postService.listPostCategory(listCategory.get(1).id).get(0).slug}'/>"
+                                                               class="thumb"><img src="<c:url value='/template/web/storage/${imageService.getPathImgPost(postService.listPostCategory(listCategory.get(1).id).get(0).id).path}'/>"
                                                                                alt=""></a>
 
                                                             <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
@@ -177,8 +163,8 @@
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home0[0]) }}"
-                                                                            class="btn-link">Litva hạn chế chuyển hàng tới vùng lãnh thổ Nga</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(listCategory.get(1).id).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(listCategory.get(1).id).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>

@@ -10,4 +10,5 @@ public interface IPostService {
    @Autowired
    public List<Post> newPostCategory(int limit);
    public Post getPostDetail(String slugPost);
+   public List<Post> listPostCategory(int idCate);
 }

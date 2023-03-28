@@ -20,5 +20,10 @@ public class PostServiceImpl implements IPostService {
     public Post getPostDetail(String slugPost) {
         return postDao.getPostDetail(slugPost);
     }
+
+    @Override
+    public List<Post> listPostCategory(int idCate) {
+        return postDao.listPostCategory(idCate);
+    }
     
 }
