@@ -75,4 +75,15 @@ public class UserDao {
             return null;
         }
     }
+    
+    // Lấy thông tin tài khoản từ Id
+    public User getUserById(int userId) {
+        try {
+            String sql = "SELECT * FROM users WHERE id = ?";
+            User user = _jdbcTemplate.queryForObject(sql, new Object[]{userId}, new BeanPropertyRowMapper<>(User.class));
+            return user;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
 }

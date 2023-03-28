@@ -9,19 +9,19 @@ public class PostMapper implements RowMapper<Post>{
 
     @Override
     public Post mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Post user = new Post();
-        user.setId(rs.getInt("id")); 
-        user.setTitle(rs.getString("title"));  
-        user.setSlug(rs.getString("slug"));
-        user.setExcerpt(rs.getString("excerpt"));
-        user.setBody(rs.getString("body"));
-        user.setUser_id(rs.getInt("user_id"));
-        user.setCategory_id(rs.getInt("category_id"));
-        user.setViews(rs.getInt("views"));
-        user.setApproved(rs.getInt("approved"));
-        user.setCreated_at(rs.getString("created_at"));        
-        user.setUpdated_at(rs.getString("updated_at"));
-        return user;
+        Post post = new Post();
+        post.setId(rs.getInt("id")); 
+        post.setTitle(rs.getString("title"));  
+        post.setSlug(rs.getString("slug"));
+        post.setExcerpt(rs.getString("excerpt"));
+        post.setBody(rs.getString("body"));
+        post.setUser_id(rs.getInt("user_id"));
+        post.setCategory_id(rs.getInt("category_id"));
+        post.setViews(rs.getInt("views"));
+        post.setApproved(rs.getInt("approved"));
+        post.setCreated_at(rs.getString("created_at"));        
+        post.setUpdated_at(rs.getString("updated_at"));
+        return post;
     }
     
 }

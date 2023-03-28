@@ -95,7 +95,7 @@ public class UserController {
         return mav;
     }
 
-// Đăng xuất user
+    // Đăng xuất user
     @RequestMapping(value = "/dang-xuat", method = RequestMethod.GET)
     public String logoutUser(HttpSession session, HttpServletRequest request) {
         session.removeAttribute("UserLogin");

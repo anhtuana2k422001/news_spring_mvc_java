@@ -41,7 +41,11 @@ public class UserServiceImpl implements IUserService {
        User user = userDao.GetUserByEmail(userEmail);
        return user != null;
     }
-    
+
+    @Override
+    public User getUserById(int userId) {
+       return userDao.getUserById(userId);
+    }
     
     
 }

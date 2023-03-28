@@ -104,7 +104,7 @@
 				<!-- Header Menu Links Start -->
 				<ul class="header--menu-links nav navbar-nav"
 					data-trigger="hoverIntent">
-					<li><a href="trang-chu"> <i
+					<li><a href="<c:url value='/trang-chu' />" > <i
 							class="icon_home fa fa-home"></i>
 					</a></li>
                                         <c:forEach var="category" items="${listCategory}" varStatus="loop">
@@ -117,7 +117,6 @@
 						<ul class="dropdown-menu">
 							<li><a href="{{ route('about">Giới thiệu</a></li>
 							<li><a href="{{ route('contact.create">Liên hệ</a></li>
-							<li><a href="404">404</a></li>
 						</ul></li>
 					<li><a href="{{ route('categories.index"> <span
 							style="color: #ccc; margin-right: 10px;">Tất cả</span> <img

@@ -34,19 +34,18 @@
                                     <p class="lead">Không có bài viết nào!</p>
                                  </c:if>
                            
-
                                 <c:forEach items="${listPostCate}" var="post">
                                 <div class="block-21 d-flex animate-box post">
-                                    <a href="" class="blog-img" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwYnWwwcztKk1YJjFGLQ1HFyArgFX6dRgDuw&usqp=CAU);"></a>
+                                    <a href="" class="blog-img" style="background-image: url(../template/web/storage/${imageService.getPathImgPost(post.id).path});"></a>
                                     <div class="text">
-                                        <h3 class="heading"><a href="<?php echo $post["slug"]?>"><? echo $post["title"]?></a></h3>
-                                        <p class="excerpt">${post.title}</p>
+                                        <h3 class="heading"><a hre="">${post.title}</a></h3>
+                                        <p class="excerpt">${post.excerpt}</p>
                                         </p>
                                         <div class="meta">
-                                            <div><a class="date" href="javascript:;"><span class="icon-calendar"></span>${post.created_at}</a></div>
-                                            <div><a href="javascript:;"><span class="icon-user2"></span><? echo Post::getNameAuthor($post["user_id"])?></a></div>
-                                            <div class="comments-count"><a href="<? echo $post["slug"]?>#comments_all"><span class="icon-chat"></span><? echo COUNT(Comment::getCommentPost($post["id"])) ?></a></div>
-                                            <div><a href="javascript:;"><span><i class="fa fm fa-eye"></i></span>${post.views}</a></div>
+                                            <div><a class="date" href="javascript:;"><span class="icon-calendar"></span> ${post.created_at}</a></div>
+                                            <div><a href="javascript:;"><span class="icon-user2"></span> Tác giả: ${userService.getUserById(post.user_id).name}</a></div>
+                                            <div class="comments-count"><a href="#comments_all"><span class="icon-chat"></span><? echo COUNT(Comment::getCommentPost($post["id"])) ?></a></div>
+                                            <div><a href="javascript:;"><span><i class="fa fm fa-eye"></i></span> Lượt xem: ${post.views}</a></div>
                                         </div>
                                     </div>
                                 </div>
