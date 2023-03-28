@@ -36,15 +36,15 @@
                            
                                 <c:forEach items="${listPostCate}" var="post">
                                 <div class="block-21 d-flex animate-box post">
-                                    <a href="" class="blog-img" style="background-image: url(../template/web/storage/${imageService.getPathImgPost(post.id).path});"></a>
+                                    <a href="<c:url value='/${post.slug}'/>"class="blog-img" style="background-image: url(../template/web/storage/${imageService.getPathImgPost(post.id).path});"></a>
                                     <div class="text">
-                                        <h3 class="heading"><a hre="">${post.title}</a></h3>
+                                        <h3 class="heading"><a href="<c:url value='/${post.slug}'/>">${post.title}</a></h3>
                                         <p class="excerpt">${post.excerpt}</p>
                                         </p>
                                         <div class="meta">
                                             <div><a class="date" href="javascript:;"><span class="icon-calendar"></span> ${post.created_at}</a></div>
                                             <div><a href="javascript:;"><span class="icon-user2"></span> Tác giả: ${userService.getUserById(post.user_id).name}</a></div>
-                                            <div class="comments-count"><a href="#comments_all"><span class="icon-chat"></span><? echo COUNT(Comment::getCommentPost($post["id"])) ?></a></div>
+                                            <div class="comments-count"><a href="#comments_all"><span class="icon-chat"></span> Bình luận: ${commentService.getCommentPost(post.id).size()}</a></div>
                                             <div><a href="javascript:;"><span><i class="fa fm fa-eye"></i></span> Lượt xem: ${post.views}</a></div>
                                         </div>
                                     </div>
@@ -62,15 +62,15 @@
                         <div class="sticky-content-inner">
 
                             <!-- Widget Start -->
-                            <!--<?php include_once("./main_layout/slide_post/outstanding_posts.php"); ?>--> 
+                           	<%@ include file="/common/web/slide/outstanding_posts.jsp"%>
                             <!-- Widget End -->
 
                             <!-- Widget Start -->
-                            <!--<?php include_once("./main_layout/slide_post/vote.php"); ?>--> 
+                           	<%@ include file="/common/web/slide/banner.jsp"%>
                             <!-- Widget End -->
 
                             <!-- Widget Start -->
-                            <!--<?php include_once("./main_layout/slide_post/banner.php"); ?>--> 
+                          	<%@ include file="/common/web/slide/vote.jsp"%>
                             <!-- Widget End -->
                         </div>
                     </div>

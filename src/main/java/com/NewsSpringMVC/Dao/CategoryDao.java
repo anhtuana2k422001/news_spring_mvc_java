@@ -24,15 +24,19 @@ public class CategoryDao {
     }
    
     // Lấy tên chuyên mục theo slug
-     public Category getNameCategory(String slugCate){
-        String sql = "SELECT * FROM categories WHERE slug = '" + slugCate + "';";
-        Category category = _jdbcTemplate.queryForObject(sql, new CategoryMapper());
-        return category;
+    public Category getCategory(String slugCate) {
+        String sql = "SELECT * FROM categories WHERE slug = ?";
+        List<Category> categories = _jdbcTemplate.query(sql, new Object[]{slugCate}, new CategoryMapper());
+        if (categories.isEmpty()) {
+            return null; // hoặc đưa ra một thông báo lỗi thích hợp
+        } else {
+            return categories.get(0);
+        }
     }
      
     // Lấy danh sách bài viết theo id chuyên mục
      @SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
-     public List<Post> listPostCategory(String idCate){
+     public List<Post> listPostCategory(int idCate){
         List<Post> listPost = new ArrayList<Post>();
         String sql = "SELECT * FROM posts WHERE category_id = '" + idCate + "'	;";
         listPost = _jdbcTemplate.query(sql, new PostMapper());

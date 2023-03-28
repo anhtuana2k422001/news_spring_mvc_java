@@ -10,6 +10,6 @@ import org.springframework.stereotype.Service;
 public interface ICategoryService {
     @Autowired
     public List<Category> getDataCategory();
-    public Category getNameCategory(String slug);
-    public List<Post> listPostCategory(String idCate);
+    public Category getCategory(String slug);
+    public List<Post> listPostCategory(int idCate);
 }

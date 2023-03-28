@@ -1,12 +1,6 @@
 package com.NewsSpringMVC.Dao;
 
 import com.NewsSpringMVC.Entity.Image;
-import com.NewsSpringMVC.Entity.User;
-import com.NewsSpringMVC.Handle.HandleUser;
-import static com.NewsSpringMVC.Handle.HandleUser.getCurrentDateTimeFormatted;
-import com.NewsSpringMVC.Mapper.UserMapper;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

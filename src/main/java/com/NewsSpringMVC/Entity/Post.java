@@ -1,5 +1,7 @@
 package com.NewsSpringMVC.Entity;
 
+import com.NewsSpringMVC.Handle.HandleUser;
+
 public class Post {
     private int id;    
     private String title;
@@ -94,7 +96,7 @@ public class Post {
     }
 
     public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+        this.created_at = HandleUser.formatDate(created_at);
     }
 
     public String getUpdated_at() {
@@ -102,7 +104,7 @@ public class Post {
     }
 
     public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
+        this.updated_at = HandleUser.formatDate(updated_at);
     }
     
     

@@ -17,8 +17,7 @@
                     <ul class="breadcrumb">
                         <li><a href="/" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
                         <li><a href="javascript:;" class="btn-link">Công nghệ</a></li>
-                        <li class="active"><span>Bếp từ Sakura với công nghệ HEATTECH, chinh phục mọi công thức, nấu món
-                                nào cũng ngon</span></li>
+                        <li class="active"><span>${postDetail.title}</span></li>
                     </ul>
                 </div>
             </div>
@@ -38,137 +37,28 @@
                                     <ul class="nav">
                                         <li><span><i class="fa fa-folder-open-o"></i></span></li>
                                         <li><a class="text capitalize"
-                                                href="{{ route('tags.show',  $post->tags[$i]) }}">Bếp từ Sakura </a>
+                                                href="{{ route('tags.show',  $post->tags[$i]) }}">Chưa có ... </a>
                                         </li>
                                         <li><a class="text capitalize"
-                                                href="{{ route('tags.show',  $post->tags[$i]) }}">HEATTECH</a></li>
+                                                href="{{ route('tags.show',  $post->tags[$i]) }}">Chưa có ...</a></li>
                                     </ul>
                                 </div>
 
                                 <div class="post--info">
                                     <ul class="nav meta">
-                                        <li class="text capitalize"><a href="#">19/02/2023<a></li>
-                                        <li><a href="#">Võ Anh Quân</a></li>
-                                        <li><span><i class="fa fm fa-eye"></i>1</span></li>
-                                        <li><a href="#comments_all"><i class="fa fm fa-comments-o"></i>2</a></li>
+                                        <li class="text capitalize"><a href="javascript:;">${postDetail.created_at}<a></li>
+                                        <li><a href="#">${userService.getUserById(postDetail.user_id).name}</a></li>
+                                        <li><span><i class="fa fm fa-eye"></i>${postDetail.views}</span></li>
+                                        <li><a href="#comments_all"><i class="fa fm fa-comments-o"></i>${commentService.getCommentPost(postDetail.id).size()}</a></li>
                                     </ul>
 
                                     <div class="title">
-                                        <h2 class="post_title h4">Bếp từ Sakura với công nghệ HEATTECH, chinh phục mọi
-                                            công thức, nấu món nào cũng ngon</h2>
+                                        <h2 class="post_title h4">${postDetail.title}</h2>
                                     </div>
                                 </div>
                                 <div class="post--body post--content">
                                     <p class="description">
-                                    <p>Sau thời gian d&agrave;i c&ugrave;ng nhau gi&atilde;n c&aacute;ch, nấu nướng tại
-                                        gia dường như dần trở th&agrave;nh một th&uacute; vui, một th&oacute;i quen mới
-                                        của mọi người. Tuy nhi&ecirc;n, việc nấu nướng thật nhanh v&agrave; thật ngon
-                                        vẫn c&ograve;n gặp nhiều trở ngại. Bếp c&oacute; v&ugrave;ng nấu kh&ocirc;ng đủ
-                                        lớn ngăn cản c&aacute;c th&agrave;nh vi&ecirc;n trong gia đ&igrave;nh trổ
-                                        t&agrave;i với c&aacute;c m&oacute;n cần chảo to như c&aacute; chi&ecirc;n
-                                        x&ugrave; v&agrave;ng gi&ograve;n. V&agrave; c&oacute; khi bếp kh&ocirc;ng đủ
-                                        c&ocirc;ng suất khiến cho dĩa rau luộc kh&ocirc;ng giữ được m&agrave;u sắc xanh
-                                        tươi do đun l&acirc;u tr&ecirc;n bếp.</p>
-                                    <p>Để g&oacute;p phần tạo n&ecirc;n những bữa cơm gia đ&igrave;nh vừa ngon miệng vừa
-                                        ngon mắt, Sakura - chuy&ecirc;n gia về c&ocirc;ng nghệ gia nhiệt - giới thiệu
-                                        hai mẫu bếp từ đ&ocirc;i SE-1270B v&agrave; bếp điện từ SE-3260B với c&ocirc;ng
-                                        nghệ HEATTECH đột ph&aacute;. C&ocirc;ng nghệ mới từ Sakura đem đến bốn
-                                        t&iacute;nh năng vượt trội: HEAT PRO, HEAT MAX, HEAT AI, HEAT GUARD gi&uacute;p
-                                        chinh phục mọi c&ocirc;ng thức nấu nướng v&agrave; tiết kiệm thời gian
-                                        v&agrave;o bếp với tinh thần &ldquo;Nấu ăn thật nhanh - M&oacute;n n&agrave;o
-                                        cũng ngon!&rdquo;.</p>
-                                    <p align="center"><img class="news-image initial loaded"
-                                            src="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/22-1655188683-734-width660height371.jpg"
-                                            alt="Bếp từ Sakura với c&ocirc;ng nghệ HEATTECH, chinh phục mọi c&ocirc;ng thức, nấu m&oacute;n n&agrave;o cũng ngon - 1"
-                                            data-was-processed="true"></p>
-                                    <p><strong>HEAT PRO - m&acirc;m nhi&ecirc;̣t lớn, gia nhi&ecirc;̣t li&ecirc;n
-                                            tục</strong></p>
-                                    <p>V&ugrave;ng nấu tr&ecirc;n bếp kh&ocirc;ng đủ lớn khiến ch&uacute;ng ta loay
-                                        hoay kh&ocirc;ng biết phải l&agrave;m thế n&agrave;o để chế biến m&oacute;n
-                                        c&aacute; chi&ecirc;n x&ugrave; v&agrave;ng gi&ograve;n hay hầm một nồi
-                                        b&ograve; kho mềm thịt thơm ngon cho cả gia đ&igrave;nh. Nhưng với t&iacute;nh
-                                        năng HEAT PRO đem đến m&acirc;m nhiệt lớn hơn 36%, tạo v&ugrave;ng nấu thật sự
-                                        rộng r&atilde;i, tiện dụng cho nhiều k&iacute;ch thước nồi, cho cả nh&agrave;
-                                        thỏa sức nấu m&oacute;n ngon, chinh phục mọi c&ocirc;ng thức nấu nướng.</p>
-                                    <p>V&agrave; từ gi&acirc;y ph&uacute;t n&agrave;y, các món ăn c&acirc;̀n
-                                        n&ocirc;̀i chảo kích thước lớn kh&ocirc;ng những được ch&ecirc;́
-                                        bi&ecirc;́n trọn vẹn mà còn chín đ&ecirc;̀u, trọn vị ngon nhờ c&ocirc;ng
-                                        ngh&ecirc;̣ gia nhi&ecirc;̣t li&ecirc;n tục, nhi&ecirc;̣t lượng được duy trì
-                                        &ocirc;̉n định, đồng đều với m&ocirc;̃i mức nhi&ecirc;̣t.</p>
-                                    <p align="center"><img class="news-image initial loaded"
-                                            src="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/33-1655188683-115-width660height348.jpg"
-                                            alt="Bếp từ Sakura với c&ocirc;ng nghệ HEATTECH, chinh phục mọi c&ocirc;ng thức, nấu m&oacute;n n&agrave;o cũng ngon - 2"
-                                            data-original="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/33-1655188683-115-width660height348.jpg"
-                                            data-was-processed="true"></p>
-                                    <p><strong>HEAT MAX - gia nhi&ecirc;̣t nhanh</strong></p>
-                                    <p>Đ&ocirc;̣t phá thứ hai, HEAT MAX giúp gia nhi&ecirc;̣t nhanh chóng,
-                                        c&ocirc;ng su&acirc;́t đ&acirc;̀u ra tăng 30% so với c&ocirc;ng su&acirc;́t
-                                        định mức của b&ecirc;́p, gi&uacute;p đẩy nhanh qu&aacute; tr&igrave;nh nấu
-                                        nướng từ đ&oacute; ti&ecirc;́t ki&ecirc;̣m được thời gian n&acirc;́u ăn của
-                                        người sử dụng. Những món xào hay luộc c&acirc;̀n được ch&ecirc;́ bi&ecirc;́n
-                                        ở nhi&ecirc;̣t đ&ocirc;̣ cao trong thời gian ngắn sẽ kh&ocirc;ng còn là
-                                        bài toán khó. N&acirc;́u ăn th&acirc;̣t nhanh, món nào cũng ngon v&agrave;
-                                        vẹn nguy&ecirc;n giá trị dinh dưỡng.</p>
-                                    <p align="center"><img class="news-image loaded"
-                                            src="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/44-1655188683-540-width660height306.jpg"
-                                            alt="Bếp từ Sakura với c&ocirc;ng nghệ HEATTECH, chinh phục mọi c&ocirc;ng thức, nấu m&oacute;n n&agrave;o cũng ngon - 3"
-                                            data-original="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/44-1655188683-540-width660height306.jpg"
-                                            data-was-processed="true"></p>
-                                    <p><strong>HEAT AI - 5 mức ki&ecirc;̉m soát duy trì nhi&ecirc;̣t &ocirc;̉n định
-                                            và hẹn giờ th&ocirc;ng minh</strong></p>
-                                    <p>Kh&ocirc;ng chỉ n&acirc;́u ăn nhanh d&ecirc;̃ dàng mà ch&uacute;ng ta
-                                        c&ograve;n c&oacute; thể tối ưu thời gian v&agrave;o bếp nhờ đ&ocirc;̣t phá
-                                        thứ ba HEAT AI. Với 5 mức ki&ecirc;̉m soát duy trì nhi&ecirc;̣t &ocirc;̉n
-                                        định cùng ch&ecirc;́ đ&ocirc;̣ hẹn giờ và tắt b&ecirc;́p th&ocirc;ng minh,
-                                        người sử dụng có th&ecirc;̉ đặt thời lượng và mức nhi&ecirc;̣t đ&ocirc;̣
-                                        phù hợp cho c&aacute;c v&ugrave;ng nấu ri&ecirc;ng biệt. Chế độ nấu tự động sẽ
-                                        gi&uacute;p bạn c&oacute; th&ecirc;m nhiều thời gian để sắp xếp việc bếp
-                                        n&uacute;c, lau dọn b&agrave;n bếp hay chuẩn bị nguy&ecirc;n liệu cho c&aacute;c
-                                        m&oacute;n ăn tiếp theo. Vi&ecirc;̣c duy trì nhi&ecirc;̣t đ&ocirc;̣ ở mức đã
-                                        cài đặt trong thời gian định sẵn sẽ được HEAT AI ki&ecirc;̉m soát
-                                        th&ocirc;ng minh và giúp món ăn chín đ&ecirc;̀u. B&acirc;̣t mí là HEAT AI
-                                        còn gi&uacute;p người sử dụng n&acirc;́u cơm chỉ với m&ocirc;̣t nút
-                                        b&acirc;́m.</p>
-                                    <p align="center"><img class="news-image loaded"
-                                            src="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/55-1655188683-406-width660height348.jpg"
-                                            alt="Bếp từ Sakura với c&ocirc;ng nghệ HEATTECH, chinh phục mọi c&ocirc;ng thức, nấu m&oacute;n n&agrave;o cũng ngon - 4"
-                                            data-original="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/55-1655188683-406-width660height348.jpg"
-                                            data-was-processed="true"></p>
-                                    <p><strong>HEAT GUARD - tăng cường 9 tính năng an toàn</strong></p>
-                                    <p>Bếp an to&agrave;n l&agrave; bếp cho bạn y&ecirc;n t&acirc;m đầy hứng khởi để chế
-                                        biến nhiều m&oacute;n ngon. Hi&ecirc;̉u đi&ecirc;̀u đó, Sakura đã tăng cường
-                                        với 9 tính năng an toàn cùng đ&ocirc;̣t phá HEAT GUARD cho trải nghiệm nấu
-                                        ăn lu&ocirc;n y&ecirc;n t&acirc;m kh&aacute;c biệt.</p>
-                                    <p>B&ecirc;n cạnh các ti&ecirc;u chu&acirc;̉n an toàn quen thu&ocirc;̣c:
-                                        h&ecirc;̣ th&ocirc;́ng bảo v&ecirc;̣ khi quá nhi&ecirc;̣t, tự đ&ocirc;̣ng
-                                        tắt khi kh&ocirc;ng có n&ocirc;̀i, cảnh báo dư nhi&ecirc;̣t vùng
-                                        n&acirc;́u, khoá an toàn, nh&acirc;̣n di&ecirc;̣n n&ocirc;̀i n&acirc;́u thích
-                                        hợp, IGBT v&agrave; chứng nh&acirc;̣n EMC, HEAT GUARD giới thi&ecirc;̣u
-                                        th&ecirc;m 2 tính năng: ch&ocirc;́ng tràn &amp; tạm dừng/ ti&ecirc;́p tục.
-                                        Bạn kh&ocirc;ng chỉ nấu nướng dễ d&agrave;ng hiệu quả, m&agrave; bếp c&ograve;n
-                                        mang lại khả năng vận h&agrave;nh ổn định gi&uacute;p bạn y&ecirc;n t&acirc;m
-                                        tuyệt đối khi sử dụng v&agrave; nhất l&agrave; đối với gia đ&igrave;nh c&oacute;
-                                        trẻ nhỏ.</p>
-                                    <p>Với t&iacute;nh năng ch&ocirc;́ng tràn, b&ecirc;́p sẽ tự đ&ocirc;̣ng tắt khi
-                                        có thức ăn tràn vào khu vực bảng đi&ecirc;̀u khi&ecirc;̉n, hạn ch&ecirc;́
-                                        được những n&ocirc;̃i lo khi n&acirc;́u b&ecirc;́p. B&ecirc;n cạnh đó, bạn
-                                        c&ograve;n c&oacute; thể tạm dừng nấu ăn để l&agrave;m việc kh&aacute;c, rồi
-                                        tiếp tục quay lại nấu với mức nhiệt đang d&ugrave;ng trước đ&oacute; với
-                                        t&iacute;nh năng tạm dừng/ ti&ecirc;́p tục.</p>
-                                    <p align="center"><img class="news-image loaded"
-                                            src="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/66-1655188683-738-width660height413.jpg"
-                                            alt="Bếp từ Sakura với c&ocirc;ng nghệ HEATTECH, chinh phục mọi c&ocirc;ng thức, nấu m&oacute;n n&agrave;o cũng ngon - 5"
-                                            data-original="https://icdn.24h.com.vn/upload/2-2022/images/2022-06-14/66-1655188683-738-width660height413.jpg"
-                                            data-was-processed="true"></p>
-                                    <p>Với c&ocirc;ng nghệ HEATTECH đột ph&aacute; 4 t&iacute;nh năng vượt trội: HEAT
-                                        PRO, HEAT MAX, HEAT AI, HEAT GUARD, mọi c&ocirc;ng thức m&oacute;n ngon đều
-                                        c&oacute; thể dễ d&agrave;ng bị chinh phục. Những bữa cơm gia đ&igrave;nh từ nay
-                                        sẽ th&ecirc;m phần đa dạng với nhiều m&oacute;n ngon hấp dẫn v&agrave;
-                                        gi&agrave;u dinh dưỡng, chinh phục mọi con đường dẫn đến tr&aacute;i tim của
-                                        người bạn y&ecirc;u thương từ thị gi&aacute;c cho đến vị gi&aacute;c. Đồng thời,
-                                        c&ocirc;ng nghệ HEATTECH c&ograve;n gi&uacute;p r&uacute;t ngắn thời gian chuẩn
-                                        bị bữa ăn, g&oacute;p th&ecirc;m quỹ thời gian vun đắp hạnh ph&uacute;c
-                                        y&ecirc;u thương trong mỗi gia đ&igrave;nh.</p>
+                                        ${postDetail.body}
                                     </p>
                                 </div>
                             </div>
@@ -176,8 +66,8 @@
 
                             <!-- Advertisement Start -->
                             <div class="ad--space pd--20-0-40">
-                                <p class="author-info">Người viết: Võ Anh Quân</p>
-                                <p class="post-time">Thời gian: 19/02/2023</p>
+                                <p class="author-info">Người viết: ${userService.getUserById(postDetail.user_id).name}</p>
+                                <p class="post-time">Thời gian: ${postDetail.created_at}</p>
                             </div>
                             <!-- Advertisement End -->
 
@@ -510,192 +400,17 @@
                     <!-- Main Sidebar Start -->
                     <div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
                         <div class="sticky-content-inner">
-
+                            
                             <!-- Widget Start -->
-                            <!-- Widget Start -->
-                            <div class="widget">
-                                <div class="widget--title">
-                                    <h2 class="h4">Tin tức nổi bật</h2>
-                                    <i class="icon fa fa-newspaper-o"></i>
-                                </div>
-
-                                <!-- List Widgets Start -->
-                                <div class="list--widget list--widget-1">
-                                    <div class="list--widget-nav" data-ajax="tab">
-                                        <ul class="nav nav-justified">
-                                            <li class="active">
-                                                <a class="outstandPosts" href="#"
-                                                    data-ajax-action="load_widget_hot_news">Tin nóng</a>
-                                            </li>
-                                            <li>
-                                                <a class="outstandPosts" href=""
-                                                    data-ajax-action="load_widget_trendy_news">Xu hướng</a>
-                                            </li>
-                                            <li>
-                                                <a class="outstandPosts" href=""
-                                                    data-ajax-action="load_widget_most_watched">Xem nhiều nhất</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Post Items Start -->
-                                    <div class="post--items post--items-3" data-ajax-content="outer">
-                                        <ul class="nav listPost" data-ajax-content="inner">
-                                            <li>
-                                                <!-- Post Item Start -->
-                                                <div class="post--item post--layout-3">
-                                                    <div class="post--img">
-                                                        <a href="/post.php?slug=bac-thay-quan-he-cua-microsoft"
-                                                            class="thumb"><img
-                                                                src="../storage/images/ihIHB7UhkbXmuiRvPFzdxEF6hmHI3avWEtZ0WPBj.jpg"
-                                                                alt=""></a>
-                                                        <div class="post--info">
-                                                            <ul class="nav meta">
-                                                                <li><a href="javascript:;">19/02/2023</a></li>
-                                                                <li><a href="javascript:;"><i
-                                                                            class="fa fm fa-comments"></i>1</a></li>
-                                                                <li><span><i class="fa fm fa-eye"></i>3</span></li>
-                                                            </ul>
-
-                                                            <div class="title">
-                                                                <h3 class="h4"><a
-                                                                        href="/post.php?slug=bac-thay-quan-he-cua-microsoft"
-                                                                        class="btn-link">Bậc thầy quan hệ của
-                                                                        Microsoft</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Post Item End -->
-                                            </li>
-                                            <li>
-                                                <!-- Post Item Start -->
-                                                <div class="post--item post--layout-3">
-                                                    <div class="post--img">
-                                                        <a href="/post.php?slug=bep-tu-sakura-voi-cong-nghe-heattech-chinh-phuc-moi-cong-thuc-nau-mon-nao-cung-ngon"
-                                                            class="thumb"><img
-                                                                src="../storage/images/lnqFGxndAIxaWyeTILls4P1knlSMbXFx1DQkWPJn.jpg"
-                                                                alt=""></a>
-                                                        <div class="post--info">
-                                                            <ul class="nav meta">
-                                                                <li><a href="javascript:;">19/02/2023</a></li>
-                                                                <li><a href="javascript:;"><i
-                                                                            class="fa fm fa-comments"></i>2</a></li>
-                                                                <li><span><i class="fa fm fa-eye"></i>1</span></li>
-                                                            </ul>
-
-                                                            <div class="title">
-                                                                <h3 class="h4"><a
-                                                                        href="/post.php?slug=bep-tu-sakura-voi-cong-nghe-heattech-chinh-phuc-moi-cong-thuc-nau-mon-nao-cung-ngon"
-                                                                        class="btn-link">Bếp từ Sakura với công nghệ
-                                                                        HEATTECH, chinh phục mọi công thức, nấu món nào
-                                                                        cũng ngon</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Post Item End -->
-                                            </li>
-                                            <li>
-                                                <!-- Post Item Start -->
-                                                <div class="post--item post--layout-3">
-                                                    <div class="post--img">
-                                                        <a href="/post.php?slug=lien-tuc-boc-hoi-tai-khoan-nha-dau-tu-chung-khoan-nen-lam-gi-luc-nay"
-                                                            class="thumb"><img
-                                                                src="../storage/images/8yXdkrA7omqqNJEqQzxTD3aVKAs08Xj2ZaFmEszw.jpg"
-                                                                alt=""></a>
-                                                        <div class="post--info">
-                                                            <ul class="nav meta">
-                                                                <li><a href="javascript:;">19/01/2023</a></li>
-                                                                <li><a href="javascript:;"><i
-                                                                            class="fa fm fa-comments"></i>0</a></li>
-                                                                <li><span><i class="fa fm fa-eye"></i>0</span></li>
-                                                            </ul>
-
-                                                            <div class="title">
-                                                                <h3 class="h4"><a
-                                                                        href="/post.php?slug=lien-tuc-boc-hoi-tai-khoan-nha-dau-tu-chung-khoan-nen-lam-gi-luc-nay"
-                                                                        class="btn-link">Liên tục bốc hơi tài khoản: Nhà
-                                                                        đầu tư chứng khoán nên làm gì lúc này?</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Post Item End -->
-                                            </li>
-                                            <li>
-                                                <!-- Post Item Start -->
-                                                <div class="post--item post--layout-3">
-                                                    <div class="post--img">
-                                                        <a href="/post.php?slug=nga-chi-trich-eu-trao-tu-cach-ung-vien-cho-ukraine"
-                                                            class="thumb"><img
-                                                                src="../storage/images/j0xVrz1hu4da1PFr2C0Dx7GYSjEGtBKSytQ5bE5z.jpg"
-                                                                alt=""></a>
-                                                        <div class="post--info">
-                                                            <ul class="nav meta">
-                                                                <li><a href="javascript:;">25/06/2022</a></li>
-                                                                <li><a href="javascript:;"><i
-                                                                            class="fa fm fa-comments"></i>0</a></li>
-                                                                <li><span><i class="fa fm fa-eye"></i>0</span></li>
-                                                            </ul>
-
-                                                            <div class="title">
-                                                                <h3 class="h4"><a
-                                                                        href="/post.php?slug=nga-chi-trich-eu-trao-tu-cach-ung-vien-cho-ukraine"
-                                                                        class="btn-link">Nga chỉ trích EU trao tư cách
-                                                                        ứng viên cho Ukraine</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Post Item End -->
-                                            </li>
-                                            <li>
-                                                <!-- Post Item Start -->
-                                                <div class="post--item post--layout-3">
-                                                    <div class="post--img">
-                                                        <a href="/post.php?slug=viet-nam---campuchia-moi-quan-he-mai-mai-xanh-tuoi-doi-doi-ben-vung"
-                                                            class="thumb"><img
-                                                                src="../storage/images/uCcSZ9ACliTxhIMgYldOkzwBO537K49Yt1IG3vFk.jpg"
-                                                                alt=""></a>
-                                                        <div class="post--info">
-                                                            <ul class="nav meta">
-                                                                <li><a href="javascript:;">25/06/2022</a></li>
-                                                                <li><a href="javascript:;"><i
-                                                                            class="fa fm fa-comments"></i>0</a></li>
-                                                                <li><span><i class="fa fm fa-eye"></i>0</span></li>
-                                                            </ul>
-
-                                                            <div class="title">
-                                                                <h3 class="h4"><a
-                                                                        href="/post.php?slug=viet-nam---campuchia-moi-quan-he-mai-mai-xanh-tuoi-doi-doi-ben-vung"
-                                                                        class="btn-link">Việt Nam - Campuchia: Mối quan
-                                                                        hệ mãi mãi xanh tươi, đời đời bền vững</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Post Item End -->
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Post Items End -->
-                                </div>
-                                <!-- List Widgets End -->
-                            </div>
+                           	<%@ include file="/common/web/slide/outstanding_posts.jsp"%>
                             <!-- Widget End -->
 
                             <!-- Widget Start -->
-                            <x-blog.side-vote />
+                           	<%@ include file="/common/web/slide/banner.jsp"%>
                             <!-- Widget End -->
 
                             <!-- Widget Start -->
-                            <x-blog.side-ad_banner />
+                          	<%@ include file="/common/web/slide/vote.jsp"%>
                             <!-- Widget End -->
 
                         </div>

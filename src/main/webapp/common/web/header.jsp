@@ -30,7 +30,7 @@
                                                       </c:if>
                                                       
                                                       <c:if test="${empty UserLogin}">
-                                                          <a href="dang-nhap"> <i class="fa fm fa-user-o"></i><span>Đăng nhập</span></a>
+                                                          <a href="<c:url value='/dang-nhap' />" > <i class="fa fm fa-user-o"></i><span>Đăng nhập</span></a>
                                                       </c:if>
                                          
                                         </li>
@@ -109,7 +109,7 @@
 					</a></li>
                                         <c:forEach var="category" items="${listCategory}" varStatus="loop">
                                             <c:if test="${loop.index < 11 && category.name ne 'Chưa phân loại'}">
-                                                  <li><a href="<c:url value='/chuyen-muc/${category.slug}'/>">${category.name}</a></li>
+                                                  <li><a href="<c:url value='/chuyen-muc/${category.slug}'/>" >${category.name}</a></li>
                                             </c:if>
                                         </c:forEach>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -118,7 +118,7 @@
 							<li><a href="{{ route('about">Giới thiệu</a></li>
 							<li><a href="{{ route('contact.create">Liên hệ</a></li>
 						</ul></li>
-					<li><a href="{{ route('categories.index"> <span
+					<li><a href="#" > <span
 							style="color: #ccc; margin-right: 10px;">Tất cả</span> <img
 							width="17" class="icon-menu"
 							src="https://static.vnncdn.net/v1/icon/menu-center.svg">

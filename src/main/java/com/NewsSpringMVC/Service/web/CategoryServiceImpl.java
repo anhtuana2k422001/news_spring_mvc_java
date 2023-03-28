@@ -18,12 +18,12 @@ public class CategoryServiceImpl implements ICategoryService {
     }
 
     @Override
-    public Category getNameCategory(String slug) {
-        return categoryDao.getNameCategory(slug);
+    public Category getCategory(String slug) {
+        return categoryDao.getCategory(slug);
     }
 
     @Override
-    public List<Post> listPostCategory(String idCate) {
+    public List<Post> listPostCategory(int idCate) {
          return categoryDao.listPostCategory(idCate);
     }
 }

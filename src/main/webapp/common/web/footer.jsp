@@ -6,35 +6,38 @@
                 <div class="row">
                     <div class="col-md-2   colorlib-widget">
                         <ul class="colorlib-footer-links">
-                            <li><a href="index.php"></i>Trang chủ</a></li>
-                            <li><a href=""></i>Giới thiệu</a></li>
-                            <li><a href=""></i>Liên hệ</a></li>
-                            <li><a href=""></i>Mới nhất</a></li>
+                            <li><a href="<c:url value='/trang-chu' />" ></i>Trang chủ</a></li>
+                            <li><a href="<c:url value='/gioi-thieu' />" ></i>Giới thiệu</a></li>
+                            <li><a href="<c:url value='/lien-he' />" ></i>Liên hệ</a></li>
+                            <li><a href="<c:url value='/moi-nhat' />" ></i>Mới nhất</a></li>
                         </ul>
                     </div>
                     <div class="col-md-2  colorlib-widget">
                         <ul class="colorlib-footer-links">
-                            <li><a href=''>Xã hội</a></li>
-                            <li><a href=''>Kinh tế</a></li>
-                            <li><a href=''>Sức Khỏe</a></li>
-                            <li><a href=''>Giáo dục</a></li>
+                               <c:forEach var="category" items="${listCategory}" varStatus="loop">
+                                    <c:if test="${loop.index >= 1 && loop.index < 5 && category.name ne 'Chưa phân loại'}">
+                                        <li><a href="<c:url value='/chuyen-muc/${category.slug}'/>">${category.name}</a></li>
+                                    </c:if>
+                                </c:forEach>
                         </ul>
                     </div>
                     <div class="col-md-2  colorlib-widget">
                         <ul class="colorlib-footer-links">
-                            <li><a href=''>Thể thao</a></li>
-                            <li><a href=''>Giải trí</a></li>
-                            <li><a href=''>Pháp luật</a></li>
-                            <li><a href=''>Công nghệ</a></li>
+                            <c:forEach var="category" items="${listCategory}" varStatus="loop">
+                                    <c:if test="${loop.index >= 5 && loop.index < 9 && category.name ne 'Chưa phân loại'}">
+                                        <li><a href="<c:url value='/chuyen-muc/${category.slug}'/>">${category.name}</a></li>
+                                    </c:if>
+                            </c:forEach>
                         </ul>
                     </div>
 
                     <div class="col-md-2  colorlib-widget">
-                        <ul class="colorlib-footer-links">
-                            <li><a href=''>Khoa học</a></li>
-                            <li><a href=''>Đời sống</a></li>
-                            <li><a href=''>Xe cộ</a></li>
-                            <li><a href=''>Kinh Doanh</a></li>
+                        <ul class="colorlib-footer-links">   
+                            <c:forEach var="category" items="${listCategory}" varStatus="loop">
+                                    <c:if test="${loop.index >= 9 && loop.index < 13 && category.name ne 'Chưa phân loại'}">
+                                        <li><a href="<c:url value='/chuyen-muc/${category.slug}'/>">${category.name}</a></li>
+                                    </c:if>
+                            </c:forEach>
                         </ul>
                     </div>
 
