@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- Import Header -->
@@ -171,71 +172,13 @@
 
 			<div class="news-updates--list" data-marquee="true">
 				<ul class="nav">
-
+                                    <c:forEach var="postDetail" items="${listNewPost}" >
 					<li>
 						<h3 class='h3'>
-							<a href=''>Bậc thầy quan hệ của Microsoft</a>
+							<a href="<c:url value='/${postDetail.slug}'/>">${postDetail.title}</a>
 						</h3>
 					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Bếp từ Sakura với công nghệ HEATTECH, chinh phục
-								mọi công thức, nấu món nào cũng ngon</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Liên tục bốc hơi tài khoản: Nhà đầu tư chứng khoán
-								nên làm gì lúc này?</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Nga chỉ trích EU trao tư cách ứng viên cho Ukraine</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Việt Nam - Campuchia: Mối quan hệ mãi mãi xanh
-								tươi, đời đời bền vững</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Giá vàng hôm nay 25/6: Tiếp đà suy giảm</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Virus bị xóa sổ 40 năm 'trỗi dậy' ở Anh</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Gần 4.000 học sinh giành suất vào trường chuyên
-								Trần Đại Nghĩa</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>Ronaldo được tìm kiếm nhiều nhất thế giới thể thao</a>
-						</h3>
-					</li>
-
-					<li>
-						<h3 class='h3'>
-							<a href=''>10 ứng viên cho vương miện Miss Universe Vietnam
-								2022</a>
-						</h3>
-					</li>
+                                    </c:forEach>
 				</ul>
 			</div>
 		</div>

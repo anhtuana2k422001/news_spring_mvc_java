@@ -1,0 +1,55 @@
+package com.NewsSpringMVC.Controller.web;
+
+import com.NewsSpringMVC.Service.web.CategoryServiceImpl;
+import com.NewsSpringMVC.Service.web.CommentServiceImpl;
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.NewsSpringMVC.Service.web.HomeServiceImpl;
+import com.NewsSpringMVC.Service.web.ImageServiceImpl;
+import com.NewsSpringMVC.Service.web.PostServiceImpl;
+import com.NewsSpringMVC.Service.web.UserServiceImpl;
+import org.springframework.web.bind.annotation.ModelAttribute;
+@Controller(value = "baseControllerOfWeb")
+public class BaseController {
+    @Autowired  
+    HomeServiceImpl homeService;
+    @Autowired
+    CategoryServiceImpl categoryService;
+    @Autowired
+    PostServiceImpl  postService;
+    @Autowired
+    UserServiceImpl userService;
+    @Autowired
+    ImageServiceImpl imageService;
+    @Autowired
+    CommentServiceImpl commentService;
+    
+    public ModelAndView _mvShare = new ModelAndView();
+    
+    @PostConstruct
+    public void Init(){
+        // Lấy danh sách category
+        _mvShare.addObject("listCategory", homeService.getDataCategory());
+        // Lấy 5 bài viết mới nhất theo danh mục
+        _mvShare.addObject("listNewPost", postService.newPostCategory(5));
+    }
+    
+    @ModelAttribute("userService")
+    public UserServiceImpl userService() {
+        return userService;
+    }
+    
+    @ModelAttribute("imageService")
+    public ImageServiceImpl imageService() {
+        return imageService;
+    }
+    
+    @ModelAttribute("commentService")
+    public CommentServiceImpl commentService() {
+        return commentService;
+    }
+}

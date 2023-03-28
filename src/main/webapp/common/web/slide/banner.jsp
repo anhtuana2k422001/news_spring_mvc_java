@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
 <div class="widget">
     <div class="widget--title">
         <h2 class="h4">Quảng cáo</h2>
@@ -10,7 +11,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <a href="https://mwc.com.vn/products/giay-sandal-nu-mwc-nusd--2887?c=N%C3%82U">
-                    <img src="../template/web/public/kcnew/frontend/img/ads-img/banner_quangcao1.png" alt="">
+                    <img src="<c:url value='/template/web/public/kcnew/frontend/img/ads-img/banner_quangcao1.png'/>" alt="">
                 </a>
             </div>
         </div>

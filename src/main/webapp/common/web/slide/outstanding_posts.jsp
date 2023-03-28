@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
 <!-- Widget Start -->
 <div class="widget">
     <div class="widget--title">
@@ -27,21 +27,21 @@
         <!-- Post Items Start -->
         <div class="post--items post--items-3" data-ajax-content="outer">
             <ul class="nav listPost" data-ajax-content="inner">
-                 <c:forEach var="post" items="${listNewPost}">    
+                 <c:forEach var="postDetail" items="${listNewPost}">    
                     <li>
                         <!-- Post Item Start -->
                         <div class="post--item post--layout-3">
                             <div class="post--img">
-                                <a href="<c:url value='/${post.slug}'/>" class="thumb"><img src="../template/web/storage/${imageService.getPathImgPost(post.id).path}" alt=""></a>
+                                <a href="<c:url value='/${postDetail.slug}'/>" class="thumb"><img src="<c:url value='/template/web/storage/${imageService.getPathImgPost(postDetail.id).path}'/>" alt=""></a>
                                 <div class="post--info">
                                     <ul class="nav meta">
-                                        <li><a href="javascript:;">${post.created_at}</a></li>
-                                        <li><a href="javascript:;"><i class="fa fm fa-comments"></i> ${commentService.getCommentPost(post.id).size()}</a></li>
-                                        <li><span><i class="fa fm fa-eye"></i> ${post.views}</span></li>
+                                        <li><a href="javascript:;">${postDetail.created_at}</a></li>
+                                        <li><a href="javascript:;"><i class="fa fm fa-comments"></i> ${commentService.getCommentPost(postDetail.id).size()}</a></li>
+                                        <li><span><i class="fa fm fa-eye"></i> ${postDetail.views}</span></li>
                                     </ul>
 
                                     <div class="title">
-                                        <h3 class="h4"><a href="<c:url value='/${post.slug}'/>" class="btn-link">${post.title}</a>
+                                        <h3 class="h4"><a href="<c:url value='/${postDetail.slug}'/>" class="btn-link">${postDetail.title}</a>
                                         </h3>
                                     </div>
                                 </div>

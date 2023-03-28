@@ -37,10 +37,10 @@
                                     <ul class="nav">
                                         <li><span><i class="fa fa-folder-open-o"></i></span></li>
                                         <li><a class="text capitalize"
-                                                href="{{ route('tags.show',  $post->tags[$i]) }}">Chưa có ... </a>
+                                                href="">Chưa có ... </a>
                                         </li>
                                         <li><a class="text capitalize"
-                                                href="{{ route('tags.show',  $post->tags[$i]) }}">Chưa có ...</a></li>
+                                                href="">Chưa có ...</a></li>
                                     </ul>
                                 </div>
 

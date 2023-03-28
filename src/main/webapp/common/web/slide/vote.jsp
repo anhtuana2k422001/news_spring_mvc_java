@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
  <!-- Widget Start -->
  <div class="widget">
      <div class="widget--title" data-ajax="tab">
@@ -31,7 +32,7 @@
                      <div class="checkbox">
                          <label>
                              <input type="checkbox" name="option-1">
-                             <img src="../template/web/public/kcnew/frontend/img/Flag_barzill.PNG" alt="Brasil" srcset="">
+                             <img src="<c:url value='/template/web/public/kcnew/frontend/img/Flag_barzill.PNG'/>" alt="Brasil" srcset="">
                              <span>Brasil</span>
                          </label>
 
@@ -41,7 +42,7 @@
                      <div class="checkbox">
                          <label>
                              <input type="checkbox" name="option-2">
-                             <img src="../template/web/public/kcnew/frontend/img/Flag_Agrennal.PNG" alt="Brasil" srcset="">
+                             <img src="<c:url value='/template/web/public/kcnew/frontend/img/Flag_Agrennal.PNG'/>" alt="Brasil" srcset="">
                              <span>Argentina</span>
                          </label>
 
@@ -51,7 +52,7 @@
                      <div class="checkbox">
                          <label>
                              <input type="checkbox" name="option-2">
-                             <img src="../template/web/public/kcnew/frontend/img/Flag_tay_ban_nha.PNG" alt="Brasil" srcset="">
+                             <img src="<c:url value='/template/web/public/kcnew/frontend/img/Flag_tay_ban_nha.PNG'/>" alt="Brasil" srcset="">
                              <span>Tây Ban Nha</span>
                          </label>
 
@@ -60,7 +61,7 @@
                      <div class="checkbox">
                          <label>
                              <input type="checkbox" name="option-2">
-                             <img src="../template/web/public/kcnew/frontend/img/Flag_bo-dao-nha.PNG" alt="Brasil" srcset="">
+                             <img src="<c:url value='/template/web/public/kcnew/frontend/img/Flag_bo-dao-nha.PNG'/>" alt="Brasil" srcset="">
                              <span>Bồ Đào Nha</span>
                          </label>
 

@@ -12,12 +12,9 @@
 	</decorator>
 
         <decorator name="/dang-nhap" page="login.jsp">
-            <pattern>/dang-nhap</pattern>
+            <pattern>/dang*</pattern>
         </decorator>
         
-        <decorator name="/dang-ky" page="login.jsp">
-            <pattern>/dang-ky</pattern>
-        </decorator>
   
 
 </decorators>

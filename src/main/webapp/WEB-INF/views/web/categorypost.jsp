@@ -36,14 +36,14 @@
                            
                                 <c:forEach items="${listPostCate}" var="post">
                                 <div class="block-21 d-flex animate-box post">
-                                    <a href="<c:url value='/${post.slug}'/>"class="blog-img" style="background-image: url(../template/web/storage/${imageService.getPathImgPost(post.id).path});"></a>
+                                    <a href="<c:url value='/${post.slug}'/>" class="blog-img" style="background-image: url(../template/web/storage/${imageService.getPathImgPost(post.id).path});"></a>
                                     <div class="text">
                                         <h3 class="heading"><a href="<c:url value='/${post.slug}'/>">${post.title}</a></h3>
                                         <p class="excerpt">${post.excerpt}</p>
                                         </p>
                                         <div class="meta">
                                             <div><a class="date" href="javascript:;"><span class="icon-calendar"></span> ${post.created_at}</a></div>
-                                            <div><a href="javascript:;"><span class="icon-user2"></span> Tác giả: ${userService.getUserById(post.user_id).name}</a></div>
+                                            <div><a href="javascript:;"><span class="icon-user2"></span> ${userService.getUserById(post.user_id).name}</a></div>
                                             <div class="comments-count"><a href="#comments_all"><span class="icon-chat"></span> Bình luận: ${commentService.getCommentPost(post.id).size()}</a></div>
                                             <div><a href="javascript:;"><span><i class="fa fm fa-eye"></i></span> Lượt xem: ${post.views}</a></div>
                                         </div>
