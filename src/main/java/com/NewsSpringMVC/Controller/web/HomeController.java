@@ -15,9 +15,10 @@ public class HomeController extends BaseController {
     @RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
     public ModelAndView homePage(HttpSession session) {
         User user = (User) session.getAttribute("UserInfo");
-        _mvShare.setViewName("web/home");
+        InitCategory(); // Gọi hàm khởi tạo Category
         _mvShare.addObject("UserInfo", user); // nếu user đăng nhập lấy thông tin
         _mvShare.addObject("listNewPostHome", postService.newPostCategory(4));
+        _mvShare.setViewName("web/home");
         return _mvShare;
     }
 
@@ -50,8 +51,34 @@ public class HomeController extends BaseController {
     public ModelAndView pageSearch(HttpServletRequest request) {
         String searchValue = request.getParameter("search");
         _mvShare.addObject("listPostSreach", postService.listPostSreach(searchValue));
+        _mvShare.addObject("keySearch", searchValue);
         _mvShare.setViewName("web/searchpost");
         return _mvShare;
     } 
+    
+     // Khởi tạo 10 category
+    public void InitCategory() {
+        // Trừ chưa phân loại --> get(0)
+        _mvShare.addObject("nameCate01", homeService.getDataCategory().get(1).getName());
+        _mvShare.addObject("idCate01", homeService.getDataCategory().get(1).getId());
+        _mvShare.addObject("nameCate02", homeService.getDataCategory().get(2).getName());
+        _mvShare.addObject("idCate02", homeService.getDataCategory().get(2).getId());
+        _mvShare.addObject("nameCate03", homeService.getDataCategory().get(3).getName());
+        _mvShare.addObject("idCate03", homeService.getDataCategory().get(3).getId());
+        _mvShare.addObject("nameCate04", homeService.getDataCategory().get(4).getName());
+        _mvShare.addObject("idCate04", homeService.getDataCategory().get(4).getId());
+        _mvShare.addObject("nameCate05", homeService.getDataCategory().get(5).getName());
+        _mvShare.addObject("idCate05", homeService.getDataCategory().get(5).getId());
+        _mvShare.addObject("nameCate06", homeService.getDataCategory().get(6).getName());
+        _mvShare.addObject("idCate06", homeService.getDataCategory().get(6).getId());
+        _mvShare.addObject("nameCate07", homeService.getDataCategory().get(7).getName());
+        _mvShare.addObject("idCate07", homeService.getDataCategory().get(7).getId());
+        _mvShare.addObject("nameCate08", homeService.getDataCategory().get(8).getName());
+        _mvShare.addObject("idCate08", homeService.getDataCategory().get(8).getId());
+        _mvShare.addObject("nameCate09", homeService.getDataCategory().get(9).getName());
+        _mvShare.addObject("idCate09", homeService.getDataCategory().get(9).getId());
+        _mvShare.addObject("nameCate10", homeService.getDataCategory().get(10).getName());
+        _mvShare.addObject("idCate10", homeService.getDataCategory().get(10).getId());
+    }
 
 }

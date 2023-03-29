@@ -8,11 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImageServiceImpl implements IImageService {
     @Autowired
-    ImageDao userDao = new ImageDao();    
+    ImageDao imageDao = new ImageDao();    
 
     @Override
     public Image getPathImgPost(int post_id) {
-       return userDao.getPathImgPost(post_id);
+       return imageDao.getPathImgPost(post_id);
+    }
+
+    @Override
+    public String getConfigPathImgPost(int post_id) {
+        return imageDao.getConfigPathImgPost(post_id);
     }
     
 }

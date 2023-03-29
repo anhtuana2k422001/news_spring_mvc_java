@@ -136,7 +136,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">${listCategory.get(1).name}</h2>
+                                            <h2 class="h4">${nameCate01}</h2>
                                         </div>
                                         <!-- Post Items Title End -->
 
@@ -149,22 +149,22 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="<c:url value='/${postService.listPostCategory(listCategory.get(1).id).get(0).slug}'/>"
-                                                               class="thumb"><img src="<c:url value='/template/web/storage/${imageService.getPathImgPost(postService.listPostCategory(listCategory.get(1).id).get(0).id).path}'/>"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate01).get(0).slug}'/>"
+                                                               class="thumb"><img src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate01).get(0).id)}'/>"
                                                                                alt=""></a>
 
                                                             <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;">19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate01).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate01).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="<c:url value='/${postService.listPostCategory(listCategory.get(1).id).get(0).slug}'/>"
-                                                                            class="btn-link">${postService.listPostCategory(listCategory.get(1).id).get(0).title}</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate01).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate01).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -172,6 +172,8 @@
                                                     </div>
                                                     <!-- Post Item End -->
                                                 </li>
+                                                
+                                               
 
                                                 <li class="col-xs-12">
                                                     <!-- Divider Start -->
@@ -180,127 +182,44 @@
                                                 </li>
                                                 <!-- Đóng hàm if -->
 
-
-                                                <li class="col-xs-6">
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate01)}" varStatus="loop">
+                                                    <c:if test="${ 1 <= loop.index  &&  loop.index  <= 4}">
+                                                    <li class="col-xs-6">
                                                     <!-- Post Item Start -->
+                                                        <div class="post--item post--layout-2">
+                                                            <div class="post--img">
+                                                                <a href="<c:url value='/${post.slug}'/>"
+                                                                   class="thumb"><img
+                                                                        src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                        alt=""></a>
 
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/cNKgT2bNjMyVig3cdWXzeNJELQiNULeAW87lq1rw.jpg"
-                                                                    alt=""></a>
+                                                                <div class="post--info">
+                                                                    <ul class="nav meta">
+                                                                       <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                       <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                    </ul>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;">19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                                            class="btn-link">Pháo phản lực của Đài Loan phát nổ khi đang tập trận</a>
-                                                                    </h3>
+                                                                    <div class="title">
+                                                                        <h3 class="h4"><a
+                                                                                href="<c:url value='/${post.slug}'/>"
+                                                                                class="btn-link">${post.title}</a>
+                                                                        </h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    
                                                     <!-- Post Item End -->
-                                                </li>
-
-
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/td4nIw1akuzOzXLqoXdTbO9XbStCYsujLCRxSooX.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;">Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;">19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                                            class="btn-link">Máy bay hạ cánh khẩn vì cơ trưởng bị ốm, vào toilet không thấy ra</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-12">
-                                                    <!-- Divider Start -->
-                                                    <hr class="divider">
-                                                    <!-- Divider End -->
-                                                </li>
+                                                     </li>
+                                                    </c:if>
+                                                     <c:if test="${loop.index  == 2}">
+                                                        <li class="col-xs-12">
+                                                               <hr class="divider">
+                                                        </li>
+                                                    </c:if>
                                                 <!-- Đóng hàm if -->
-
-
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/hAwO9oOhgtyZfceMf3cbLbmuTkylmfOQnBQNv5tk.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;">19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                                            class="btn-link">Cam kết của ASEAN - Ấn Độ trong bối cảnh đầy rẫy bất đồng, tranh chấp</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-
-
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/oz6iJq2DFChAEABM33jOHW7eXnp5S5z8JISV0FAj.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;">19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home0[$i]) }}"
-                                                                            class="btn-link">Chủ tịch Tập Cận Bình: Trung Quốc thắng "áp đảo" cuộc chiến tham nhũng</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
+                                                </c:forEach>
+                                            
                                             </ul>
 
                                         </div>
@@ -312,7 +231,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">	Xã hội</h2>
+                                            <h2 class="h4">${nameCate02}</h2>
 
                                         </div>
                                         <!-- Post Items Title End -->
@@ -325,23 +244,23 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home1[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate02).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/K435OvnEgYaHEEymjATV2wiyeUmpnXi5dUQay8Tx.jpg"
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate02).get(0).id)}'/>"
                                                                     alt=""></a>
 
                                                             <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                   <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate02).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate02).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home1[0]) }}"
-                                                                            class="btn-link">Tuần lễ "điểm nhấn" tại Festival Huế 2022 - Festival bốn mùa có gì đặc sắc?</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate02).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate02).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -349,138 +268,38 @@
                                                     </div>
                                                     <!-- Post Item End -->
                                                 </li>
+                                                
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate02)}" varStatus="loop">
+                                                       <c:if test="${ 1 <= loop.index  &&  loop.index  <= 5}"> 
+                                                    <li>
+                                                        <!-- Post Item Start -->
+                                                        <div class="post--item post--layout-3">
+                                                            <div class="post--img">
+                                                                <a href="<c:url value='/${post.slug}'/>"
+                                                                   class="thumb"><img
+                                                                        src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                        alt=""></a>
 
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/ADnwzbokJ21UFudJTRZRstmplQMJDbUpDXdRvLQe.jpg"
-                                                                    alt=""></a>
+                                                                <div class="post--info">
+                                                                    <ul class="nav meta">
+                                                                        <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                        <li><a href="javascript:;"> ${post.created_at}</a></li>
+                                                                    </ul>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                                            class="btn-link">Tân Cục phó Cục Cảnh sát điều tra tội phạm về ma túy là ai?</a>
-                                                                    </h3>
+                                                                    <div class="title">
+                                                                        <h3 class="h4"><a
+                                                                                href="<c:url value='/${post.slug}'/>"
+                                                                                class="btn-link">${post.title}</a>
+                                                                        </h3>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/eM8t0zteS7bODFbgG3cPaUUWdPGCPbsd2QJrbHBM.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                                            class="btn-link">TP.HCM: Dân khổ sở vì công trình thoát nước đường Nguyễn Văn Công ì ạch</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/cMVHljf5uoyVS00BpL5a0MMOUvIKPWCbmeNMGyMq.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                                            class="btn-link">Hai bé trai bị đuối nước ở sông biên giới</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/ojbPhRkC28UIXqvBlk0rMMN1oVW6eQZWoJ6qHgDZ.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                                            class="btn-link">Chuyện nghề của những phóng viên điều tra</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/DxzwQNkVnfqaahqrY0w59gQkiSzMHSw20IAAsDgk.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home1[$i]) }}"
-                                                                            class="btn-link">Những “kình ngư” giữ biển vùng Đông Bắc</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-
+                                                        <!-- Post Item End -->
+                                                    </li>
+                                             
+                                                    </c:if>
+                                             </c:forEach>
                                             </ul>
 
 
@@ -493,7 +312,7 @@
                                     <div class="col-md-12 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">	Kinh tế</h2>
+                                            <h2 class="h4">${nameCate03}</h2>
 
                                         </div>
                                         <!-- Post Items Title End -->
@@ -505,23 +324,23 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home2[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate03).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/vYamkhWLwV8sPBbkRfxoci7hxNELLyiAlXhP6NLh.jpg"
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate03).get(0).id)}'/>"
                                                                     alt=""></a>
-                                                            <a href="{{ route('categories.show', $post_category_home2[0]->category) }}" class="cat">Kinh tế</a>
+                                                            <a href="javascript:;" class="cat">Kinh tế</a>
                                                             <a href="javascript:;" class="icon"><i class="fa fa-star-o"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate03).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate03).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home2[0]) }}"
-                                                                            class="btn-link">EVN kiến nghị gỡ khó cho điện mặt trời mái nhà tự dùng</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate03).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate03).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -532,26 +351,13 @@
                                                     <hr class="mar_bottom15 ">
 
                                                     <ul class="list_news_show_home">
-
-                                                        <li class="boder_link_show_home">
-                                                            <h3 class="h3"><a href="{{ route('posts.show', $post_category_home2[$i]) }}">Hơn 100 công ty châu Âu vẫn ở lại Nga</a></h3>
-                                                        </li>
-
-
-
-
-                                                        <li class="boder_link_show_home">
-                                                            <h3 class="h3"><a href="{{ route('posts.show', $post_category_home2[$i]) }}">Chủ tịch Vietravel: Đổi mới toàn diện là con đường duy nhất sau dịch</a></h3>
-                                                        </li>
-
-
-
-
-
-
-                                                        <li>
-                                                            <h3 class="h3"><a href="{{ route('posts.show', $post_category_home2[$i]) }}">EVN lo thiếu nước phát điện khi xả lũ ở Hoà Bình, Sơn La</a></h3>
-                                                        </li>
+                                                        <c:forEach var="post" items="${postService.listPostCategory(idCate03)}" varStatus="loop">
+                                                           <c:if test="${ 1 <= loop.index  &&  loop.index  <= 3}"> 
+                                                            <li class="boder_link_show_home">
+                                                                <h3 class="h3"><a href="<c:url value='/${post.slug}'/>">${post.title}</a></h3>
+                                                            </li>
+                                                            </c:if>
+                                                        </c:forEach>
 
                                                     </ul>
 
@@ -565,122 +371,47 @@
                                                             <!-- Divider End -->
                                                         </li>
 
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                       class="thumb"><img 
-                                                                            src="template/web/storage/images/0mFCJTvtFlYueaQYx0Zq8MYwMVzJbsiyeacLIYEu.jpg"
-                                                                            alt=""></a>
 
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
+                                                        <c:forEach var="post" items="${postService.listPostCategory(idCate03)}" varStatus="loop">
+                                                            <c:if test="${ 4 <= loop.index  &&  loop.index  <= 7}"> 
+                                                                <li class="col-xs-6">
+                                                                    <!-- Post Item Start -->
+                                                                    <div class="post--item post--layout-2">
+                                                                        <div class="post--img">
+                                                                            <a href="<c:url value='/${post.slug}'/>"
+                                                                               class="thumb"><img 
+                                                                                    src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                                    alt=""></a>
 
-                                                                            <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                            <li><a href="javascript:;"> 19/02/2021</a></li>
-                                                                        </ul>
+                                                                            <div class="post--info">
+                                                                                <ul class="nav meta">
 
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                                    class="btn-link">Bitcoin mất mốc 20.000 USD</a></h3>
+                                                                                    <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                                    <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                                </ul>
+
+                                                                                <div class="title">
+                                                                                    <h3 class="h4"><a
+                                                                                            href="<c:url value='/${post.slug}'/>"
+                                                                                            class="btn-link">${post.title}</a></h3>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
+                                                                    <!-- Post Item End -->
+                                                                </li>
 
+                                                                <c:if test="${loop.index  == 5}">
+                                                                    <li class="col-xs-12">
+                                                                        <!-- Divider Start -->
+                                                                        <hr class="divider">
+                                                                        <!-- Divider End -->
+                                                                    </li>
+                                                                </c:if>
 
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                       class="thumb"><img 
-                                                                            src="template/web/storage/images/kxR6jk2v1irOkiOe8I6jadavJiEk5B6jPdEbyFcN.jpg"
-                                                                            alt=""></a>
-
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-
-                                                                            <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
-
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                                    class="btn-link">Các tỷ phú tiền số mất 80% tài sản</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
-
-                                                        <li class="col-xs-12">
-                                                            <!-- Divider Start -->
-                                                            <hr class="divider">
-                                                            <!-- Divider End -->
-                                                        </li>
-
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                       class="thumb"><img 
-                                                                            src="template/web/storage/images/XkFwuu8I2VwtY8bFhpftHZ8QCIvd9tTVlnTSlKb9.jpg"
-                                                                            alt=""></a>
-
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-
-                                                                            <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
-
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                                    class="btn-link">Nửa năm toàn cầu chống chọi bão giá xăng dầu</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
-
-
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                       class="thumb"><img 
-                                                                            src="template/web/storage/images/XyzQga9r4Brw3u5Y0wvo8fqcyslGf9bP6XaXGbow.jpg"
-                                                                            alt=""></a>
-
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-
-                                                                            <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
-
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home2[$i]) }}"
-                                                                                    class="btn-link">Hơn 100 công ty châu Âu vẫn ở lại Nga</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
-
+                                                            </c:if>
+                                                        </c:forEach>
+                                                                    
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -695,7 +426,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">	Sức Khỏe</h2>
+                                            <h2 class="h4">${nameCate04}</h2>
                                         </div>
                                         <!-- Post Items Title End -->
 
@@ -706,23 +437,23 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home3[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate04).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/RSTjVOUA4rAqrBhb963fGMfnF4NuIMR0rKRVeRIC.jpg"
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate04).get(0).id)}'/>"
                                                                     alt=""></a>
-                                                            <a href="{{ route('categories.show', $post_category_home3[0]->category) }}"
-                                                               class="cat"> Sức Khỏe</a>
-                                                            <a href="{{ route('categories.show', $post_category_home3[0]->category) }}" class="icon"><i class="fa fa-fire"></i></a>
+                                                            <a href="javascript:;"
+                                                               class="cat"> ${nameCate04}</a>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-fire"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate04).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate04).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="{{ route('posts.show', $post_category_home3[0]) }}"
-                                                                                      class="btn-link">Phương pháp bó bột ra đời mang lại niềm hi vọng lớn đối với những bệnh nhân điều trị gãy xương</a>
+                                                                    <h3 class="h4"><a href="<c:url value='/${postService.listPostCategory(idCate04).get(0).slug}'/>"
+                                                                                      class="btn-link">${postService.listPostCategory(idCate04).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -736,115 +467,47 @@
                                                     <hr class="divider">
                                                     <!-- Divider End -->
                                                 </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/nfd8cUebqpsQZQPYdcv2SRjIlmqz3IuiIO8ZqC74.jpg"
-                                                                    alt=""></a>
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate04)}" varStatus="loop">
+                                                    <c:if test="${ 1 <= loop.index  &&  loop.index  <= 4}"> 
+                                                        <li class="col-xs-6">
+                                                            <!-- Post Item Start -->
+                                                            <div class="post--item post--layout-2">
+                                                                <div class="post--img">
+                                                                    <a href="<c:url value='/${post.slug}'/>"
+                                                                       class="thumb"><img
+                                                                            src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                            alt=""></a>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
+                                                                    <div class="post--info">
+                                                                        <ul class="nav meta">
+                                                                            <li><a href="javascript:;"> ${userService.getUserById(post.user_id).name}</a></li>
+                                                                            <li><a href="javascript:;"> ${post.created_at}</a></li>
+                                                                        </ul>
 
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                                            class="btn-link">7 phát minh y tế giúp nền y học có bước tiến vượt bậc</a>
-                                                                    </h3>
+                                                                        <div class="title">
+                                                                            <h3 class="h4"><a
+                                                                                    href="<c:url value='/${post.slug}'/>"
+                                                                                    class="btn-link">${post.title}</a>
+                                                                            </h3>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/d99UPKIIDDrwZ6x1VSFZJ2nZ91NfPg4zbpaxwEMb.jpg"
-                                                                    alt=""></a>
+                                                            <!-- Post Item End -->
+                                                        </li>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
+                                                        <c:if test="${loop.index  == 2}">\
+                                                            <li class="col-xs-12">
+                                                                <!-- Divider Start -->
+                                                                <hr class="divider">
+                                                                <!-- Divider End -->
+                                                            </li>
+                                                        </c:if>
 
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                                            class="btn-link">Những thực phẩm là "máy hút bụi" cho phổi, càng ăn càng lọc sạch phổi mỗi ngày</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-12">
-                                                    <!-- Divider Start -->
-                                                    <hr class="divider">
-                                                    <!-- Divider End -->
-                                                </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/ZWiSDF8WzSViOQ2QuNf7CFZ5hCdl8phNFwuPdFhk.jpg"
-                                                                    alt=""></a>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                                            class="btn-link">4 thức uống giải nhiệt mùa hè, giúp làn da tươi sáng</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/pEBtBGG5YRHWVhwcaGG04UaPzeSndcxgDVtAamnk.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home3[$i]) }}"
-                                                                            class="btn-link">Hà Nội yêu cầu tiêm mũi 4 vắc-xin COVID-19 cho người dân</a>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
+                                                    </c:if>
+                                                </c:forEach>
+                                            
                                             </ul>
 
 
@@ -857,7 +520,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">	Giáo dục</h2>
+                                            <h2 class="h4">${nameCate05}</h2>
                                         </div>
                                         <!-- Post Items Title End -->
 
@@ -868,23 +531,23 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home4[0]) }}"
-                                                               class="thumb"><img src="template/web/storage/images/ANQKKwbfUaUTZ9rjSkm5m0RE75bYMeCLbH40arNf.webp"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate05).get(0).slug}'/>"
+                                                               class="thumb"><img src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate05).get(0).id)}'/>"
                                                                                alt=""></a>
-                                                            <a href="{{ route('categories.show', $post_category_home4[0]->category) }}"
-                                                               class="cat">Giáo dục</a>
-                                                            <a href="{{ route('categories.show', $post_category_home4[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
+                                                            <a href="javascript:;"
+                                                               class="cat">${nameCate05}</a>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-eye"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate05).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate05).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home4[0]) }}"
-                                                                            class="btn-link">Tra cứu điểm thi lớp 10 tỉnh Hải Phòng năm 2022 chính xác nhất</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate05).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate05).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -892,132 +555,36 @@
                                                     </div>
                                                     <!-- Post Item End -->
                                                 </li>
+                                                
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate05)}" varStatus="loop">
+                                                    <c:if test="${ 1 <= loop.index  &&  loop.index  <= 5}"> 
+                                                        <li>
+                                                            <!-- Post Item Start -->
+                                                            <div class="post--item post--layout-3">
+                                                                <div class="post--img">
+                                                                    <a href="<c:url value='/${post.slug}'/>"
+                                                                       class="thumb"><img
+                                                                            src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                            alt=""></a>
 
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/jS8jvjKOXExDPzmb7JFAy9n5HsoWq86cZrYDAOTe.webp"
-                                                                    alt=""></a>
+                                                                    <div class="post--info">
+                                                                        <ul class="nav meta">
+                                                                            <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                            <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                        </ul>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                                            class="btn-link">Đáp án đề thi môn Toán vào lớp 10 Hà Nội năm 2022 cập nhật nhanh nhất</a></h3>
+                                                                        <div class="title">
+                                                                            <h3 class="h4"><a
+                                                                                    href="<c:url value='/${post.slug}'/>"
+                                                                                    class="btn-link">${post.title}</a></h3>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/OybvwWRS1UdWqp5ESsDj7Ng1z9dMhFKTP5h6OFKh.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                                            class="btn-link">Thi lớp 10 Hà Nội: Đề Toán "dễ thở", thí sinh phấn khởi sau môn thi cuối</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/HiZEvFeRq4bmUXJRMqYJMvMx7qZuiJ5cn398puqY.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                                            class="btn-link">Khoảnh khắc ấm áp của nữ sinh bên cha trong ngày chụp ảnh kỷ yếu</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/dhHrcTWAzvwBh5jtT3iGN5nzHgIpwCXZyJNygmRt.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                                            class="btn-link">Bộ ảnh kỷ yếu "hiếm có khó đạo nhái" của học sinh Nghệ An</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/BcIbmerHIdenHLbiCrlEcWwg02rePjjWGGepP4Xb.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home4[$i]) }}"
-                                                                            class="btn-link">Thí sinh chống nạng đi thi</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
+                                                            <!-- Post Item End -->
+                                                        </li>
+                                                    </c:if>
+                                                </c:forEach>  
 
                                             </ul>
 
@@ -1191,7 +758,7 @@
                     <div class="main--content pd--30-0">
                         <!-- Post Items Title Start -->
                         <div class="post--items-title" data-ajax="tab">
-                            <h2 class="h4">	Thể thao</h2>
+                            <h2 class="h4">${nameCate06}</h2>
                         </div>
                         <!-- Post Items Title End -->
 
@@ -1202,21 +769,21 @@
                                     <!-- Post Item Start -->
                                     <div class="post--item post--layout-1 post--type-video post--title-large">
                                         <div class="post--img">
-                                            <a href="{{ route('posts.show', $post_category_home5[0]) }}" class="thumb"><img
-                                                    src="template/web/storage/images/ukrau6VC2emM2Vxgv63aEZV8jDoiwBETzOG0i54s.jpg" alt=""></a>
-                                            <a href="{{ route('categories.show', $post_category_home5[0]->category) }}" class="cat">Thể thao</a>
-                                            <a href="{{ route('categories.show', $post_category_home5[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
+                                            <a href="<c:url value='/${postService.listPostCategory(idCate06).get(0).slug}'/>" class="thumb"><img
+                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate06).get(0).id)}'/>" alt=""></a>
+                                            <a href="javascript:;" class="cat">${nameCate06}</a>
+                                            <a href="javascript:;" class="icon"><i class="fa fa-eye"></i></a>
 
                                             <div class="post--info">
                                                 <ul class="nav meta">
-                                                    <li><a href="javascript:;">Võ Anh Quân</a></li>
-                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate06).get(0).user_id).name}</a></li>
+                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate06).get(0).created_at}</a></li>
                                                 </ul>
 
                                                 <div class="title">
                                                     <h2 class="h4"><a
-                                                            href="{{ route('posts.show', $post_category_home5[0]) }}"
-                                                            class="btn-link">Varane sẵn sàng cho khởi đầu mới cùng Ten Hag</a></h2>
+                                                            href="<c:url value='/${postService.listPostCategory(idCate06).get(0).slug}'/>"
+                                                            class="btn-link">${postService.listPostCategory(idCate06).get(0).title}</a></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -1230,132 +797,36 @@
                                 <li class="col-md-4">
                                     <ul class="nav">
 
-                                        <li>
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--type-audio post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/lKx8of3bY89GZzexjglpq3Z9mclbywymJzdeQjJw.jpg"
-                                                            alt=""></a>
+                                        <c:forEach var="post" items="${postService.listPostCategory(idCate06)}" varStatus="loop">
+                                            <c:if test="${ 1 <= loop.index  &&  loop.index  <= 5}"> 
+                                                <li>
+                                                    <!-- Post Item Start -->
+                                                    <div class="post--item post--type-audio post--layout-3">
+                                                        <div class="post--img">
+                                                            <a href="<c:url value='/${post.slug}'/>"
+                                                               class="thumb"><img
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                    alt=""></a>
 
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Võ Anh Quân</a></li>
-                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                        </ul>
+                                                            <div class="post--info">
+                                                                <ul class="nav meta">
+                                                                    <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                </ul>
 
-                                                        <div class="title">
-                                                            <h3 class="h4"><a
-                                                                    href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                                    class="btn-link">Tiền vệ Arsenal bị điều tra vì hành vi cá cược</a></h3>
+                                                                <div class="title">
+                                                                    <h3 class="h4"><a
+                                                                            href="<c:url value='/${post.slug}'/>"
+                                                                            class="btn-link">${post.title}</a></h3>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li>
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--type-audio post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/zaCRnIVOSschnfBuPa1uDjHgwL0go7E4v582a4qd.jpg"
-                                                            alt=""></a>
+                                                    <!-- Post Item End -->
+                                                </li>
 
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Nguyễn Hải Dương</a></li>
-                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                        </ul>
-
-                                                        <div class="title">
-                                                            <h3 class="h4"><a
-                                                                    href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                                    class="btn-link">Kết quả Pháp vs Croatia: Benzema không cứu nổi Les Bleus</a></h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li>
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--type-audio post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/NWj0AgawLesblPRQUV1DX3EJX3uWtZLV7Tz8ia3N.jpg"
-                                                            alt=""></a>
-
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a></li>
-                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                        </ul>
-
-                                                        <div class="title">
-                                                            <h3 class="h4"><a
-                                                                    href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                                    class="btn-link">Australia trở thành đội thứ 31 giành vé tham dự VCK World Cup 2022</a></h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li>
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--type-audio post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/uCE13wU6EYJGRBlIlLYT3PgdWIRmgArPbUMkVILi.jpg"
-                                                            alt=""></a>
-
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Võ Anh Quân</a></li>
-                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                        </ul>
-
-                                                        <div class="title">
-                                                            <h3 class="h4"><a
-                                                                    href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                                    class="btn-link">Play-off liên lục địa World Cup 2022 đá mấy lượt?</a></h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li>
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--type-audio post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                       class="thumb"><img
-                                                            src="template/web/storage/images/LHkszXcQLMKEsIi3KuTH9dO1xUNcQeoNpyLd6Ker.jpg"
-                                                            alt=""></a>
-
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a></li>
-                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                        </ul>
-
-                                                        <div class="title">
-                                                            <h3 class="h4"><a
-                                                                    href="{{ route('posts.show', $post_category_home5[$i]) }}"
-                                                                    class="btn-link">Hằng Nga, Thanh Minh rút khỏi giải MMA Lion Championship 2022</a></h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-
+                                            </c:if>
+                                        </c:forEach>
                                     </ul>
                                 </li>
                             </ul>
@@ -1383,7 +854,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">	Giải trí</h2>
+                                            <h2 class="h4">${nameCate07}</h2>
 
 
                                         </div>
@@ -1396,129 +867,60 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home6[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate07).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/DIhmWONL3TbsF8MaAGkaoipR04qnnoESF2L3b2ZH.jpg" alt=""></a>
-                                                            <a href="{{ route('categories.show', $post_category_home6[0]->category) }}"
-                                                               class="cat">	Giải trí</a>
-                                                            <a href="{{ route('categories.show', $post_category_home6[0]->category) }}" class="icon"><i class="fa fa-star-o"></i></a>
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate07).get(0).id)}'/>" alt=""></a>
+                                                            <a href="javascript:;"
+                                                               class="cat">${nameCate07}</a>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-star-o"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate07).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate07).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home6[0]) }}"
-                                                                            class="btn-link">Phim Em và Trịnh 'cháy vé'</a></h3>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate07).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate07).get(0).title}</a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!-- Post Item End -->
                                                 </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/IvuS7adl0Z2PI6OJjI8C9grGNtXGlKZ5uuouEH8a.jpg"
-                                                                    alt=""></a>
+                                                
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate07)}" varStatus="loop">
+                                                    <c:if test="${ 1 <= loop.index  &&  loop.index  <= 4}"> 
+                                                        <li>
+                                                            <!-- Post Item Start -->
+                                                            <div class="post--item post--layout-3">
+                                                                <div class="post--img">
+                                                                    <a href="<c:url value='/${post.slug}'/>"
+                                                                       class="thumb"><img
+                                                                            src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                            alt=""></a>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
+                                                                    <div class="post--info">
+                                                                        <ul class="nav meta">
+                                                                            <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                            <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                        </ul>
 
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                                            class="btn-link">Hà Hồ - Kim Lý tái hiện MV 'Cả một trời thương nhớ'</a></h3>
+                                                                        <div class="title">
+                                                                            <h3 class="h4"><a
+                                                                                    href="<c:url value='/${post.slug}'/>"
+                                                                                    class="btn-link">${post.title}</a></h3>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/kxFzXXMQ1a2xJpP9VRyBwfIM41fPdksFoKD7fnU3.jpg"
-                                                                    alt=""></a>
+                                                            <!-- Post Item End -->
+                                                        </li>
+                                                    </c:if>
+                                                </c:forEach>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                                            class="btn-link">Quan họ Bắc Ninh thay lời tạm biệt SEA Games 31</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/k7ncLZmDsw9wteNba1EaSc0r2RKaHBhsz7DC00ab.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                                            class="btn-link">Vinhomes tổ chức cuộc thi vũ đạo trực tuyến</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/cuebPppShH3QPRzoQwHjO3MiI7HIbAkFZBtpT4fa.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home6[$i]) }}"
-                                                                            class="btn-link">Chùa Nghệ sĩ đổi tên thành Nghĩa trang nghệ sĩ</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
 
                                             </ul>
 
@@ -1532,7 +934,7 @@
                                     <div class="col-md-6 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">Pháp luật</h2>
+                                            <h2 class="h4">${nameCate08}</h2>
 
 
                                         </div>
@@ -1546,24 +948,24 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home7[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate08).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/UxO913lBt67DduUoD7Wx4MMrCTcTGDmmsC90cBW9.jpg"
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate08).get(0).id)}'/>"
                                                                     alt=""></a>
-                                                            <a href="{{ route('categories.show', $post_category_home7[0]->category) }}"
-                                                               class="cat">Pháp luật</a>
-                                                            <a href="{{ route('categories.show', $post_category_home7[0]->category) }}" class="icon"><i class="fa fa-heart-o"></i></a>
+                                                            <a href="javascript:;"
+                                                               class="cat">${nameCate08}</a>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate08).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate08).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home7[0]) }}"
-                                                                            class="btn-link">Nhóm tội phạm 'căm ghét người giàu' gây rúng động Hàn Quốc</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate08).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate08).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -1577,111 +979,46 @@
                                                     <hr class="divider">
                                                     <!-- Divider End -->
                                                 </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/HBRMTjLCTUNxODleyOckFyiwIAfNCHbEuEwqu5YK.jpg"
-                                                                    alt=""></a>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate08)}" varStatus="loop">
+                                                    <c:if test="${ 1 <= loop.index  &&  loop.index  <= 4}"> 
+                                                        <li class="col-xs-6">
+                                                            <!-- Post Item Start -->
+                                                            <div class="post--item post--layout-2">
+                                                                <div class="post--img">
+                                                                    <a href="<c:url value='/${post.slug}'/>"
+                                                                       class="thumb"><img
+                                                                            src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                            alt=""></a>
 
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                                            class="btn-link">Thảm án dưới tay nhóm giang hồ tuổi đôi mươi</a></h3>
+                                                                    <div class="post--info">
+                                                                        <ul class="nav meta">
+                                                                            <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                            <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                        </ul>
+
+                                                                        <div class="title">
+                                                                            <h3 class="h4"><a
+                                                                                    href="<c:url value='/${post.slug}'/>"
+                                                                                    class="btn-link">${post.title}</a></h3>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/e75VxQvZ3tAqgaLIu9RQJrGVPli8B4qxHopKEjID.jpg"
-                                                                    alt=""></a>
+                                                            <!-- Post Item End -->
+                                                        </li>
+                                                        <c:if test="${loop.index  == 2}">\
+                                                            <li class="col-xs-12">
+                                                                <!-- Divider Start -->
+                                                                <hr class="divider">
+                                                                <!-- Divider End -->
+                                                            </li>
+                                                        </c:if>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
 
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                                            class="btn-link">Vụ mất tích bí ẩn của MC xinh đẹp trước giờ lên sóng</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-12">
-                                                    <!-- Divider Start -->
-                                                    <hr class="divider">
-                                                    <!-- Divider End -->
-                                                </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/lX8bkSSGPXKZd50uOQfOArEa7PwZAT7eN9ohMh8j.jpg"
-                                                                    alt=""></a>
+                                                    </c:if>
+                                                </c:forEach>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                                            class="btn-link">Kỳ án 'phóng viên sát thủ'</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/ZGLgUUOoaWM95k3yW4pbQHXokQhKfqWjVvejSoaB.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home7[$i]) }}"
-                                                                            class="btn-link">'Cát tặc' ở Sài Gòn bị vây bắt</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
                                             </ul>
 
                                         </div>
@@ -1692,7 +1029,7 @@
                                     <div class="col-md-12 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">Công nghệ</h2>
+                                            <h2 class="h4">${nameCate09}</h2>
 
                                         </div>
                                         <!-- Post Items Title End -->
@@ -1704,23 +1041,23 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home8[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate09).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/UxO913lBt67DduUoD7Wx4MMrCTcTGDmmsC90cBW9.jpg" alt="">
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate09).get(0).id)}'/>" alt="">
                                                             </a>
-                                                            <a href="{{ route('categories.show', $post_category_home8[0]->category) }}" class="cat">Công nghệ</a>
-                                                            <a href="{{ route('categories.show', $post_category_home8[0]->category) }}" class="icon"><i class="fa fa-star-o"></i></a>
+                                                            <a href="javascript:;" class="cat">${nameCate09}</a>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-star-o"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate09).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate09).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
                                                                     <h3 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home8[0]) }}"
-                                                                            class="btn-link">Nhóm tội phạm 'căm ghét người giàu' gây rúng động Hàn Quốc</a>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate09).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate09).get(0).title}</a>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -1731,23 +1068,17 @@
                                                     <hr class="mar_bottom15 ">
 
                                                     <ul class="list_news_show_home">
-                                                        <li class="boder_link_show_home">
-                                                            <h3 class="h3"><a
-                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}">Máy tính bảng Samsung Galaxy Tab A(6) 7inch tại Việt Nam</a></h3>
-                                                        </li>
-
-                                                        <li class="boder_link_show_home">
-                                                            <h3 class="h3"><a
-                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}">Bình nước thông minh - Sản phẩm công nghệ bảo vệ sức khoẻ</a></h3>
-                                                        </li>
-
-
-                                                        <li>
-                                                            <h3 class="h3"><a
-                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}">Lenovo tung loạt laptop Yoga mới chạy vi xử lý Intel thế hệ 12</a></h3>
-                                                        </li>
+                                                        <c:forEach var="post" items="${postService.listPostCategory(idCate09)}" varStatus="loop">
+                                                            <c:if test="${ 1 <= loop.index  &&  loop.index  <= 3}"> 
+                                                                <li class="boder_link_show_home">
+                                                                    <h3 class="h3"><a
+                                                                            href="<c:url value='/${post.slug}'/>">${post.title}</a></h3>
+                                                                </li>
+                                                            </c:if>
+                                                        </c:forEach>
                                                     </ul>
                                                 </li>
+                                                
                                                 <li class="col-md-6">
                                                     <ul class="nav row">
                                                         <li class="col-xs-12 hidden-md hidden-lg">
@@ -1755,114 +1086,44 @@
                                                             <hr class="divider">
                                                             <!-- Divider End -->
                                                         </li>
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                       class="thumb"><img
-                                                                            src="template/web/storage/images/yP9kwrMG2M5cHqtvklEIjvk7YekdGNyryhibSyMH.jpg"
-                                                                            alt=""></a>
+                                                        
+                                                        <c:forEach var="post" items="${postService.listPostCategory(idCate09)}" varStatus="loop">
+                                                            <c:if test="${ 4 <= loop.index  &&  loop.index  <= 7}"> 
+                                                                <li class="col-xs-6">
+                                                                    <!-- Post Item Start -->
+                                                                    <div class="post--item post--layout-2">
+                                                                        <div class="post--img">
+                                                                            <a href="<c:url value='/${post.slug}'/>"
+                                                                               class="thumb"><img
+                                                                                    src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                                    alt=""></a>
 
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-                                                                            <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
+                                                                            <div class="post--info">
+                                                                                <ul class="nav meta">
+                                                                                    <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                                    <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                                </ul>
 
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                                    class="btn-link">Có gì ở Anker Soundcore R100 TWS - Tai nghe không dây cực hot hiện nay?</a></h3>
+                                                                                <div class="title">
+                                                                                    <h3 class="h4"><a
+                                                                                            href="<c:url value='/${post.slug}'/>"
+                                                                                            class="btn-link">${post.title}</a></h3>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
+                                                                    <!-- Post Item End -->
+                                                                </li>
+                                                                <c:if test="${loop.index  == 5}">
+                                                                    <li class="col-xs-12">
+                                                                        <!-- Divider Start -->
+                                                                        <hr class="divider">
+                                                                        <!-- Divider End -->
+                                                                    </li>
 
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                       class="thumb"><img
-                                                                            src="template/web/storage/images/DvdZV7RfZbSIhSkJQUUsUojQkBcD1ke24Mpmbwqf.jpg"
-                                                                            alt=""></a>
-
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-                                                                            <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
-
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                                    class="btn-link">Galaxy Tab S8 Series mở sân chơi ảnh “Thách Thức Sắc Đêm” dành riêng cho giới trẻ thỏa sức sáng tạo</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
-
-                                                        <li class="col-xs-12">
-                                                            <!-- Divider Start -->
-                                                            <hr class="divider">
-                                                            <!-- Divider End -->
-                                                        </li>
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                       class="thumb"><img
-                                                                            src="template/web/storage/images/awmJrx9B1uZ8601khZrAqkLGOpBQwbf66szyddxK.jpg"
-                                                                            alt=""></a>
-
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-                                                                            <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
-
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                                    class="btn-link">Máy tính bảng Samsung Galaxy Tab A(6) 7inch tại Việt Nam</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
-
-                                                        <li class="col-xs-6">
-                                                            <!-- Post Item Start -->
-                                                            <div class="post--item post--layout-2">
-                                                                <div class="post--img">
-                                                                    <a href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                       class="thumb"><img
-                                                                            src="template/web/storage/images/UxQ3GhwpqPf82gc2zjnPsTFslMqlF0347616XJMT.jpg"
-                                                                            alt=""></a>
-
-                                                                    <div class="post--info">
-                                                                        <ul class="nav meta">
-                                                                            <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                            <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                        </ul>
-
-                                                                        <div class="title">
-                                                                            <h3 class="h4"><a
-                                                                                    href="{{ route('posts.show', $post_category_home8[$i]) }}"
-                                                                                    class="btn-link">Bình nước thông minh - Sản phẩm công nghệ bảo vệ sức khoẻ</a></h3>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- Post Item End -->
-                                                        </li>
+                                                                </c:if>
+                                                            </c:if>
+                                                        </c:forEach>
 
 
                                                     </ul>
@@ -1878,7 +1139,7 @@
                                     <div class="col-md-12 ptop--30 pbottom--30">
                                         <!-- Post Items Title Start -->
                                         <div class="post--items-title" data-ajax="tab">
-                                            <h2 class="h4">Khoa học</h2>
+                                            <h2 class="h4">${nameCate10}</h2>
 
                                         </div>
                                         <!-- Post Items Title End -->
@@ -1890,24 +1151,24 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-1 post--title-large">
                                                         <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home9[0]) }}"
+                                                            <a href="<c:url value='/${postService.listPostCategory(idCate10).get(0).slug}'/>"
                                                                class="thumb"><img
-                                                                    src="template/web/storage/images/jIU5kfQHRQDqfO03XLFIfehLMqqlNFoM9ezOPuGY.jpg"
+                                                                    src="<c:url value='${imageService.getConfigPathImgPost(postService.listPostCategory(idCate10).get(0).id)}'/>"
                                                                     alt=""></a>
-                                                            <a href="{{ route('categories.show', $post_category_home9[0]->category) }}"
-                                                               class="cat">Khoa học</a>
-                                                            <a href="{{ route('categories.show', $post_category_home9[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
+                                                            <a href="javascript:;"
+                                                               class="cat">${nameCate10}</a>
+                                                            <a href="javascript:;" class="icon"><i class="fa fa-eye"></i></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
+                                                                    <li><a href="javascript:;">${userService.getUserById(postService.listPostCategory(idCate10).get(0).user_id).name}</a></li>
+                                                                    <li><a href="javascript:;">${postService.listPostCategory(idCate10).get(0).created_at}</a></li>
                                                                 </ul>
 
                                                                 <div class="title text-xxs-ellipsis">
                                                                     <h2 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home9[0]) }}"
-                                                                            class="btn-link">Phát hiện hố đen khổng lồ nuốt chửng các tiểu hành tinh sau vài giây</a></h2>
+                                                                            href="<c:url value='/${postService.listPostCategory(idCate10).get(0).slug}'/>"
+                                                                            class="btn-link">${postService.listPostCategory(idCate10).get(0).title}</a></h2>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1915,84 +1176,36 @@
                                                     <!-- Post Item End -->
                                                 </li>
 
+                                                <c:forEach var="post" items="${postService.listPostCategory(idCate10)}" varStatus="loop">
+                                                    <c:if test="${ 1 <= loop.index  &&  loop.index  <= 3}"> 
+                                                        <li class="col-md-4 col-xs-6 col-xxs-12">
+                                                            <!-- Post Item Start -->
+                                                            <div class="post--item post--layout-1">
+                                                                <div class="post--img">
+                                                                    <a href="<c:url value='/${post.slug}'/>"
+                                                                       class="thumb"><img
+                                                                            src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                            alt=""></a>
 
-                                                <li class="col-md-4 col-xs-6 col-xxs-12">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-1">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home9[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/3lpEw7jwpvpxAru8Q9YWtxxptLA2gYWQaOruEpjF.jpg"
-                                                                    alt=""></a>
+                                                                    <div class="post--info">
+                                                                        <ul class="nav meta">
+                                                                            <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a></li>
+                                                                            <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                        </ul>
 
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Hồ Anh Tuấn</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h2 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home9[$i]) }}"
-                                                                            class="btn-link">NASA công bố cuộc tập trận 18 quốc gia chống "sát thủ ngoài hành tinh"</a></h2>
+                                                                        <div class="title">
+                                                                            <h2 class="h4"><a
+                                                                                    href="<c:url value='/${post.slug}'/>"
+                                                                                    class="btn-link">${post.title}</a></h2>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-
-                                                <li class="col-md-4 col-xs-6 col-xxs-12">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-1">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home9[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/hsJArjpyMNOcqNzyfcNF0mBJc3nWBM0yQqRZeWFO.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Nguyễn Hải Dương</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h2 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home9[$i]) }}"
-                                                                            class="btn-link">Phát hiện tín hiệu vô tuyến bí ẩn từ hành tinh giống Trái Đất</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-
-                                                <li class="col-md-4 col-xs-6 col-xxs-12">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-1">
-                                                        <div class="post--img">
-                                                            <a href="{{ route('posts.show', $post_category_home9[$i]) }}"
-                                                               class="thumb"><img
-                                                                    src="template/web/storage/images/dW0Ywt718urnIRHgXl7y5r6FoenHIWPxBNVailKa.jpg"
-                                                                    alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="javascript:;"> Võ Anh Quân</a></li>
-                                                                    <li><a href="javascript:;"> 19/06/2022</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h2 class="h4"><a
-                                                                            href="{{ route('posts.show', $post_category_home9[$i]) }}"
-                                                                            class="btn-link">'Bè bong bóng' có thể giúp Trái Đất hạ nhiệt</a></h2>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
+                                                            <!-- Post Item End -->
+                                                        </li>
+                                                    </c:if>
+                                                </c:forEach>
+    
                                             </ul>
 
                                         </div>

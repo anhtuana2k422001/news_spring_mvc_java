@@ -16,7 +16,7 @@
                 <div class="container">
                     <ul class="breadcrumb">
                         <li><a href="javascript:;" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
-                        <li class="active"><span>${categoryName}</span></li>
+                        <li class="active"><span>Kết quả tìm kiếm</span></li>
                     </ul>
                 </div>
             </div>
@@ -28,6 +28,10 @@
             <div class="container">
                 <div class="row">
                     <div class="main--content col-md-8" data-sticky-content="true">
+                        <div class="post--items-title" data-ajax="tab">
+                            <h2 class="h4">${listPostSreach.size()} kết quả tìm kiếm: <span style="color: black; background-color: #f7f201;" class="h4">${keySearch}</span> trong 0.003 giây </h2>
+                                       
+                        </div>
                         <div class="sticky-content-inner">
                             <div class="post--item post--single post--title-largest pd--30-0">
                                 <c:if test="${listPostSreach.size() == 0}">

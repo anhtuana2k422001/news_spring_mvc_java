@@ -84,10 +84,9 @@ public class PostDao {
     // Tìm kiếm bài viết theo từ khóa 
     public List<Post> listPostSreach(String key){
         List<Post> listPost = new ArrayList<Post>();
-        String sql = "SELECT * FROM posts WHERE title LIKE '%" + key + "%'";
+        String sql = "SELECT * FROM posts WHERE title REGEXP '[[:<:]]" + key + "[[:>:]]' COLLATE utf8mb4_unicode_ci";
         listPost = _jdbcTemplate.query(sql, new PostMapper());
         return listPost;
     }
-    
     
 }

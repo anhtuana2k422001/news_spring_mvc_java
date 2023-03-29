@@ -44,8 +44,8 @@ public class BaseController {
         _mvShare.addObject("listHotPost", postService.listHotPost());
         // Lấy bài viết nhiều lượt xem nhất
         _mvShare.addObject("listViewsPost", postService.listViewsPost());
-        
     }
+    
     
     @ModelAttribute("userService")
     public UserServiceImpl userService() {
@@ -71,4 +71,5 @@ public class BaseController {
     public PostServiceImpl postService() {
         return postService;
     }
+    
 }

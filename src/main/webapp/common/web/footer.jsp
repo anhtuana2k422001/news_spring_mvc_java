@@ -85,7 +85,7 @@
                     </div>
                     <div class="col-md-4">
                         <p>
-                            <span style="font-size: 14px" class="block">Tổng biên tập: Nhóm 07 Hutech</span>
+                            <span style="font-size: 14px" class="block">Tổng biên tập: Nhóm 09 - SIU  - HUTECH</span>
                         </p>
                         <p>
                             <span style="font-size: 14px" class="block">Địa chỉ: E1, Khu Công Nghệ cao, Phường Hiệp
@@ -98,7 +98,7 @@
                     <div class="col-md-4">
                         <p>
                             <small style="font-size: 14px" class="block">&copy; 2023. Toàn bộ bản quyền thuộc
-                                07</small>
+                                09 - SIU - HUTECH</small>
                         </p>
                         <p>
                         <ul style="display: flex;" class="header--topbar-social nav hidden-sm hidden-xxs">
