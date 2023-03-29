@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>	
 <!-- Import Header -->
 <header class="header--section header--style-3">
 	<!-- Header Topbar Start -->
@@ -128,17 +128,15 @@
 				<!-- Header Menu Links End -->
 			</div>
 
-			<!-- Header Search Form Start -->
-			<form method="POST" action="{{ route('search"
-				class="header--search-form float--right" data-form="validate">
-				@csrf <input type="search" name="search" placeholder="Search..."
+                       <!--  Tìm kiếm -->
+                        <form method="POST" action="<c:url value='/tim-kiem'/>" class="header--search-form float--right" data-form="validate">
+				<input type="search" name="search" placeholder="Tim kiếm..."
 					class="header--search-control form-control" required>
 
 				<button type="submit" class="header--search-btn btn">
 					<i class="header--search-icon fa fa-search"></i>
 				</button>
 			</form>
-			<!-- Header Search Form End -->
 		</div>
 	</div>
 	<!-- Header Navbar End -->

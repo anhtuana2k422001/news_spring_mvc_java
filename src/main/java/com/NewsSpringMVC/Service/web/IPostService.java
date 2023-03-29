@@ -14,4 +14,5 @@ public interface IPostService {
    public List<Post> listNewPost();
    public List<Post> listHotPost();
    public List<Post> listViewsPost();
+   public List<Post> listPostSreach(String key);
 }

@@ -1,6 +1,7 @@
 package com.NewsSpringMVC.Controller.web;
 
 import com.NewsSpringMVC.Entity.User;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,14 @@ public class HomeController extends BaseController {
     @RequestMapping(value = "/xem-nhieu-nhat", method = RequestMethod.GET)
     public ModelAndView pageViewsPost() {
         _mvShare.setViewName("web/viewspost");
+        return _mvShare;
+    } 
+    
+    @RequestMapping(value = "/tim-kiem", method = RequestMethod.POST)
+    public ModelAndView pageSearch(HttpServletRequest request) {
+        String searchValue = request.getParameter("search");
+        _mvShare.addObject("listPostSreach", postService.listPostSreach(searchValue));
+        _mvShare.setViewName("web/searchpost");
         return _mvShare;
     } 
 

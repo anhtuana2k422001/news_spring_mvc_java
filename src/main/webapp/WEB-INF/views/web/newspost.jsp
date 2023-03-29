@@ -36,7 +36,7 @@
                            
                                 <c:forEach items="${listNewPost}" var="post">
                                 <div class="block-21 d-flex animate-box post">
-                                    <a href="<c:url value='/${post.slug}'/>" class="blog-img" style="background-image: url(<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path})'/>"></a>
+                                    <a href="<c:url value='/${post.slug}'/>" class="blog-img" style="background-image: url(<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>)"></a>
                                     <div class="text">
                                         <h3 class="heading"><a href="<c:url value='/${post.slug}'/>">${post.title}</a></h3>
                                         <p class="excerpt">${post.excerpt}</p>

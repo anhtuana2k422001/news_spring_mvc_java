@@ -16,7 +16,7 @@
                 <div class="container">
                     <ul class="breadcrumb">
                         <li><a href="javascript:;" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
-                        <li class="active"><span>Tin tức mới nhất</span></li>
+                        <li class="active"><span>${categoryName}</span></li>
                     </ul>
                 </div>
             </div>
@@ -30,13 +30,13 @@
                     <div class="main--content col-md-8" data-sticky-content="true">
                         <div class="sticky-content-inner">
                             <div class="post--item post--single post--title-largest pd--30-0">
-                                <c:if test="${listNewPost.size() == 0}">
-                                    <p class="lead">Không có bài viết nào!</p>
+                                <c:if test="${listPostSreach.size() == 0}">
+                                    <p class="lead">Không tìm thấy bài viết nào</p>
                                  </c:if>
                            
-                                <c:forEach items="${listViewsPost}" var="post">
+                                <c:forEach items="${listPostSreach}" var="post">
                                 <div class="block-21 d-flex animate-box post">
-                                    <a href="<c:url value='/${post.slug}'/>" class="blog-img" style="background-image: url(<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>)"></a>
+                                    <a href="<c:url value='/${post.slug}'/>" class="blog-img" style="background-image: url(<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>);"></a>
                                     <div class="text">
                                         <h3 class="heading"><a href="<c:url value='/${post.slug}'/>">${post.title}</a></h3>
                                         <p class="excerpt">${post.excerpt}</p>
