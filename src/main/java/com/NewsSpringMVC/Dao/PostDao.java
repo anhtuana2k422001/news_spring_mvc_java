@@ -9,12 +9,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
 public class PostDao {
     @Autowired
     JdbcTemplate _jdbcTemplate;
 
     // Lấy ra các bài viết mới nhất theo danh mục
-    @SuppressWarnings({"Convert2Diamond", "UnusedAssignment"})
     // Limit: là giới hạn số bài lấy ra của từng danh mục
     public List<Post> newPostCategory(int limit) {
         List<Post> listPost = new ArrayList<Post>();
@@ -43,13 +43,47 @@ public class PostDao {
     }
     
     // Lấy danh sách bài viết theo id chuyên mục
-     @SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
      public List<Post> listPostCategory(int idCate){
         List<Post> listPost = new ArrayList<Post>();
         String sql = "SELECT * FROM posts WHERE category_id = '" + idCate + "'	;";
         listPost = _jdbcTemplate.query(sql, new PostMapper());
         return listPost;
     }
+     
+    // Lấy ra danh sách bài viết 
+    public List<Post> listNewPost(){
+       List<Post> listPost = new ArrayList<Post>();
+       String sql = "SELECT *  FROM posts  ORDER BY created_at DESC LIMIT 30";
+       listPost = _jdbcTemplate.query(sql, new PostMapper());
+       return listPost;
+    }
+    
+    // Lấy ra danh sách bài biết hot nhất, nhiều người bình luận nhất
+    public List<Post> listHotPost() {
+        List<Post> listPost = new ArrayList<Post>();
+        String sql = "SELECT posts.id, posts.title, posts.slug, posts.excerpt, posts.body,\n"
+                + "        posts.user_id, posts.category_id, posts.views, posts.approved, posts.created_at,\n"
+                + "        posts.updated_at,\n"
+                + "         COUNT(comments.id) as num_comments\n"
+                + "        FROM posts\n"
+                + "        JOIN comments ON posts.id = comments.post_id\n"
+                + "        GROUP BY posts.id\n"
+                + "        ORDER BY num_comments DESC LIMIT 30";
+        listPost = _jdbcTemplate.query(sql, new PostMapper());
+        return listPost;
+    }
+    
+    // Lấy ra danh sách bài viết nhiều lượt xem nhất
+    public List<Post> listViewsPost(){
+       List<Post> listPost = new ArrayList<Post>();
+       String sql = "SELECT *  FROM posts  ORDER BY views DESC LIMIT 30";
+       listPost = _jdbcTemplate.query(sql, new PostMapper());
+       return listPost;
+    }
+    
+    
+    
+     
     
     
 }

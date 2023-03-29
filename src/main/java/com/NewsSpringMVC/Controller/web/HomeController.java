@@ -25,6 +25,24 @@ public class HomeController extends BaseController {
     public ModelAndView page404() {
          _mvShare.setViewName("404");
         return _mvShare;
-    }           
+    }   
+    
+    @RequestMapping(value = "/tin-tuc-moi-nhat", method = RequestMethod.GET)
+    public ModelAndView pageNewPost() {
+        _mvShare.setViewName("web/newspost");
+        return _mvShare;
+    }  
+    
+    @RequestMapping(value = "/tin-nong", method = RequestMethod.GET)
+    public ModelAndView pageHotPost() {
+        _mvShare.setViewName("web/hotpost");
+        return _mvShare;
+    } 
+    
+    @RequestMapping(value = "/xem-nhieu-nhat", method = RequestMethod.GET)
+    public ModelAndView pageViewsPost() {
+        _mvShare.setViewName("web/viewspost");
+        return _mvShare;
+    } 
 
 }

@@ -34,10 +34,17 @@ public class BaseController {
     public void Init(){
         // Lấy danh sách category
         _mvShare.addObject("listCategory", homeService.getDataCategory());
-        // Lấy 5 bài viết mới nhất theo danh mục
-        _mvShare.addObject("listNewPost", postService.newPostCategory(5));
+        // Lấy 5 bài viết mới nhất theo danh mục loading side
+        _mvShare.addObject("listNewPostSide", postService.newPostCategory(5));
          // Lấy 10 bài viết mới nhất theo danh mục
         _mvShare.addObject("listNewPostNav", postService.newPostCategory(10));
+        // Lấy bài mới mới nhất
+        _mvShare.addObject("listNewPost", postService.listNewPost());
+        // Lấy bài viết hot nhất
+        _mvShare.addObject("listHotPost", postService.listHotPost());
+        // Lấy bài viết nhiều lượt xem nhất
+        _mvShare.addObject("listViewsPost", postService.listViewsPost());
+        
     }
     
     @ModelAttribute("userService")

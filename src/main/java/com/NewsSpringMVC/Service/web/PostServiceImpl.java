@@ -25,5 +25,20 @@ public class PostServiceImpl implements IPostService {
     public List<Post> listPostCategory(int idCate) {
         return postDao.listPostCategory(idCate);
     }
+
+    @Override
+    public List<Post> listNewPost() {
+        return postDao.listNewPost();
+    }
+
+    @Override
+    public List<Post> listHotPost() {
+        return postDao.listHotPost();
+    }
+
+    @Override
+    public List<Post> listViewsPost() {
+        return postDao.listViewsPost();
+    }
     
 }

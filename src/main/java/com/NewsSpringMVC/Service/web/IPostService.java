@@ -11,4 +11,7 @@ public interface IPostService {
    public List<Post> newPostCategory(int limit);
    public Post getPostDetail(String slugPost);
    public List<Post> listPostCategory(int idCate);
+   public List<Post> listNewPost();
+   public List<Post> listHotPost();
+   public List<Post> listViewsPost();
 }

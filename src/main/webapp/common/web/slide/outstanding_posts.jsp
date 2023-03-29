@@ -27,7 +27,7 @@
         <!-- Post Items Start -->
         <div class="post--items post--items-3" data-ajax-content="outer">
             <ul class="nav listPost" data-ajax-content="inner">
-                 <c:forEach var="postDetail" items="${listNewPost}">    
+                 <c:forEach var="postDetail" items="${listNewPostSide}">    
                     <li>
                         <!-- Post Item Start -->
                         <div class="post--item post--layout-3">

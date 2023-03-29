@@ -149,14 +149,14 @@
 	<div class="posts--filter-bar style--3 hidden-xs">
 		<div class="container">
 			<ul class="nav">
-				<li><a href="{{ route('newPost"> <i class="fa fa-star-o"></i>
+				<li><a href="<c:url value='/tin-tuc-moi-nhat' />"> <i class="fa fa-star-o"></i>
 						<span>Tin tức mới nhất</span>
 				</a></li>
 
-				<li><a href="{{ route('hotPost"> <i class="fa fa-fire"></i>
+				<li><a href="<c:url value='/tin-nong' />"> <i class="fa fa-fire"></i>
 						<span>Tin nóng</span>
 				</a></li>
-				<li><a href="{{ route('viewPost"> <i class="fa fa-eye"></i>
+				<li><a href="<c:url value='/xem-nhieu-nhat' />"> <i class="fa fa-eye"></i>
 						<span>Xem nhiều nhất</span>
 				</a></li>
 			</ul>
