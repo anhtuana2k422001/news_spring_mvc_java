@@ -95,7 +95,7 @@
 
 											<td>
 												<div class="d-flex order-actions">
-													<a href="<c:url value='/admin/listpost/${post.id}' />" class=""><i class='bx bxs-edit'></i></a>
+													<a href="<c:url value='/admin/editpost/${post.id}' />" class=""><i class='bx bxs-edit'></i></a>
 
 													</a> <a href="#"
 														onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $post->id }}').submit();"

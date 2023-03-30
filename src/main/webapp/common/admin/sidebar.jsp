@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>  
+         pageEncoding="UTF-8"%> 
+         <%@ include file="/common/taglib.jsp"%> 
 <!--sidebar wrapper -->
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
@@ -16,7 +17,7 @@
     <ul class="metismenu" id="menu">
         <!-- @if(checkPermission("admin.index")) -->
         <li>
-            <a href="index.php">
+            <a href="<c:url value='/admin'/>">
                 <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
                 <div class="menu-title">Bảng điều khiển</div>
             </a>
@@ -33,7 +34,7 @@
 
             <ul>
                 <!-- @if(checkPermission("admin.posts.index")) -->
-                <li> <a href="{{ route('admin.posts.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả bài
+                <li> <a href="<c:url value='/admin/listpost'/>"><i class="bx bx-right-arrow-alt"></i>Tất cả bài
                         viết</a>
                 </li>
                 <!-- @endif -->
@@ -58,7 +59,7 @@
 
             <ul>
                 <!-- @if(checkPermission("admin.categories.index")) -->
-                <li> <a href="{{ route('admin.categories.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả
+                <li> <a href="<c:url value='/admin/listcategory'/>"><i class="bx bx-right-arrow-alt"></i>Tất cả
                         danh mục</a>
                 </li>
                 <!-- @endif -->
@@ -118,7 +119,7 @@
 
             <ul>
                 <!-- @if(checkPermission("admin.roles.index")) -->
-                <li> <a href="{{ route('admin.roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả
+                <li> <a href="<c:url value='/admin/listrole'/>"><i class="bx bx-right-arrow-alt"></i>Tất cả
                         quyền</a>
                 </li>
                 <!-- @endif -->

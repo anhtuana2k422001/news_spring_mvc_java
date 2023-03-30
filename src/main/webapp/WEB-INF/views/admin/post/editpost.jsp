@@ -9,134 +9,167 @@
 </head>
 <body>
 	<!--wrapper-->
-	<!--wrapper-->
-	<div class="wrapper">
-		<!--start page Content Page -->
-		<div class="page-wrapper">
-			<div class="page-content">
-				<!--breadcrumb-->
-				<div
-					class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Bài viết</div>
-					<div class="ps-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a
-									href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Tất
-									cả bài viết</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-				<!--end breadcrumb-->
+    <div class="wrapper">
+        <!--start page Content Page -->
+        <div class="page-wrapper">
+            <div class="page-content">
+                <!--breadcrumb-->
+                <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div class="breadcrumb-title pe-3">Bài viết</div>
+                    <div class="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 p-0">
+                                <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Bài viết</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                <!--end breadcrumb-->
 
-				<div class="card">
-					<div class="card-body">
-						<div class="d-lg-flex align-items-center mb-4 gap-3">
-							<div class="position-relative">
-								<input type="text" class="form-control ps-5 radius-30"
-									placeholder="Tìm kiếm bài viết"> <span
-									class="position-absolute top-50 product-show translate-middle-y"><i
-									class="bx bx-search"></i></span>
-							</div>
-							<div class="ms-auto">
-								<a href="createpost.php"
-									class="btn btn-primary radius-30 mt-2 mt-lg-0"><i
-									class="bx bxs-plus-square"></i>Thêm bài viết mới</a>
-							</div>
-						</div>
-						<div class="table-responsive">
-							<table class="table mb-0">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <h5 class="card-title">Sửa bài viết: <?php echo $post['title'] ?></h5>
+                        <hr />
+                        <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
+                            <div class="form-body mt-4">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="border border-3 p-4 rounded">
+                                            <div class="mb-3">
+                                                <label for="inputProductTitle" class="form-label">Tiêu đề bài viết</label>
+                                                <input type="text" value='<?php echo $post['title'] ?>' name="title" required class="inputPostTitle form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
 
-								<thead class="table-light">
-									<tr>
-										<th>Mã bài viết</th>
-										<th>Tên bài viết</th>
-										<th>Mô tả</th>
-										<th>Tác giả</th>
-										<th>Danh mục</th>
-										<th>Ngày tạo</th>
-										<th>Trạng thái</th>
-										<th>Lượt xem</th>
-										<th>Chức năng</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${listPostAdmin}" var="post">
-										<tr>
-											<td>
-												<div class="d-flex align-items-center">
-													<div>
-														<input class="form-check-input me-3" type="checkbox"
-															value="" aria-label="...">
-													</div>
-													<div class="ms-2">
-														<h6 class="mb-0 font-14">${post.id}</h6>
-													</div>
-												</div>
-											</td>
-											<td>${post.title}</td>
+                                                <!-- Hiển thị thông báo lỗi -->
+                                                <?php if (isset($message) && !empty($message)) : ?>
+                                                    <p class="text-danger"><?php echo $message; ?></p>
+                                                <?php endif; ?>
 
+                                            </div>
 
-											<td>${post.excerpt}</td>
-											<td>${userService.getUserById(post.user_id).name}</td>
-											<td>${categoryAdminService.getNameCategoryById(post.category_id)}</td>
-											<td>${post.created_at}</td>
-											<td>
-												<div
-													class="badge rounded-pill ${post.approved == 1 ? 'text-success bg-light-success' : 'text-danger bg-light-danger'} p-2 text-uppercase px-3">
-													<i class='bx bxs-circle me-1'></i>${post.approved == 1 ? "Đã phê duyệt" : "Chưa phê duyệt"}
-												</div>
+                                            <div class="mb-3">
+                                                <label for="inputProductTitle" class="form-label">Slug - liên kết</label>
+                                                <input type="text" value='<?php echo $post['slug'] ?>' name="slug" required class="slugPost form-control" id="inputProductTitle" placeholder="Nhập slug">
 
-											</td>
-											<td>${post.views}</td>
+                                                <!-- Hiển thị thông báo lỗi -->
+                                                <?php if (isset($message) && !empty($message)) : ?>
+                                                    <p class="text-danger"><?php echo $message; ?></p>
+                                                <?php endif; ?>
 
-											<td>
-												<div class="d-flex order-actions">
-													<a href="<c:url value='/editpost/${post.id}' />" class=""><i class='bx bxs-edit'></i></a>
+                                            </div>
 
-													</a> <a href="#"
-														onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $post->id }}').submit();"
-														class="ms-3"><i class='bx bxs-trash'></i></a>
+                                            <div class="mb-3">
+                                                <label for="inputProductDescription" class="form-label">Mô tả</label>
+                                                <textarea required name="excerpt" class="form-control" id="inputProductDescription" rows="3"><?php echo $post['excerpt'] ?></textarea>
 
-													<form method="post"
-														action="{{ route('admin.posts.destroy', $post) }}"
-														id="delete_form_{{ $post->id }}"></form>
+                                                <!-- Hiển thị thông báo lỗi -->
+                                                <?php if (isset($message) && !empty($message)) : ?>
+                                                    <p class="text-danger"><?php echo $message; ?></p>
+                                                <?php endif; ?>
+                                            </div>
 
-												</div>
-											</td>
-										</tr>
+                                            <div class="mb-3">
+                                                <label for="inputProductTitle" class="form-label">Danh mục bài viết</label>
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="p-3 rounded">
+                                                            <div class="mb-3">
 
-									</c:forEach>
+                                                                <select name="category_id" required class="single-select">
+                                                                    <?php
+                                                                    $cate = Category::GetCategory($post["category_id"]);
+                                                                    echo "<option value=" . $cate["id"] . ">" . $cate["name"] . "</option>";
+                                                                    $cates = Category::ListCategorie();
+                                                                    foreach ($cates as $item) {
+                                                                        if($item["name"] != $cate["name"])
+                                                                            echo "<option value=" . $item["id"] . ">" . $item["name"] . "</option>";
+                                                                    }
 
-								</tbody>
+                                                                    ?>
+                                                                </select>
+                                                                <!-- <p class="text-danger">==> Còn lỗi sai, select còn chưa đúng</p> -->
 
-							</table>
+                                                                <p class="text-danger"><?php echo htmlentities($message); ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-						</div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Từ khóa</label>
+                                                <input type="text" class="form-control" <?php foreach ($tags as $tag) : ?> value="<?php echo $tag["name"] ?>" <?php endforeach ?> name="tags" data-role="tagsinput">
+                                            </div>
 
-						<div>
-							<?php
-                            if ($page > 1) {
-                                echo  "<button class='btn btn-secondary me-4  mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page - 1) . "'\">Trang trước</button>";
-                            }
-                            if ($page < $pages) {
-                                echo "<button class='btn btn-secondary mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page + 1) . "'\">Trang sau</button>";
-                            }
-                            ?>
-						</div>
+                                            <!-- <input id="image-uploadify" name="thumbnail" type="file" id="file" accept="image/*" multiple> -->
+                                            <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col-md-5">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <label for="inputProductDescription" class="form-label">Hình ảnh bài viết</label>
+                                                                <input id="thumbnail" name="thumbnail" type="file" id="file" value="">
 
-					</div>
-				</div>
+                                                                <!-- Hiển thị thông báo lỗi -->
+                                                                <?php if (isset($message) && !empty($message)) : ?>
+                                                                    <p class="text-danger"><?php echo $message; ?></p>
+                                                                <?php endif; ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-			</div>
-		</div>
-		<!--end page wrapper -->
-		<!--end page wrapper -->
+                                                    <div class="col-md-7 text-center">
+                                                        <img style="width: 100%; border-radius: 16px;" src="<?php echo HandleAdmin::getPathImg($post["id"]) ?>" class="img-responsive" alt="All thumbnail">
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="mb-3">
+                                                <label for="inputProductDescription" class="form-label">Nội dung bài viết</label>
+                                                <textarea name="body" id="post_content" class="form-control" id="inputProductDescription" rows="3"><?php echo $post['body'] ?></textarea>
+                                                <!-- Hiển thị thông báo lỗi -->
+                                                <?php if (isset($message) && !empty($message)) : ?>
+                                                    <p class="text-danger"><?php echo $message; ?></p>
+                                                <?php endif; ?>
+                                                <script>
+                                                    tinymce.init({
+                                                        selector: 'textarea',
+                                                        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                                                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                    });
+                                                </script>
+                                            </div>
 
-		<!--end wrapper-->
+                                            <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                    <input name="approved" <?php echo $post['approved'] ? 'checked' : ''; ?> class="form-check-input" type="checkbox" id="flexSwitchChecked">
+                                                    <label class="form-check-label <?php echo $post['approved'] ? 'text-success' : 'text-warning'; ?>" for="flexSwitchChecked">
+                                                        <?php echo $post['approved'] ? 'Đã phê duyệt' : 'Chưa phê duyệt'; ?>
+                                                    </label>
+                                                    <!-- <p class="text-danger">==> Còn lỗi sai, select còn chưa đúng</p> -->
+                                                </div>
+                                            </div>
+
+                                            <button class="btn btn-primary" type="submit">Sửa bài viết</button>
+
+                                            <a class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete_post_{{ $post->id }}').submit();" href="#">Xóa bài viết</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <form id="delete_post_{{ $post->id }}" action="{{ route('admin.posts.destroy', $post) }}" method="post">
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--end page wrapper -->
 </body>
 </html>
