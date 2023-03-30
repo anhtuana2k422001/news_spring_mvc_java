@@ -5,6 +5,7 @@ import com.NewsSpringMVC.Mapper.PostMapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -87,6 +88,16 @@ public class PostDao {
         String sql = "SELECT * FROM posts WHERE title REGEXP '[[:<:]]" + key + "[[:>:]]' COLLATE utf8mb4_unicode_ci";
         listPost = _jdbcTemplate.query(sql, new PostMapper());
         return listPost;
+    }
+    
+    public Post getPostById(int post_id) {
+        try {
+            String sql = "SELECT * FROM posts WHERE id = ?";
+            Post post = _jdbcTemplate.queryForObject(sql, new Object[]{post_id}, new PostMapper());
+            return post;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
     
 }

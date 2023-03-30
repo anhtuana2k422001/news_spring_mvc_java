@@ -19,5 +19,10 @@ public class ImageServiceImpl implements IImageService {
     public String getConfigPathImgPost(int post_id) {
         return imageDao.getConfigPathImgPost(post_id);
     }
+
+    @Override
+    public String getConfigPathImgUser(int user_id) {
+        return imageDao.getConfigPathImgUser(user_id);
+    }
     
 }

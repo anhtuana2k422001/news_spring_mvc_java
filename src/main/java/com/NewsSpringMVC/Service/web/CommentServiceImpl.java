@@ -16,5 +16,10 @@ public class CommentServiceImpl implements ICommentService {
         return commentDao.getCommentPost(post_id);
     }
 
+    @Override
+    public List<Comment> getDataComment() {
+       return commentDao.getDataComment();
+    }
+
     
 }

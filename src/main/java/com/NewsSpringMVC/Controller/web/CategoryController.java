@@ -23,5 +23,12 @@ public class CategoryController extends BaseController {
         }
         return _mvShare;
     }
+    
+        // Load thông tin tất cả danh mục
+    @RequestMapping(value = "/tat-ca-chuyen-muc", method = RequestMethod.GET)
+    public ModelAndView category() {
+        _mvShare.setViewName("web/categorypost_all");
+        return _mvShare;
+    }
 
 }

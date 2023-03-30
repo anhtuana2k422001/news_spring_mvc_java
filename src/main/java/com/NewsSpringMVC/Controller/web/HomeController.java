@@ -18,6 +18,7 @@ public class HomeController extends BaseController {
         InitCategory(); // Gọi hàm khởi tạo Category
         _mvShare.addObject("UserInfo", user); // nếu user đăng nhập lấy thông tin
         _mvShare.addObject("listNewPostHome", postService.newPostCategory(4));
+        _mvShare.addObject("listCommentHome", commentService.getDataComment());
         _mvShare.setViewName("web/home");
         return _mvShare;
     }
@@ -53,6 +54,18 @@ public class HomeController extends BaseController {
         _mvShare.addObject("listPostSreach", postService.listPostSreach(searchValue));
         _mvShare.addObject("keySearch", searchValue);
         _mvShare.setViewName("web/searchpost");
+        return _mvShare;
+    } 
+    
+    @RequestMapping(value = "/gioi-thieu", method = RequestMethod.GET)
+    public ModelAndView pageAbout() {
+        _mvShare.setViewName("web/about");
+        return _mvShare;
+    } 
+    
+    @RequestMapping(value = "/lien-he", method = RequestMethod.GET)
+    public ModelAndView pageContact() {
+        _mvShare.setViewName("web/contact");
         return _mvShare;
     } 
     

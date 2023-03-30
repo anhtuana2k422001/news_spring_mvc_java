@@ -116,10 +116,10 @@
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Trang<i class="fa flm fa-angle-down"></i></a>
 						<ul class="dropdown-menu">
-							<li><a href="{{ route('about">Giới thiệu</a></li>
-							<li><a href="{{ route('contact.create">Liên hệ</a></li>
+							<li><a href="<c:url value='/gioi-thieu'/>">Giới thiệu</a></li>
+							<li><a href="<c:url value='/lien-he'/>">Liên hệ</a></li>
 						</ul></li>
-					<li><a href="#" > <span
+					<li><a href="<c:url value='/tat-ca-chuyen-muc' />" > <span
 							style="color: #ccc; margin-right: 10px;">Tất cả</span> <img
 							width="17" class="icon-menu"
 							src="https://static.vnncdn.net/v1/icon/menu-center.svg">
