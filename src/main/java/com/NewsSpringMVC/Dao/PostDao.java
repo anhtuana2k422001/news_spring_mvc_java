@@ -1,7 +1,10 @@
 package com.NewsSpringMVC.Dao;
 
 import com.NewsSpringMVC.Entity.Post;
+import com.NewsSpringMVC.Entity.User;
 import com.NewsSpringMVC.Mapper.PostMapper;
+import com.NewsSpringMVC.Mapper.UserMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,6 +88,24 @@ public class PostDao {
     public List<Post> listPostSreach(String key){
         List<Post> listPost = new ArrayList<Post>();
         String sql = "SELECT * FROM posts WHERE title REGEXP '[[:<:]]" + key + "[[:>:]]' COLLATE utf8mb4_unicode_ci";
+        listPost = _jdbcTemplate.query(sql, new PostMapper());
+        return listPost;
+    }
+    
+  //lấy ra thông tin của 1 bài viết cụ thể
+    public List<Post> GetPostById(int id)
+    {
+    	List<Post> listPostId = new ArrayList<Post>();
+    	 
+        String sql = "SELECT * FROM posts WHERE id = 'id'";
+        listPostId = _jdbcTemplate.query(sql, new PostMapper());
+        return listPostId;
+    }
+    
+    public List<Post> getDataPost() {
+        @SuppressWarnings({"Convert2Diamond", "UnusedAssignment"})
+        List<Post> listPost = new ArrayList<Post>();
+        String sql = "SELECT * FROM posts";
         listPost = _jdbcTemplate.query(sql, new PostMapper());
         return listPost;
     }
