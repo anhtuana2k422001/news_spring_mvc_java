@@ -81,8 +81,8 @@
 
 
 											<td>${post.excerpt}</td>
-											<td>${userService.getUserById(post.user_id).name}</td>
-											<td>${categoryAdminService.getNameCategoryById(post.category_id)}</td>
+											<td>${userServiceAdmin.getUserById(post.user_id).name}</td>
+											<td>${categoryServiceAdmin.getNameCategoryById(post.category_id)}</td>
 											<td>${post.created_at}</td>
 											<td>
 												<div

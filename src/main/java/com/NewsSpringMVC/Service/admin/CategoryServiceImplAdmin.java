@@ -7,18 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CategoryAdminServiceImpl implements ICategoryAdminService {
+public class CategoryServiceImplAdmin implements ICategoryServiceAdmin {
     @Autowired
     private CategoryDao categoryDao;
     
     @Override
     public List<Category> getDataCategory() {
        return categoryDao.getDataCategory();
-    }
-
-    @Override
-    public Category getCategoryBySlug(String slug) {
-        return categoryDao.getCategoryBySlug(slug);
     }
 
     @Override

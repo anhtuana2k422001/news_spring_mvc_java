@@ -17,14 +17,14 @@ public class CategoryController extends BaseController {
         Category cate = categoryService.getCategoryBySlug(slug);
         if (cate == null) {
             _mvShare.setViewName("redirect:/error");
-        }else{
+        } else {
             _mvShare.addObject("categoryName", cate.getName());
             _mvShare.addObject("listPostCate", postService.listPostCategory(cate.getId()));
         }
         return _mvShare;
     }
-    
-        // Load thông tin tất cả danh mục
+
+    // Load thông tin tất cả danh mục
     @RequestMapping(value = "/tat-ca-chuyen-muc", method = RequestMethod.GET)
     public ModelAndView category() {
         _mvShare.setViewName("web/categorypost_all");

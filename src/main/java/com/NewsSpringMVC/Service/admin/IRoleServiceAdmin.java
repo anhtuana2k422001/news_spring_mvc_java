@@ -5,8 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.NewsSpringMVC.Entity.Role;
-
-public interface IRoleAdminService {
-	@Autowired
-	   public List<Role> getDataRole();
+import org.springframework.stereotype.Service;
+@Service
+public interface IRoleServiceAdmin {
+    @Autowired
+    public List<Role> getDataRole();
 }

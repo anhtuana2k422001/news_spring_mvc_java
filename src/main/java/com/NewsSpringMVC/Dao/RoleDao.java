@@ -10,14 +10,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RoleDao {
-	@Autowired
+
+    @Autowired
     JdbcTemplate _jdbcTemplate;
-	
-	@SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
-	   public List<Role> getDataRole(){
-	        List<Role> listRole = new ArrayList<Role>();
-	        String sql = "SELECT * FROM `roles`;";
-	        listRole = _jdbcTemplate.query(sql, new RoleMapper());
-	        return listRole;
-	    }
+
+    @SuppressWarnings({"UnusedAssignment", "Convert2Diamond"})
+    public List<Role> getDataRole() {
+        List<Role> listRole = new ArrayList<Role>();
+        String sql = "SELECT * FROM `roles`;";
+        listRole = _jdbcTemplate.query(sql, new RoleMapper());
+        return listRole;
+    }
 }

@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface ICategoryAdminService {
+public interface ICategoryServiceAdmin {
     @Autowired
     public List<Category> getDataCategory();
-    public Category getCategoryBySlug(String slug);
     public String getNameCategoryById(int category_id);
 }

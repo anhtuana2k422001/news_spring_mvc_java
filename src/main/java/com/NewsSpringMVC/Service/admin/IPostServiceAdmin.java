@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface IPostAdminService {
+public interface IPostServiceAdmin {
    @Autowired
    public List<Post> getDataPost();
    public List<Post> GetPostById(int id);
-   
 }

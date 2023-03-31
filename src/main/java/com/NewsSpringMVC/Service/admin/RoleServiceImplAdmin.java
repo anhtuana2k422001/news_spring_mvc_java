@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RoleAdminServiceImpl implements IRoleAdminService{
-	@Autowired
+public class RoleServiceImplAdmin implements IRoleServiceAdmin {
+
+    @Autowired
     private RoleDao roleDao;
-	
-	@Override
-	public List<Role> getDataRole() {
-		return roleDao.getDataRole();
-	}
+
+    @Override
+    public List<Role> getDataRole() {
+        return roleDao.getDataRole();
+    }
 }
