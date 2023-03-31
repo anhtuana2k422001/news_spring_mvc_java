@@ -75,7 +75,7 @@
 
         <!-- @if(checkPermission("admin.tags.index")) -->
         <li>
-            <a href="{{ route('admin.tags.index') }}">
+            <a href="<c:url value='/admin/listtag'/>">
                 <div class="parent-icon"><i class='bx bx-purchase-tag'></i></div>
                 <div class="menu-title">Từ khóa</div>
             </a>
@@ -92,7 +92,7 @@
 
             <ul>
                 <!-- @if(checkPermission("admin.comments.index")) -->
-                <li> <a href="{{ route('admin.comments.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả
+                <li> <a href="<c:url value='/admin/listcomment'/>"><i class="bx bx-right-arrow-alt"></i>Tất cả
                         bình luận</a>
                 </li>
                 <!-- @endif -->
