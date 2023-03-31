@@ -35,5 +35,16 @@ public class ImageDao {
         }
     }
     
+    // Lấy hình ảnh người dùng từ user id
+    public String getConfigPathImgUser(int user_id) {
+        try {
+            String sql = "SELECT * FROM images WHERE imageable_type LIKE '%User' AND imageable_id = ? ";
+            Image image = _jdbcTemplate.queryForObject(sql, new Object[]{user_id}, new BeanPropertyRowMapper<>(Image.class));
+            return "/template/web/storage/" + image.getPath();
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+    
     
 }

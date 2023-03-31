@@ -45,5 +45,10 @@ public class PostServiceImpl implements IPostService {
     public List<Post> listPostSreach(String key) {
          return postDao.listPostSreach(key);
     }
+
+    @Override
+    public Post getPostById(int post_id) {
+        return postDao.getPostById(post_id);
+    }
     
 }

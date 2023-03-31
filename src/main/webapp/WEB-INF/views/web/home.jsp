@@ -1313,116 +1313,33 @@
                                         <!-- Post Items Start -->
                                         <div class="post--items post--items-3">
                                             <ul class="nav" data-ajax-content="inner">
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <span class="thumb">
-                                                                <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(template/web/storage/images/aSzqRAOQOoZI8KU5fVdnracF6kctLMGsLFFmqW5o.jpg)"  alt="">
-                                                            </span>
+                                                <c:forEach var="comment" items="${listCommentHome}" varStatus="loop">
+                                                    <c:if test="${loop.index  < 5}"> 
+                                                        <li>
+                                                            <!-- Post Item Start -->
+                                                            <div class="post--item post--layout-3">
+                                                                <div class="post--img">
+                                                                    <span class="thumb">
+                                                                        <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(<c:url value='${imageService.getConfigPathImgUser(comment.user_id)}'/>)"  alt="">
+                                                                    </span>
 
-                                                            <div class="post--info">
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">Hay quá ad ơi</a> </h3>
+                                                                    <div class="post--info">
+                                                                        <div class="title">
+                                                                            <h3 class="h4"><a href="<c:url value='${postService.getPostById(comment.post_id).slug}#comments_all'/>">${comment.the_comment}</a> </h3>
+                                                                        </div>
+
+                                                                        <ul class="nav meta">
+                                                                            <li><span>  ${userService.getUserById(comment.user_id).name}</span></li>
+                                                                            <li><span>22/02/2023</span></li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
-
-                                                                <ul class="nav meta">
-                                                                    <li><span> Nguyễn Hải Dương																</span></li>
-                                                                    <li><span>22/02/2023</span></li>
-                                                                </ul>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <span class="thumb">
-                                                                <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(template/web/storage/images/zwgkagCp3hSEGCFVFFtYQPyOCnasz0L7dDUM8uQV.jpg)"  alt="">
-                                                            </span>
+                                                            <!-- Post Item End -->
+                                                        </li>
 
-                                                            <div class="post--info">
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">Mong đại dịch sớm qua mau</a> </h3>
-                                                                </div>
-
-                                                                <ul class="nav meta">
-                                                                    <li><span> Hồ Thị Lam																</span></li>
-                                                                    <li><span>22/02/2023</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <span class="thumb">
-                                                                <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(template/web/storage/images/bxraHew1fv64V4CqN9R10auogSiv6le3vHuEjUDT.jpg)"  alt="">
-                                                            </span>
-
-                                                            <div class="post--info">
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">Thật hối hận vì không xem bài viết sớm hơn. Thanks ad vì bài viết quá hữu ích</a> </h3>
-                                                                </div>
-
-                                                                <ul class="nav meta">
-                                                                    <li><span> Võ Lê Ngân Hà																</span></li>
-                                                                    <li><span>19/02/2023</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <span class="thumb">
-                                                                <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(template/web/storage/images/Ezghous9cn2wILye4p5MfZxWigJoYZ3Z3oIeE6QF.jpg)"  alt="">
-                                                            </span>
-
-                                                            <div class="post--info">
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">Bài viết hay quá ad ơi</a> </h3>
-                                                                </div>
-
-                                                                <ul class="nav meta">
-                                                                    <li><span> Lê Thị Tâm																</span></li>
-                                                                    <li><span>23/06/2022</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                <li>
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-3">
-                                                        <div class="post--img">
-                                                            <span class="thumb">
-                                                                <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(template/web/storage/images/P1qPvZUxODUvssHkSkDKkcfvoli5wufvXYFVCH9h.jpg)"  alt="">
-                                                            </span>
-
-                                                            <div class="post--info">
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">Bài viết thật hữu ích. Thank ad</a> </h3>
-                                                                </div>
-
-                                                                <ul class="nav meta">
-                                                                    <li><span> Võ Anh Quân																</span></li>
-                                                                    <li><span>19/06/2022</span></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
+                                                    </c:if>
+                                                </c:forEach>
 
                                             </ul>
 

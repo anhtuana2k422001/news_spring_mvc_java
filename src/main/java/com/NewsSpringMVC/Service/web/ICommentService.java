@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 public interface ICommentService {
     @Autowired
     public List<Comment> getCommentPost(int post_id);
+    public List<Comment> getDataComment();
 }

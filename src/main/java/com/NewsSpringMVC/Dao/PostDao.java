@@ -8,6 +8,7 @@ import com.NewsSpringMVC.Mapper.UserMapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -92,6 +93,7 @@ public class PostDao {
         return listPost;
     }
     
+
   //lấy ra thông tin của 1 bài viết cụ thể
     public List<Post> GetPostById(int id)
     {
@@ -108,6 +110,16 @@ public class PostDao {
         String sql = "SELECT * FROM posts";
         listPost = _jdbcTemplate.query(sql, new PostMapper());
         return listPost;
+
+    public Post getPostById(int post_id) {
+        try {
+            String sql = "SELECT * FROM posts WHERE id = ?";
+            Post post = _jdbcTemplate.queryForObject(sql, new Object[]{post_id}, new PostMapper());
+            return post;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+
     }
     
 }
