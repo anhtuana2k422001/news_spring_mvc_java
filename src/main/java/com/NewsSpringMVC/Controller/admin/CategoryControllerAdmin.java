@@ -15,5 +15,4 @@ public class CategoryControllerAdmin extends BaseControllerAdmin {
         _mvShareAdmin.setViewName(viewName);
         return _mvShareAdmin;
     }
-
 }

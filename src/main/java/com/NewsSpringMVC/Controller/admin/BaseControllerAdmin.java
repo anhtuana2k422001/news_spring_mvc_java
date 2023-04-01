@@ -36,6 +36,8 @@ public class BaseControllerAdmin {
     public void Init() {
         // Có thể khởi tạo comment để thừa kế tất cả controller load lên Nav
     }
+    
+    
 
     @ModelAttribute("userServiceAdmin")
     public UserServiceImplAdmin userService() {
