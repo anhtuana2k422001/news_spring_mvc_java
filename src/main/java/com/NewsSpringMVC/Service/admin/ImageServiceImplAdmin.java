@@ -1,0 +1,20 @@
+package com.NewsSpringMVC.Service.admin;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.NewsSpringMVC.Dao.ImageDao;
+ 
+
+@Service
+public class ImageServiceImplAdmin implements IImageServiceAdmin{
+	@Autowired
+    @SuppressWarnings("FieldNameHidesFieldInSuperclass")
+    private ImageDao imageDao;
+	@Override
+	public String getConfigPathImgUser(int user_id) {
+		// TODO Auto-generated method stub
+		return imageDao.getConfigPathImgUser(user_id);
+	}
+
+}
