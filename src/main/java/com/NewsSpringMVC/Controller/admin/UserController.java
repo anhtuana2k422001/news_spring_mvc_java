@@ -11,8 +11,7 @@ import com.NewsSpringMVC.Service.admin.ImageServiceImplAdmin;
 
 @Controller(value = "userControllerOfAdmin")
 public class UserController extends BaseControllerAdmin{
-	 @Autowired
-	    ImageServiceImplAdmin _imageServiceAdmin;
+	 
 	@RequestMapping(value = "/admin/listuser", method = RequestMethod.GET)
     public ModelAndView listUser() {
         String viewName = "admin/user/listuser";
@@ -21,8 +20,5 @@ public class UserController extends BaseControllerAdmin{
         return _mvShareAdmin;
     }
 	
-	@ModelAttribute("imageServiceAdmin")
-    public ImageServiceImplAdmin imageAdminService() {
-        return _imageServiceAdmin;
-    }
+	
 }

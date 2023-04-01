@@ -2,6 +2,7 @@ package com.NewsSpringMVC.Controller.admin;
 
 import com.NewsSpringMVC.Service.admin.CategoryServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.CommentServiceImplAdmin;
+import com.NewsSpringMVC.Service.admin.ContactServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.ImageServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.PostServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.RoleServiceImplAdmin;
@@ -32,7 +33,10 @@ public class BaseControllerAdmin {
     TagServiceImplAdmin _tagServiceAdmin;
     @Autowired
     CommentServiceImplAdmin _commentServiceAdmin;
-    
+    @Autowired
+    ImageServiceImplAdmin _imageServiceAdmin;
+    @Autowired
+    ContactServiceImplAdmin _contactServiceAdmin;
      
 
     public ModelAndView _mvShareAdmin = new ModelAndView();
@@ -68,7 +72,15 @@ public class BaseControllerAdmin {
     public CommentServiceImplAdmin commentAdminService() {
         return _commentServiceAdmin;
     }
-     
+    @ModelAttribute("imageServiceAdmin")
+    public ImageServiceImplAdmin imageAdminService() {
+        return _imageServiceAdmin;
+    }
+    
+    @ModelAttribute("contactServiceAdmin")
+    public ContactServiceImplAdmin contactAdminService() {
+        return _contactServiceAdmin;
+    }
      
 
 }

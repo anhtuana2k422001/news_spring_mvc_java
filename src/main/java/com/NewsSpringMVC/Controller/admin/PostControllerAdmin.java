@@ -20,9 +20,11 @@ public class PostControllerAdmin extends BaseControllerAdmin {
     @RequestMapping(value = "/admin/editpost/{id}", method = RequestMethod.GET)
     public ModelAndView editPost(@PathVariable("id") int id) {
         String viewName = "admin/post/editpost";
-        _mvShareAdmin.addObject("editPost", _postServiceAdmin.getPostById(id));
+        _mvShareAdmin.addObject("postDetail", _postServiceAdmin.getPostById(id));
         _mvShareAdmin.setViewName(viewName);
-        return _mvShareAdmin;
+      	return _mvShareAdmin;// Kế thừ từ BaseController
     }
+    
+
 
 }

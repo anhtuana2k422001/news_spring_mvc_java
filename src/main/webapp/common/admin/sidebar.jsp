@@ -161,7 +161,7 @@
 
         <!-- @if(checkPermission("admin.contacts")) -->
         <li>
-            <a href="{{ route('admin.contacts') }}">
+            <a href="<c:url value='/admin/listcontact'/>">
                 <div class="parent-icon"><i class='bx bx-mail-send'></i></div>
                 <div class="menu-title">Liên hệ</div>
             </a>

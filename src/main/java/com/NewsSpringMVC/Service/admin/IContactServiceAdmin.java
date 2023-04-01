@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.NewsSpringMVC.Entity.Comment;
+import com.NewsSpringMVC.Entity.Contact;
 
 @Service
-public interface ICommentServiceAdmin {
+public interface IContactServiceAdmin {
 	@Autowired
-    public List<Comment> getDataComment();
+    public List<Contact> getDataContact();
 }

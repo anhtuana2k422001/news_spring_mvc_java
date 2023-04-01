@@ -9,5 +9,5 @@ import org.springframework.stereotype.Service;
 public interface IPostServiceAdmin {
    @Autowired
    public List<Post> getDataPost();
-   public Post getPostById(int id);
+   public Post getPostById(int post_id);
 }
