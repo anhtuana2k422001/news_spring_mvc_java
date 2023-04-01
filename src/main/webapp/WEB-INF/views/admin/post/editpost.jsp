@@ -30,7 +30,7 @@
 
                 <div class="card">
                     <div class="card-body p-4">
-                        <h5 class="card-title">Sửa bài viết: <?php echo $post['title'] ?></h5>
+                        <h5 class="card-title">Sửa bài viết: ${editPost.title}</h5>
                         <hr />
                         <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
                             <div class="form-body mt-4">
@@ -39,7 +39,7 @@
                                         <div class="border border-3 p-4 rounded">
                                             <div class="mb-3">
                                                 <label for="inputProductTitle" class="form-label">Tiêu đề bài viết</label>
-                                                <input type="text" value='<?php echo $post['title'] ?>' name="title" required class="inputPostTitle form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
+                                                <input type="text" value='${editPost.title}' name="title" required class="inputPostTitle form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
 
                                                 <!-- Hiển thị thông báo lỗi -->
                                                 <?php if (isset($message) && !empty($message)) : ?>
@@ -50,7 +50,7 @@
 
                                             <div class="mb-3">
                                                 <label for="inputProductTitle" class="form-label">Slug - liên kết</label>
-                                                <input type="text" value='<?php echo $post['slug'] ?>' name="slug" required class="slugPost form-control" id="inputProductTitle" placeholder="Nhập slug">
+                                                <input type="text" value='${editPost.slug}' name="slug" required class="slugPost form-control" id="inputProductTitle" placeholder="Nhập slug">
 
                                                 <!-- Hiển thị thông báo lỗi -->
                                                 <?php if (isset($message) && !empty($message)) : ?>
