@@ -40,7 +40,7 @@
                 <!-- @endif -->
 
                 <!-- @if(checkPermission("admin.posts.create")) -->
-                <li> <a href="{{ route('admin.posts.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm bài
+                <li> <a href="<c:url value='/admin/addpost'/>""><i class="bx bx-right-arrow-alt"></i>Thêm bài
                         viết mới</a>
                 </li>
                 <!-- @endif -->

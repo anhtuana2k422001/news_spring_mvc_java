@@ -12,7 +12,7 @@ public class ImageDao {
 
     @Autowired
     JdbcTemplate _jdbcTemplate;
-    
+
     // Lấy thông tin hình ảnh bài viết từ id 
     public Image getPathImgPost(int post_id) {
         try {
@@ -23,9 +23,9 @@ public class ImageDao {
             return null;
         }
     }
-    
+
     // Lấy đường hình ảnh bài viết từ id 
-    public String getConfigPathImgPost(int post_id ) {
+    public String getConfigPathImgPost(int post_id) {
         try {
             String sql = "SELECT * FROM images WHERE imageable_type LIKE '%Post' AND imageable_id = ? ";
             Image image = _jdbcTemplate.queryForObject(sql, new Object[]{post_id}, new BeanPropertyRowMapper<>(Image.class));
@@ -34,17 +34,20 @@ public class ImageDao {
             return null;
         }
     }
-    
+
     // Lấy hình ảnh người dùng từ user id
     public String getConfigPathImgUser(int user_id) {
+        @SuppressWarnings("UnusedAssignment")
+        String imagePath = null;
         try {
-            String sql = "SELECT * FROM images WHERE imageable_type LIKE '%User' AND imageable_id = ? ";
+            String sql = "SELECT * FROM images WHERE imageable_type LIKE '%User' AND imageable_id = ? ORDER BY created_at DESC LIMIT 1";
             Image image = _jdbcTemplate.queryForObject(sql, new Object[]{user_id}, new BeanPropertyRowMapper<>(Image.class));
-            return "/template/web/storage/" + image.getPath();
+            imagePath = "/template/web/storage/" + image.getPath();
         } catch (EmptyResultDataAccessException e) {
-            return null;
+            // Xử lý ngoại lệ EmptyResultDataAccessException
+            imagePath = "/template/web/storage/placeholders/user_placeholder.jpg";
         }
+        return imagePath;
     }
-    
-    
+
 }

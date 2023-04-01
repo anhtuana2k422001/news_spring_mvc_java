@@ -49,8 +49,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${listUserAdmin}" var="user">
-                                    <tr>
+                                <c:forEach items="${listUserAdmin}" var="user" varStatus="loop">
+                                    <c:if test="${loop.index < 100}"><tr>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="ms-2">
@@ -60,7 +60,6 @@
                                         </td>
                                         <td>
                                             <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(<c:url value='${imageServiceAdmin.getConfigPathImgUser(user.id)}'/>)"  alt="">
-
                                         </td>
                                         <td>${user.name}</td>
                                         <td>${user.email}</td>
@@ -92,6 +91,7 @@
                                             </div>
                                         </td>
                                     </tr>
+                                     </c:if>
                                     </c:forEach>
 
                                 </tbody>

@@ -1,8 +1,6 @@
 package com.NewsSpringMVC.Dao;
 
-import com.NewsSpringMVC.Entity.Category;
 import com.NewsSpringMVC.Entity.Post;
-import com.NewsSpringMVC.Mapper.CategoryMapper;
 import com.NewsSpringMVC.Mapper.PostMapper;
 
 import java.util.ArrayList;

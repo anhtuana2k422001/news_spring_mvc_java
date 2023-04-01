@@ -49,7 +49,7 @@ public class BaseControllerAdmin {
     
 
     @ModelAttribute("userServiceAdmin")
-    public UserServiceImplAdmin userService() {
+    public UserServiceImplAdmin userServiceAdmin() {
         return _userServiceAdmin;
     }
 
