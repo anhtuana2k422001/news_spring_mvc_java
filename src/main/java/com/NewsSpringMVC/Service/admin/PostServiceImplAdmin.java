@@ -16,13 +16,10 @@ public class PostServiceImplAdmin implements IPostServiceAdmin {
     public List<Post> getDataPost() {
         return postDao.getDataPost();
     }
-
-    
-
+	
 	@Override
-	public Post getPostById(int id) {
-		// TODO Auto-generated method stub
-		return postDao.getPostById(id);
+	public Post getPostById(int post_id) {
+		return postDao.getPostById(post_id);
 	}
 
 }

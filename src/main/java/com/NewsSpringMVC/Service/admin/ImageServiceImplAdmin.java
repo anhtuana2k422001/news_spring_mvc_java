@@ -13,7 +13,7 @@ public class ImageServiceImplAdmin implements IImageServiceAdmin{
     private ImageDao imageDao;
 	@Override
 	public String getConfigPathImgUser(int user_id) {
-		// TODO Auto-generated method stub
+		
 		return imageDao.getConfigPathImgUser(user_id);
 	}
 

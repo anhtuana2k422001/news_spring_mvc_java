@@ -59,7 +59,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <img class="img_admn--user img-avatar" width="60" height="60" style="margin: auto; background-size: cover ;  background-image: url(<c:url value='${imageService.getConfigPathImgUser(user.id)}'/>)" alt="">
+                                            <img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url(<c:url value='${imageServiceAdmin.getConfigPathImgUser(user.id)}'/>)"  alt="">
 
                                         </td>
                                         <td>${user.name}</td>
