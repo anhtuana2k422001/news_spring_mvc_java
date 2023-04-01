@@ -26,7 +26,7 @@
 				<ul class="header--topbar-action nav">
 					<!-- @guest -->
 					<li class="btn-cta">
-                                                       <c:if test="${not empty UserLogin and not empty UserLogin.getName()}">
+                                                      <c:if test="${not empty UserLogin and not empty UserLogin.getName()}">
                                                             <a href="javascript:;"> <i class="fa fm fa-user-o"></i><span>${UserLogin.getName()}</span>   </a>
                                                       </c:if>
                                                       

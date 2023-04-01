@@ -43,5 +43,16 @@ public class CategoryDao {
             return null;
         }
     }
+    
+    // Lấy tên danh mục theo ID
+    public Category getCategoryById(int idCate) {
+        try {
+            String sql = "SELECT * FROM categories WHERE id = ?";
+            Category category = _jdbcTemplate.queryForObject(sql, new Object[]{idCate}, new CategoryMapper());
+            return category;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
    
 }

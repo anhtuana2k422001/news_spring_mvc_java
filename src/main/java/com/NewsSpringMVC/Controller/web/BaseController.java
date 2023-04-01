@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.NewsSpringMVC.Service.web.HomeServiceImpl;
 import com.NewsSpringMVC.Service.web.ImageServiceImpl;
 import com.NewsSpringMVC.Service.web.PostServiceImpl;
+import com.NewsSpringMVC.Service.web.TagServiceImpl;
 import com.NewsSpringMVC.Service.web.UserServiceImpl;
 import org.springframework.web.bind.annotation.ModelAttribute;
 @Controller(value = "baseControllerOfWeb")
@@ -27,6 +28,8 @@ public class BaseController {
     ImageServiceImpl imageService;
     @Autowired
     CommentServiceImpl commentService;
+    @Autowired
+    TagServiceImpl tagService;
     
     public ModelAndView _mvShare = new ModelAndView();
     
@@ -72,4 +75,8 @@ public class BaseController {
         return postService;
     }
     
+    @ModelAttribute("tagService")
+    public TagServiceImpl tagService() {
+        return tagService;
+    }
 }

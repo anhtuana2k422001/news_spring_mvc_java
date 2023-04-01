@@ -11,4 +11,5 @@ public interface ICategoryService {
     public List<Category> getDataCategory();
     public Category getCategoryBySlug(String slug);
     public String getNameCategoryById(int category_id);
+    public Category getCategoryById(int idCate);
 }

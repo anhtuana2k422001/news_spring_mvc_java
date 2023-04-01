@@ -1330,7 +1330,7 @@
 
                                                                         <ul class="nav meta">
                                                                             <li><span>  ${userService.getUserById(comment.user_id).name}</span></li>
-                                                                            <li><span>22/02/2023</span></li>
+                                                                            <li><span>${comment.created_at}</span></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

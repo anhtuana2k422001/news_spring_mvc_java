@@ -36,11 +36,11 @@
                                 <div class="post--cats">
                                     <ul class="nav">
                                         <li><span><i class="fa fa-folder-open-o"></i></span></li>
-                                        <li><a class="text capitalize"
-                                                href="">Chưa có ... </a>
-                                        </li>
-                                        <li><a class="text capitalize"
-                                                href="">Chưa có ...</a></li>
+                                         <c:forEach var="tag" items="${tagService.listTagbyPostID(postDetail.id)}">
+                                            <li><a class="text capitalize"
+                                                    href="">${tag.name}</a>
+                                            </li>
+                                         </c:forEach>
                                     </ul>
                                 </div>
 
@@ -49,7 +49,7 @@
                                         <li class="text capitalize"><a href="javascript:;">${postDetail.created_at}<a></li>
                                         <li><a href="#">${userService.getUserById(postDetail.user_id).name}</a></li>
                                         <li><span><i class="fa fm fa-eye"></i>${postDetail.views}</span></li>
-                                        <li><a href="#comments_all"><i class="fa fm fa-comments-o"></i>${commentService.getCommentPost(postDetail.id).size()}</a></li>
+                                        <li><a href="<c:url value='/${postDetail.slug}'/>#comments_all"><i class="fa fm fa-comments-o"></i>${commentService.getCommentPost(postDetail.id).size()}</a></li>
                                     </ul>
 
                                     <div class="title">
@@ -75,10 +75,11 @@
                             <div class="post--tags">
                                 <ul class="nav">
                                     <li><span><i class="fa fa-tags"></i> Từ khóa </span></li>
-                                    <li><a class="text capitalize" href="{{ route('tags.show',  $post->tags[$i]) }}">Bếp
-                                            từ Sakura </a></li>
-                                    <li><a class="text capitalize"
-                                            href="{{ route('tags.show',  $post->tags[$i]) }}">HEATTECH</a></li>
+                                       <c:forEach var="tag" items="${tagService.listTagbyPostID(postDetail.id)}">
+                                            <li><a  class="text capitalize"
+                                                    href="javascript:;">${tag.name}</a>
+                                            </li>
+                                         </c:forEach>
                                 </ul>
                             </div>
                             <!-- Post Tags End -->
@@ -107,26 +108,27 @@
                             <div id="comments_all" class="comment--list pd--30-0">
                                 <!-- Post Items Title Start -->
                                 <div class="post--items-title">
-                                    <h2 class="h4"><span class="post_count_comment h4">2 </span> bình luận</h2>
+                                    <h2 class="h4"><span class="post_count_comment h4">${commentService.getCommentPost(postDetail.id).size()} </span> bình luận</h2>
                                     <i class="icon fa fa-comments-o"></i>
                                 </div>
                                 <!-- Post Items Title End -->
 
                                 <ul class="comment--items nav">
+                                   <c:forEach var="comment" items="${commentService.getCommentPost(postDetail.id)}">
                                     <li>
                                         <!-- Comment Item Start -->
                                         <div class="comment--item clearfix">
                                             <div class="comment--img float--left">
-                                                <!-- <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url({{ $comment->user->image ?  asset('storage/' . $comment->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})" alt=""> -->
+                                                 <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url(<c:url value='${imageService.getConfigPathImgUser(comment.user_id)}'/>)" alt=""> 
                                             </div>
                                             <div class="comment--info">
                                                 <div class="comment--header clearfix">
-                                                    <p class="name">Phạm Duy Khánh</p>
-                                                    <p class="date">19/06/2022</p>
+                                                    <p class="name">${userService.getUserById(comment.user_id).name}</p>
+                                                    <p class="date">${comment.created_at}</p>
                                                     <a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
                                                 </div>
                                                 <div class="comment--content">
-                                                    <p>Sản phẩm thật tốt rất nên dùng</p>
+                                                    <p>${comment.the_comment}</p>
                                                     <p class="star">
                                                         <span class="text-left"><a href="#" class="reply"><i
                                                                     class="icon-reply"></i>Trả lời</a></span>
@@ -136,29 +138,7 @@
                                         </div>
                                         <!-- Comment Item End -->
                                     </li>
-                                    <li>
-                                        <!-- Comment Item Start -->
-                                        <div class="comment--item clearfix">
-                                            <div class="comment--img float--left">
-                                                <!-- <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url({{ $comment->user->image ?  asset('storage/' . $comment->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})" alt=""> -->
-                                            </div>
-                                            <div class="comment--info">
-                                                <div class="comment--header clearfix">
-                                                    <p class="name">Trần Gia Huy</p>
-                                                    <p class="date">19/06/2022</p>
-                                                    <a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
-                                                </div>
-                                                <div class="comment--content">
-                                                    <p>Thật tuyệt vời khi được sử dụng sản phẩm này</p>
-                                                    <p class="star">
-                                                        <span class="text-left"><a href="#" class="reply"><i
-                                                                    class="icon-reply"></i>Trả lời</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Comment Item End -->
-                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                             <!-- Comment List End -->
@@ -171,17 +151,30 @@
                                     <i class="icon fa fa-pencil-square-o"></i>
                                 </div>
                                 <!-- Post Items Title End -->
-
+                              
                                 <div class="comment-respond">
                                     <x-blog.message :status="'success'" />
+                                    <c:if test="${not empty UserLogin and not empty UserLogin.getName()}">
+                                        <form onsubmit="return false;" autocomplete="off" method="POST">
+                                            <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <textarea name="the_comment" id="message" cols="30" rows="5" class="form-control" placeholder="Đánh giá bài viết này"></textarea>
+                                                </div>
+                                            </div>
+                                            <small style="color: red; font-size: 14px;" class="comment_error"> </small>
+                                            <div class="form-group">
+                                                <input id="input_comment" type="submit" value="Bình luận" class="send-comment-btn btn btn-primary">
+                                            </div>
+                                        </form>
+                                    </c:if>
 
-                                    <p class="h4">
-                                        <a href="/login.php">Đăng nhập</a> hoặc
-                                        <a href="/login.php#toregister">Đăng ký</a> để bình luận bài viết
-                                    </p>
-
+                                    <c:if test="${empty UserLogin}">
+                                        <p class="h4">
+                                            <a href="<c:url value='/dang-nhap'/>">Đăng nhập</a> hoặc
+                                            <a href="<c:url value='/dang-ky'/>">Đăng ký</a> để bình luận bài viết
+                                        </p>
+                                    </c:if>
                                 </div>
-
                             </div>
                             <!-- Comment Form End -->
 
@@ -196,191 +189,44 @@
                                 <!-- Post Items Start -->
                                 <div class="post--items post--items-2" data-ajax-content="outer">
                                     <ul class="nav row" data-ajax-content="inner">
-                                        <li class="col-sm-12 pbottom--30">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="/post.php?slug=bac-thay-quan-he-cua-microsoft"
-                                                        class="thumb">
-                                                        <img src="../storage/images/ihIHB7UhkbXmuiRvPFzdxEF6hmHI3avWEtZ0WPBj.jpg"
-                                                            alt="">
-                                                    </a>
+                                        <c:forEach var="post" items="${listPostTheSame}" varStatus="loop">
+                                            <c:if test="${loop.index  <= 4}"> 
+                                                <li class="col-sm-12 pbottom--30">
+                                                    <!-- Post Item Start -->
+                                                    <div class="post--item post--layout-3">
+                                                        <div class="post--img">
+                                                            <a href="<c:url value='/${post.slug}'/>"
+                                                               class="thumb">
+                                                                <img src="<c:url value='${imageService.getConfigPathImgPost(post.id)}'/>"
+                                                                     alt="">
+                                                            </a>
 
-                                                    <div class="post--info">
+                                                            <div class="post--info">
 
-                                                        <div class="title">
-                                                            <h3 class="h4">
-                                                                <a href="/post.php?slug=bac-thay-quan-he-cua-microsoft"
-                                                                    class="btn-link">Bậc thầy quan hệ của Microsoft</a>
-                                                            </h3>
-                                                            <p style="font-size:16px">
-                                                                <span>Từ một biểu tượng của độc quyền thập niên 90, hình
-                                                                    ảnh Microsoft ngày càng đẹp hơn trong mắt nhà quản
-                                                                    lý.</span>
-                                                            </p>
+                                                                <div class="title">
+                                                                    <h3 class="h4">
+                                                                        <a href="<c:url value='/${post.slug}'/>"
+                                                                           class="btn-link">${post.title}</a>
+                                                                    </h3>
+                                                                    <p style="font-size:16px">
+                                                                        <span>${post.excerpt}</span>
+                                                                    </p>
+                                                                </div>
+
+                                                                <ul style="padding-top:10px" class="nav meta ">
+                                                                    <li><a href="javascript:;">${userService.getUserById(post.user_id).name}</a>
+                                                                    </li>
+                                                                    <li><a href="javascript:;">${post.created_at}</a></li>
+                                                                    <li><a href="<c:url value='/${post.slug}'/>#comments_all"><i
+                                                                                class="fa fm fa-comments"></i>${commentService.getCommentPost(post.id).size()}</a></li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-
-                                                        <ul style="padding-top:10px" class="nav meta ">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a>
-                                                            </li>
-                                                            <li><a href="javascript:;">19/02/2023</a></li>
-                                                            <li><a href="javascript:;"><i
-                                                                        class="fa fm fa-comments"></i>1</a></li>
-                                                        </ul>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li class="col-sm-12 pbottom--30">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="/post.php?slug=co-gi-o-anker-soundcore-r100-tws---tai-nghe-khong-day-cuc-hot-hien-nay"
-                                                        class="thumb">
-                                                        <img src="../storage/images/yP9kwrMG2M5cHqtvklEIjvk7YekdGNyryhibSyMH.jpg"
-                                                            alt="">
-                                                    </a>
-
-                                                    <div class="post--info">
-
-                                                        <div class="title">
-                                                            <h3 class="h4">
-                                                                <a href="/post.php?slug=co-gi-o-anker-soundcore-r100-tws---tai-nghe-khong-day-cuc-hot-hien-nay"
-                                                                    class="btn-link">Có gì ở Anker Soundcore R100 TWS -
-                                                                    Tai nghe không dây cực hot hiện nay?</a>
-                                                            </h3>
-                                                            <p style="font-size:16px">
-                                                                <span>Tai nghe R100 TWS mang tới trải nghiệm nghe hoàn
-                                                                    toàn mới với thiết kế đơn giản, âm thanh chân
-                                                                    thực.</span>
-                                                            </p>
-                                                        </div>
-
-                                                        <ul style="padding-top:10px" class="nav meta ">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a>
-                                                            </li>
-                                                            <li><a href="javascript:;">19/06/2022</a></li>
-                                                            <li><a href="javascript:;"><i
-                                                                        class="fa fm fa-comments"></i>0</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li class="col-sm-12 pbottom--30">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="/post.php?slug=galaxy-tab-s8-series-mo-san-choi-anh-thach-thuc-sac-dem-danh-rieng-cho-gioi-tre-thoa-suc-sang-tao"
-                                                        class="thumb">
-                                                        <img src="../storage/images/DvdZV7RfZbSIhSkJQUUsUojQkBcD1ke24Mpmbwqf.jpg"
-                                                            alt="">
-                                                    </a>
-
-                                                    <div class="post--info">
-
-                                                        <div class="title">
-                                                            <h3 class="h4">
-                                                                <a href="/post.php?slug=galaxy-tab-s8-series-mo-san-choi-anh-thach-thuc-sac-dem-danh-rieng-cho-gioi-tre-thoa-suc-sang-tao"
-                                                                    class="btn-link">Galaxy Tab S8 Series mở sân chơi
-                                                                    ảnh “Thách Thức Sắc Đêm” dành riêng cho giới trẻ
-                                                                    thỏa sức sáng tạo</a>
-                                                            </h3>
-                                                            <p style="font-size:16px">
-                                                                <span>Cuộc thi “Thách Thức Sắc Đêm” thể hiện tinh thần
-                                                                    dám thử thách, phá vỡ rào cản, sáng tạo nét riêng,
-                                                                    giúp giới trẻ ghi dấu ấn trên hành trình khám phá
-                                                                    cuộc sống.</span>
-                                                            </p>
-                                                        </div>
-
-                                                        <ul style="padding-top:10px" class="nav meta ">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a>
-                                                            </li>
-                                                            <li><a href="javascript:;">19/06/2022</a></li>
-                                                            <li><a href="javascript:;"><i
-                                                                        class="fa fm fa-comments"></i>1</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li class="col-sm-12 pbottom--30">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="/post.php?slug=may-tinh-bang-samsung-galaxy-tab-a6-7inch-tai-viet-nam"
-                                                        class="thumb">
-                                                        <img src="../storage/images/awmJrx9B1uZ8601khZrAqkLGOpBQwbf66szyddxK.jpg"
-                                                            alt="">
-                                                    </a>
-
-                                                    <div class="post--info">
-
-                                                        <div class="title">
-                                                            <h3 class="h4">
-                                                                <a href="/post.php?slug=may-tinh-bang-samsung-galaxy-tab-a6-7inch-tai-viet-nam"
-                                                                    class="btn-link">Máy tính bảng Samsung Galaxy Tab
-                                                                    A(6) 7inch tại Việt Nam</a>
-                                                            </h3>
-                                                            <p style="font-size:16px">
-                                                                <span>Nâng tầm trải nghiệm giải trí cho giới trẻ và
-                                                                    người dùng phổ thông</span>
-                                                            </p>
-                                                        </div>
-
-                                                        <ul style="padding-top:10px" class="nav meta ">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a>
-                                                            </li>
-                                                            <li><a href="javascript:;">19/06/2022</a></li>
-                                                            <li><a href="javascript:;"><i
-                                                                        class="fa fm fa-comments"></i>0</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li class="col-sm-12 pbottom--30">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-3">
-                                                <div class="post--img">
-                                                    <a href="/post.php?slug=binh-nuoc-thong-minh---san-pham-cong-nghe-bao-ve-suc-khoe"
-                                                        class="thumb">
-                                                        <img src="../storage/images/UxQ3GhwpqPf82gc2zjnPsTFslMqlF0347616XJMT.jpg"
-                                                            alt="">
-                                                    </a>
-
-                                                    <div class="post--info">
-
-                                                        <div class="title">
-                                                            <h3 class="h4">
-                                                                <a href="/post.php?slug=binh-nuoc-thong-minh---san-pham-cong-nghe-bao-ve-suc-khoe"
-                                                                    class="btn-link">Bình nước thông minh - Sản phẩm
-                                                                    công nghệ bảo vệ sức khoẻ</a>
-                                                            </h3>
-                                                            <p style="font-size:16px">
-                                                                <span>Bình nước thông minh - Sản phẩm công nghệ bảo vệ
-                                                                    sức khoẻ</span>
-                                                            </p>
-                                                        </div>
-
-                                                        <ul style="padding-top:10px" class="nav meta ">
-                                                            <li><a href="javascript:;">Hồ Anh Tuấn</a>
-                                                            </li>
-                                                            <li><a href="javascript:;">19/06/2022</a></li>
-                                                            <li><a href="javascript:;"><i
-                                                                        class="fa fm fa-comments"></i>0</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-
+                                                    <!-- Post Item End -->
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
                                     </ul>
 
                                     <!-- Preloader Start -->
@@ -421,6 +267,73 @@
         </div>
         <!-- Main Content Section End -->
     </div>
+                       
 
     </body>
+             <script>
+   
+	$(document).on('click', '.send-comment-btn', (e) => {
+		e.preventDefault();
+		let $this = e.target;
+		let the_comment =  $($this).parents("form").find("textarea[name='the_comment']").val();
+		let post_title =  $('.post_title').text() ; 
+
+
+		let count_comment =  $('.post_count_comment').text() ; 
+        let ListComment = $('.comment--items');
+
+                  
+                    // Xử lý thêm comment vào bài viết tạm thời
+                    count_comment = Number(count_comment) + 1;
+                    $('.comment_error').text('');
+
+                    $('.post_count_comment').text(count_comment);
+                    const htmls  = (() =>{
+                    return `
+                                <li>
+                                    <div class="comment--item clearfix">
+                                        <div class="comment--img float--left">
+                                            <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url(<?php echo Handle::getUserPathImg($userPost["id"]) ?>)"  alt="">
+                                        </div>
+                                        <div class="comment--info">
+                                            <div class="comment--header clearfix">
+                                            <p class="name"><?php echo $userPost["name"] ?></p> 
+                                                <p class="date">vừa xong</p>
+                                                <a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
+                                            </div>
+                                            <div class="comment--content">
+                                                <p>Bài tiết này hay quá</p>
+                                                <p class="star">
+                                                    <span class="text-left"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                        `
+                        });
+                    ListComment.append(htmls);
+
+
+					$('.global-message').addClass('alert alert-info');
+					$('.global-message').fadeIn();
+					// $('.global-message').text(data.message);
+					$('.global-message').text("Bình luận bài viết thành công !");
+
+					// clearData( $($this).parents("form"), [
+					// 	'the_comment',
+					// ]);
+
+					setTimeout(() => {
+						$(".global-message").fadeOut();
+					}, 5000);
+
+				// }else{
+                //     $('.comment_error').text(data.errors);
+				// }
+			// }
+		// })
+	});
+</script>
+
 </html>
