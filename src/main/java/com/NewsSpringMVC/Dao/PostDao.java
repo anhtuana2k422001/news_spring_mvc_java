@@ -1,6 +1,8 @@
 package com.NewsSpringMVC.Dao;
 
+import com.NewsSpringMVC.Entity.Category;
 import com.NewsSpringMVC.Entity.Post;
+import com.NewsSpringMVC.Mapper.CategoryMapper;
 import com.NewsSpringMVC.Mapper.PostMapper;
 
 import java.util.ArrayList;
@@ -93,13 +95,15 @@ public class PostDao {
     
 
   //Lấy ra thông tin của 1 bài viết cụ thể
-    public List<Post> GetPostById(int id)
+    public Post GetPostById(int id)
     {
-    	List<Post> listPostId = new ArrayList<Post>();
-    	 
-        String sql = "SELECT * FROM posts WHERE id = 'id'";
-        listPostId = _jdbcTemplate.query(sql, new PostMapper());
-        return listPostId;
+    	try {
+    		String sql = "SELECT * FROM posts WHERE id = ?";
+    		Post post = _jdbcTemplate.queryForObject(sql, new Object[]{id}, new PostMapper());
+            return post;
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
     
     public List<Post> getDataPost() {
