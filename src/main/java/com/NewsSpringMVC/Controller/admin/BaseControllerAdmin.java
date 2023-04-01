@@ -2,10 +2,13 @@ package com.NewsSpringMVC.Controller.admin;
 
 import com.NewsSpringMVC.Service.admin.CategoryServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.CommentServiceImplAdmin;
+import com.NewsSpringMVC.Service.admin.ImageServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.PostServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.RoleServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.TagServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.UserServiceImplAdmin;
+import com.NewsSpringMVC.Service.web.ImageServiceImpl;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,8 @@ public class BaseControllerAdmin {
     TagServiceImplAdmin _tagServiceAdmin;
     @Autowired
     CommentServiceImplAdmin _commentServiceAdmin;
+    
+     
 
     public ModelAndView _mvShareAdmin = new ModelAndView();
 
@@ -63,6 +68,7 @@ public class BaseControllerAdmin {
     public CommentServiceImplAdmin commentAdminService() {
         return _commentServiceAdmin;
     }
-    
+     
+     
 
 }

@@ -144,7 +144,7 @@
             <ul>
 
                 <!-- @if(checkPermission("admin.users.index")) -->
-                <li> <a href="{{ route('admin.users.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả tài
+                <li> <a href="<c:url value='/admin/listuser'/>"><i class="bx bx-right-arrow-alt"></i>Tất cả tài
                         khoản</a>
                 </li>
                 <!-- @endif -->
