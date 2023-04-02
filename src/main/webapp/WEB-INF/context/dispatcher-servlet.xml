@@ -40,6 +40,9 @@
 
    </bean>
    
+   
+   
+   
    <!--Cấu hình kết nối cơ sở dữ liệu Mysql driverManagerDatasource-->
   	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -56,4 +59,6 @@
         <mvc:annotation-driven />
         <mvc:resources mapping="/template/**"
 		location="/template/" />
+		
+		 
 </beans>

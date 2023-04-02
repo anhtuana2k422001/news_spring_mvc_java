@@ -16,4 +16,22 @@ public class RoleServiceImplAdmin implements IRoleServiceAdmin {
     public List<Role> getDataRole() {
         return roleDao.getDataRole();
     }
+
+	@Override
+	public int AddRole(Role role) {
+		// TODO Auto-generated method stub
+		return roleDao.AddRole(role);
+	}
+
+	@Override
+	public Role getRoleById(int id) {
+		// TODO Auto-generated method stub
+		return roleDao.getRoleById(id);
+	}
+
+	@Override
+	public int UpdateRole(Role role) {
+		// TODO Auto-generated method stub
+		return roleDao.UpdateRole(role);
+	}
 }

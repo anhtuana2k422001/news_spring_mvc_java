@@ -9,8 +9,10 @@
 </head>
 <body>
 	<!--wrapper-->
-	<div class="wrapper"> 
-		<!--start page Content Page -->
+    <div class="wrapper">
+        
+
+        <!--start page Content Page -->
         <div class="page-wrapper">
             <div class="page-content">
                 <!--breadcrumb-->
@@ -32,20 +34,18 @@
                     <div class="card-body">
                         <div class="d-lg-flex align-items-center mb-4 gap-3">
                             <div class="position-relative">
-                                <input type="text" class="form-control ps-5 radius-30" placeholder="Tìm kiếm từ khóa"> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
+                                <input type="text" class="form-control ps-5 radius-30" placeholder="Tìm kiếm tù khóa"> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
                             </div>
-                            <div class="ms-auto"><a href="createpost.php" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Thêm từ khóa mới</a></div>
                         </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
-
                                 <thead class="table-light">
                                     <tr>
                                         <th>Mã từ khóa</th>
-                                        <th>Tên từ khóa</th>  
-                                        <th>Ngày tạo</th> 
-                                        <th>Ngày cập nhật</th> 
-                                        <th>Chức năng</th> 
+                                        <th>Tên từ khóa</th>
+                                        <th>Xem chi tiết</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -61,45 +61,37 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>${tag.name}</td>    
+                                            <td>${tag.name}</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="<c:url value='/admin/editpost/${tag.id}' />">Chi tiết bài viết</a>
+                                            </td>
                                             <td>${tag.created_at}</td>
-                                            <td>${tag.updated_at}</td> 
+
                                             <td>
                                                 <div class="d-flex order-actions">
-                                                    <a href="<c:url value='/admin/editrole/${post.id}' />" class=""><i class='bx bxs-edit'></i></a>
-                                                    <a href="#" onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $post->id }}').submit();" class="ms-3"><i class='bx bxs-trash'></i></a>
+                                                    <a href="#" onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $tag->id }}').submit();" class="ms-3"><i class='bx bxs-trash'></i></a>
 
-                                                    <form method="post" action="{{ route('admin.posts.destroy', $post) }}" id="delete_form_{{ $post->id }}">
-                                                         
+                                                    <form method="post" action="{{ route('admin.tags.destroy', $tag) }}" id="delete_form_{{ $tag->id }}">
                                                     </form>
-
                                                 </div>
                                             </td>
                                         </tr>
                                     </c:forEach>
 
                                 </tbody>
-
-                                    </table>
-
-                         </div>
-                                
-                        <div>
-                            <?php
-                            if ($page > 1) {
-                                echo  "<button class='btn btn-secondary me-4  mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page - 1) . "'\">Trang trước</button>";
-                            }
-                            if ($page < $pages) {
-                                echo "<button class='btn btn-secondary mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page + 1) . "'\">Trang sau</button>";
-                            }
-                            ?>
+                            </table>
                         </div>
-
+                        <div>
+                             
+                        </div>
                     </div>
                 </div>
 
+
             </div>
         </div>
-	<!--end wrapper-->
+         
+    </div>
+    <!--end wrapper-->
 </body>
 </html>

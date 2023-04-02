@@ -40,7 +40,7 @@
                 <!-- @endif -->
 
                 <!-- @if(checkPermission("admin.posts.create")) -->
-                <li> <a href="<c:url value='/admin/addpost'/>""><i class="bx bx-right-arrow-alt"></i>Thêm bài
+                <li> <a href="<c:url value='/admin/createpost'/>"><i class="bx bx-right-arrow-alt"></i>Thêm bài
                         viết mới</a>
                 </li>
                 <!-- @endif -->
@@ -65,7 +65,7 @@
                 <!-- @endif -->
 
                 <!-- @if(checkPermission("admin.categories.create")) -->
-                <li> <a href="{{ route('admin.categories.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm
+                <li> <a href="<c:url value='/admin/createcategory'/>"><i class="bx bx-right-arrow-alt"></i>Thêm
                         danh mục mới</a>
                 </li>
                 <!-- @endif -->
@@ -98,9 +98,7 @@
                 <!-- @endif -->
 
                 <!-- @if(checkPermission("admin.comments.create")) -->
-                <li> <a href="{{ route('admin.comments.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm
-                        bình luận mới</a>
-                </li>
+ 
                 <!-- @endif -->
 
             </ul>
@@ -125,7 +123,7 @@
                 <!-- @endif -->
 
                 <!-- @if(checkPermission("admin.roles.create")) -->
-                <li> <a href="{{ route('admin.roles.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm quyền
+                <li> <a href="<c:url value='/admin/createrole'/>"><i class="bx bx-right-arrow-alt"></i>Thêm quyền
                         mới</a>
                 </li>
                 <!-- @endif -->
@@ -150,7 +148,7 @@
                 <!-- @endif -->
 
                 <!-- @if(checkPermission("admin.users.create")) -->
-                <li> <a href="{{ route('admin.users.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm tài
+                <li> <a href="<c:url value='/admin/createuser'/>"><i class="bx bx-right-arrow-alt"></i>Thêm tài
                         khoản mới</a>
                 </li>
                 <!-- @endif -->
@@ -170,7 +168,7 @@
 
         <!-- @if(checkPermission("admin.setting.edit")) -->
         <li>
-            <a href="{{ route('admin.setting.edit') }}">
+            <a href="<c:url value='/admin/about'/>">
                 <div class="parent-icon"><i class='bx bx-info-square'></i></div>
                 <div class="menu-title">Cài đặt</div>
             </a>

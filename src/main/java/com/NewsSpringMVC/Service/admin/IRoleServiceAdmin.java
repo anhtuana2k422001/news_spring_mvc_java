@@ -10,4 +10,7 @@ import org.springframework.stereotype.Service;
 public interface IRoleServiceAdmin {
     @Autowired
     public List<Role> getDataRole();
+    public int AddRole(Role role);
+    public Role getRoleById(int id);
+    public int UpdateRole(Role role);
 }

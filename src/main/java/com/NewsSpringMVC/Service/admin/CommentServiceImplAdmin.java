@@ -16,4 +16,15 @@ public class CommentServiceImplAdmin implements ICommentServiceAdmin{
     public List<Comment> getDataComment() {
         return commentDao.getDataComment();
     }
+
+	@Override
+	public Comment getCommentById(int id) {
+		return commentDao.getCommentById(id);
+	}
+
+	@Override
+	public int UpdateComment(Comment comment) {
+		// TODO Auto-generated method stub
+		return commentDao.UpdateComment(comment);
+	}
 }

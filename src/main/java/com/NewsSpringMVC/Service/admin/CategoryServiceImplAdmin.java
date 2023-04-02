@@ -20,4 +20,22 @@ public class CategoryServiceImplAdmin implements ICategoryServiceAdmin {
     public String getNameCategoryById(int category_id) {
         return categoryDao.getNameCategoryById(category_id);
     }
+
+	@Override
+	public int AddCategory(Category category) {
+		// TODO Auto-generated method stub
+		return categoryDao.AddCategory(category);
+	}
+
+	@Override
+	public int UpdateCategory(Category category) {
+		// TODO Auto-generated method stub
+		return categoryDao.UpdateCategory(category);
+	}
+
+	@Override
+	public Category getCategoryById(int idCate) {
+		// TODO Auto-generated method stub
+		return categoryDao.getCategoryById(idCate);
+	}
 }

@@ -22,4 +22,22 @@ public class PostServiceImplAdmin implements IPostServiceAdmin {
 		return postDao.getPostById(post_id);
 	}
 
+	@Override
+	public int UpdatePost(Post post) {
+		// TODO Auto-generated method stub
+		return postDao.UpdatePost(post);
+	}
+
+	@Override
+	public int AddPost(Post post) {
+		// TODO Auto-generated method stub
+		return postDao.AddPost(post);
+	}
+
+	@Override
+	public String getTitlePostId(int post_id) {
+		// TODO Auto-generated method stub
+		return postDao.getTitlePostId(post_id);
+	}
+
 }
