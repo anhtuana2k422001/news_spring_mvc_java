@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@SuppressWarnings("StringConcatenationInsideStringBufferAppend")
 public class UserDao {
 
     @Autowired
@@ -34,7 +35,6 @@ public class UserDao {
     }
 
     // Thêm mới một tài khoản 
-    @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
     public int AddAccount(User user) {
         String tokenUser = new HandleUser().generateToken(8);
         String dateTime = getCurrentDateTimeFormatted();
@@ -86,4 +86,18 @@ public class UserDao {
             return null;
         }
     }
+    
+    public int UpdateAccount(User user) {
+        String dateTime = getCurrentDateTimeFormatted();
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE users SET ");
+        sql.append("name = '"+user.getName()+"', ");
+        sql.append("email = '"+user.getEmail()+"', ");
+        sql.append("updated_at = '"+dateTime+"' ");
+        sql.append("WHERE id = "+user.getId());
+        int update = _jdbcTemplate.update(sql.toString());
+        return update; // cập nhật được bao nhiêu dòng
+    }
+      
+    
 }

@@ -14,4 +14,5 @@ public interface IUserService {
     public User UserLogin(User user);
     public boolean isEmailAlreadyInUse(String userEmail); 
     public User getUserById(int userId);
+    public int UpdateAccount(User user);
 }

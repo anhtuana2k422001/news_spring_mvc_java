@@ -44,18 +44,18 @@
                                                         class="dropdown-toggle" href="#"> 
                                                                  <span class="caret"></span>
                                                     </a>
-                                                    <ul class="dropdown-menu">
-                                                            <!-- @if(auth()->user()->role->name !== 'user') -->
-                                                            <li><a href="">Admin - Dashbroad</a></li>
-                                                            <!-- @endif -->
-                                                            <li><a href="">Tài khoản của tôi</a></li>
-                                                            <li>
-                                                                <c:url var="logoutUrl" value="/dang-xuat" />
-                                                                <a href="${logoutUrl}">Đăng xuất 
-                                                                    <i class="fa fm fa-arrow-circle-right"></i>
-                                                                </a>
-                                                            </li>
-                                                    </ul>
+                                                <ul class="dropdown-menu">
+                                                    <c:if test="${UserLogin.role_id != 1}"> 
+                                                        <li><a href="<c:url value='/admin' />">Admin - Dashbroad</a></li>
+                                                    </c:if>
+                                                    <li><a href="<c:url value='/tai-khoan-cua-toi' />">Tài khoản của tôi</a></li>
+                                                    <li>
+                                                        <c:url var="logoutUrl" value="/dang-xuat" />
+                                                        <a href="${logoutUrl}">Đăng xuất 
+                                                            <i class="fa fm fa-arrow-circle-right"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
                                             </c:if>
                                         </li>
 					<!-- @endauth -->

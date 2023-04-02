@@ -1,11 +1,9 @@
 package com.NewsSpringMVC.Controller.web;
 
 import com.NewsSpringMVC.Entity.User;
-import com.NewsSpringMVC.Service.web.UserServiceImpl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class UserController {
-
-    @Autowired
-    UserServiceImpl UserService;
+public class UserController extends BaseController {
 
     @RequestMapping(value = "/dang-nhap", method = RequestMethod.GET)
     public ModelAndView login() {
@@ -30,12 +25,12 @@ public class UserController {
     @RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
     public ModelAndView loginUser(HttpSession session, @ModelAttribute("user") User user) {
         ModelAndView mav = new ModelAndView();
-        // Kiểm tra email đã được sử dụng hay chưa
-        if (UserService.isEmailAlreadyInUse(user.getEmail())) {
+          // Kiểm tra email đã được sử dụng hay chưa
+        if (userService.isEmailAlreadyInUse(user.getEmail())) {
             // Kiểm tra thông tin đăng nhập tài khoản 
-            boolean check = UserService.CheckAcount(user);
+            boolean check = userService.CheckAcount(user);
             if (check) {
-                User userlogin = UserService.UserLogin(user);
+                User userlogin = userService.UserLogin(user);
                 mav.setViewName("redirect:/trang-chu");
                 session.setAttribute("UserLogin", userlogin);
             } else {
@@ -61,7 +56,7 @@ public class UserController {
         ModelAndView mav = new ModelAndView("register");
 
         // check if email is already in use
-        if (UserService.isEmailAlreadyInUse(user.getEmail())) {
+        if (userService.isEmailAlreadyInUse(user.getEmail())) {
             mav.addObject("errorInUseEmail", "Địa chỉ email này đã được sử dụng!");
             return mav;
         }
@@ -83,10 +78,11 @@ public class UserController {
         }
 
         // add user to database
-        int count = UserService.AddAcount(user);
+        int count = userService.AddAcount(user);
         if (count == 1) {
             // Tạo tài khoản thành công
-            session.setAttribute("UserLogin", user);
+            User userlogin = userService.UserLogin(user);
+            session.setAttribute("UserLogin", userlogin);
             mav.setViewName("redirect:/trang-chu");
         } else {
             // Tạo tài khoản thất bại
@@ -101,5 +97,36 @@ public class UserController {
         session.removeAttribute("UserLogin");
         return "redirect:" + request.getHeader("Referer");
     }
+    
+    // Thông tin tài khoản cá nhân 
+    @RequestMapping(value = "/tai-khoan-cua-toi", method = RequestMethod.GET)
+    public ModelAndView infoUser(HttpSession session) {
+        User user = (User) session.getAttribute("UserLogin");
+        if(user == null)
+            return new ModelAndView("redirect:/error");
+        _mvShare.setViewName("web/profile");
+        return _mvShare;
+    }
+    
+    // Thông tin tài khoản cá nhân 
+    @RequestMapping(value = "/tai-khoan-cua-toi", method = RequestMethod.POST)
+    public String updateUser( HttpServletRequest request, HttpSession session) {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String image = request.getParameter("image");
+        session.setAttribute("imageUser", image);
+        if(image == null)
+                return "redirect:/error";
+        // Cập nhật thông tin cá nhân
+        User user = (User) session.getAttribute("UserLogin");
+        user.setName(name);
+        user.setEmail(email);
+        int count = userService.UpdateAccount(user);
+        if(count == 1)
+            return "redirect:" + request.getHeader("Referer");
+        else
+            return "redirect:/error";
+    }
+
 
 }

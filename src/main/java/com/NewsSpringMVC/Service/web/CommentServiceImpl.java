@@ -21,5 +21,10 @@ public class CommentServiceImpl implements ICommentService {
        return commentDao.getDataComment();
     }
 
+    @Override
+    public int AddComment(Comment comment) {
+        return commentDao.AddComment(comment);
+    }
+
     
 }

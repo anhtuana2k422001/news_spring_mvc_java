@@ -1,5 +1,6 @@
 package com.NewsSpringMVC.Controller.admin;
 
+import com.NewsSpringMVC.Entity.User;
 import com.NewsSpringMVC.Service.admin.CategoryServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.CommentServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.ContactServiceImplAdmin;
@@ -8,9 +9,9 @@ import com.NewsSpringMVC.Service.admin.PostServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.RoleServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.TagServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.UserServiceImplAdmin;
-import com.NewsSpringMVC.Service.web.ImageServiceImpl;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,16 +38,16 @@ public class BaseControllerAdmin {
     ImageServiceImplAdmin _imageServiceAdmin;
     @Autowired
     ContactServiceImplAdmin _contactServiceAdmin;
-     
 
     public ModelAndView _mvShareAdmin = new ModelAndView();
-
+    
+    @Autowired
+    HttpSession session;
+    
     @PostConstruct
     public void Init() {
         // Có thể khởi tạo comment để thừa kế tất cả controller load lên Nav
     }
-    
-    
 
     @ModelAttribute("userServiceAdmin")
     public UserServiceImplAdmin userServiceAdmin() {
@@ -81,6 +82,24 @@ public class BaseControllerAdmin {
     public ContactServiceImplAdmin contactAdminService() {
         return _contactServiceAdmin;
     }
-     
+    
+    @ModelAttribute("userLogin")
+    public User getUserLogin() {
+        return (User) session.getAttribute("UserLogin");
+    }
+    
+    // Phân quyền người dùng
+    public void Anthention(String view) {
+        User user = getUserLogin();
+        if (user != null) {
+            if (user.getRole_id() == 1) 
+                _mvShareAdmin.setViewName("redirect:/error");
+            else
+                _mvShareAdmin.setViewName(view);
+        } else {
+            _mvShareAdmin.setViewName("redirect:/error");
+        }
+    }
+   
 
 }

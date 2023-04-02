@@ -16,13 +16,15 @@ public class PostController extends BaseController {
     public ModelAndView category(@PathVariable("slugPost") String slug) {
         _mvShare.setViewName("web/post");
         Post postDetail = postService.getPostDetail(slug);
+         if( postDetail == null) {
+            _mvShare.setViewName("redirect:/error");
+             return _mvShare;
+        }   
         _mvShare.addObject("postDetail", postDetail);
         Category idCate = categoryService.getCategoryById(postDetail.getCategory_id());
         // Lấy bài viết theo theo cùng danh mục để load lên postDetail
         _mvShare.addObject("listPostTheSame", postService.listPostCategory(idCate.getId()));
-        if (postService.getPostDetail(slug) == null) {
-            _mvShare.setViewName("redirect:/error");
-        }        
+            
         return _mvShare;// Kế thừ từ BaseController
     }
     
