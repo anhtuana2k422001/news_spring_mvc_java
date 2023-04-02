@@ -1,5 +1,6 @@
 package com.NewsSpringMVC.Dao;
 
+import com.NewsSpringMVC.Entity.About;
 import com.NewsSpringMVC.Entity.Image;
 import com.NewsSpringMVC.Entity.Post;
 
@@ -57,7 +58,36 @@ public class ImageDao {
         }
         return imagePath;
     }
+    
+ // Lấy hình ảnh giới thiệu 1
+    public String getConfigPathImgAbout1(int id) {
+        @SuppressWarnings("UnusedAssignment")
+        String imagePath = null;
+        try {
+            String sql = "SELECT * FROM settings WHERE id = ?";
+            About about = _jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(About.class));
+            imagePath = "/template/web/" + about.getAbout_first_image();
+        } catch (EmptyResultDataAccessException e) {
+            // Xử lý ngoại lệ EmptyResultDataAccessException
+            imagePath = "/template/web/storage/placeholders/user_placeholder.jpg";
+        }
+        return imagePath;
+    }
 
+ // Lấy hình ảnh giới thiệu 1
+    public String getConfigPathImgAbout2(int id) {
+        @SuppressWarnings("UnusedAssignment")
+        String imagePath = null;
+        try {
+            String sql = "SELECT * FROM settings WHERE id = ?";
+            About about = _jdbcTemplate.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(About.class));
+            imagePath = "/template/web/" + about.getAbout_second_image();
+        } catch (EmptyResultDataAccessException e) {
+            // Xử lý ngoại lệ EmptyResultDataAccessException
+            imagePath = "/template/web/storage/placeholders/user_placeholder.jpg";
+        }
+        return imagePath;
+    }
     // Thêm ảnh vào csdl
     @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
  // Thêm ảnh vào csdl

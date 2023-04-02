@@ -30,9 +30,9 @@
                     <div class="card-body">
                         <div class="d-lg-flex align-items-center mb-4 gap-3">
                             <div class="position-relative">
-                                <input type="text" class="form-control ps-5 radius-30" placeholder="Tìm kiếm bài viết"> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
+                                <input type="text" class="form-control ps-5 radius-30" placeholder="Tìm kiếm liên hệ"> <span class="position-absolute top-50 product-show translate-middle-y"><i class="bx bx-search"></i></span>
                             </div>
-                            <div class="ms-auto"><a href="createpost.php" class="btn btn-primary radius-30 mt-2 mt-lg-0"><i class="bx bxs-plus-square"></i>Thêm bài viết mới</a></div>
+                           
                         </div>
                         <div class="table-responsive">
                             <table class="table mb-0">
@@ -50,7 +50,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($contact as $item) { ?>
+                                    <c:forEach items="${listContactAdmin}" var="contact">
                                         <tr>
                                             <td>
                                                 <div class="d-flex align-items-center">
@@ -58,17 +58,17 @@
                                                         <input class="form-check-input me-3" type="checkbox" value="" aria-label="...">
                                                     </div>
                                                     <div class="ms-2">
-                                                        <h6 class="mb-0 font-14"><?php echo $item["id"] ?></h6>
+                                                        <h6 class="mb-0 font-14">${contact.id}</h6>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><?php echo $item["first_name"] ?></td>
-                                            <td><?php echo $item["last_name"] ?></td>
-                                            <td><?php echo $item["email"] ?></td>
-                                            <td><?php echo $item["subject"] ?></td>
-                                            <td><?php echo $item["message"] ?></td>
+                                            <td>${contact.first_name}</td>
+                                            <td>${contact.first_name}</td>
+                                            <td>${contact.email}</td>
+                                            <td>${contact.subject}</td>
+                                            <td>${contact.subject}</td>
                                              
-                                            <td><?php echo $item["created_at"] ?></td> 
+                                            <td>${contact.created_at}</td> 
                                             <td>
                                                 <div class="d-flex order-actions">
                                                     <a href="#" onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $post->id }}').submit();" class="ms-3"><i class='bx bxs-trash'></i></a>
@@ -80,7 +80,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    <?php } ?>
+                                    </c:forEach>
 
                                 </tbody>
 
@@ -89,14 +89,7 @@
                         </div>
 
                         <div>
-                            <?php
-                            if ($page > 1) {
-                                echo  "<button class='btn btn-secondary me-4  mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page - 1) . "'\">Trang trước</button>";
-                            }
-                            if ($page < $pages) {
-                                echo "<button class='btn btn-secondary mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page + 1) . "'\">Trang sau</button>";
-                            }
-                            ?>
+                           
                         </div>
 
                     </div>

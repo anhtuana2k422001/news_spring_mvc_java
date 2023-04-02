@@ -11,4 +11,6 @@ public interface IImageServiceAdmin {
 	public String getConfigPathImgUser(int user_id);
 	public String getConfigPathImgPost(int post_id);
 	public int addImage(Image image);
+	public String getConfigPathImgAbout1(int id);
+	public String getConfigPathImgAbout2(int id);
 }

@@ -27,4 +27,16 @@ public class CommentServiceImplAdmin implements ICommentServiceAdmin{
 		// TODO Auto-generated method stub
 		return commentDao.UpdateComment(comment);
 	}
+
+	@Override
+	public List<Comment> get10Comment() {
+		// TODO Auto-generated method stub
+		return commentDao.get10Comment();
+	}
+
+	@Override
+	public int countComment() {
+		// TODO Auto-generated method stub
+		return commentDao.countComment();
+	}
 }

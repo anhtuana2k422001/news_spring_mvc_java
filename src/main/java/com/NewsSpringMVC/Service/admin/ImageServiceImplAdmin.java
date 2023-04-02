@@ -29,6 +29,18 @@ public class ImageServiceImplAdmin implements IImageServiceAdmin {
 		return imageDao.addImage(image);
 	}
 
+	@Override
+	public String getConfigPathImgAbout1(int id) {
+		// TODO Auto-generated method stub
+		return imageDao.getConfigPathImgAbout1(id);
+	}
+
+	@Override
+	public String getConfigPathImgAbout2(int id) {
+		// TODO Auto-generated method stub
+		return imageDao.getConfigPathImgAbout2(id);
+	}
+
 	
 
 }

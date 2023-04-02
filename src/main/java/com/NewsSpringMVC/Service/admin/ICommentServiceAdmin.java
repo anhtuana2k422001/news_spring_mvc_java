@@ -12,4 +12,6 @@ public interface ICommentServiceAdmin {
     public List<Comment> getDataComment();
 	public Comment getCommentById(int id);
 	public int UpdateComment(Comment comment);
+	public List<Comment> get10Comment();
+	public int countComment();
 }

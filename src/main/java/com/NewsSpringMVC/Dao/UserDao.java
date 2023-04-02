@@ -27,6 +27,21 @@ public class UserDao {
         return listUser;
     }
 
+ // Lấy ra tổng số người là quản trị viên 
+    public int countAdmin() {
+        String sql = "SELECT COUNT(*) FROM users WHERE role_id = 2";
+        int count = _jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+    
+ // Lấy ra tổng số người là khách hàng - role =1 
+    public int countUser() {
+        String sql = "SELECT COUNT(*) FROM users WHERE role_id = 1";
+        int count = _jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+
+    
     // Trả về một user lấy từ người dùng ánh xạ tới cơ sở dữ liệu
     public User GetUserByAcc(User user) {
         String sql = "SELECT * FROM users WHERE email = N'" + user.getEmail() + "'";

@@ -19,7 +19,7 @@
                                 <div class="d-flex align-items-center">
                                     <div>
                                         <p class="mb-0 text-secondary">Tổng bài viết</p>
-                                        <h4 class="my-1 text-info">100</h4>
+                                        <h4 class="my-1 text-info">${postAdminService.countPost()}</h4>
                                         <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                                     </div>
                                     <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto">
@@ -36,7 +36,7 @@
                                     <div>
                                         <p class="mb-0 text-secondary">Tổng danh mục</p>
                                         <!-- <h4 class="my-1 text-danger">{{ $countCategories }}</h4> -->
-                                        <h4 class="my-1 text-danger">12</h4>
+                                        <h4 class="my-1 text-danger">${categoryServiceAdmin.countCategory()}</h4>
                                     </div>
                                     <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i
                                             class='bx bx bx-menu'></i>
@@ -52,7 +52,7 @@
                                     <div>
                                         <p class="mb-0 text-secondary">Tổng người quản trị</p>
                                         <!-- <h4 class="my-1 text-success">{{ $countAdmin }}</h4> -->
-                                        <h4 class="my-1 text-success">2</h4>
+                                        <h4 class="my-1 text-success">${userServiceAdmin.countAdmin()}</h4>
                                     </div>
                                     <div
                                         class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto">
@@ -69,7 +69,7 @@
                                     <div>
                                         <p class="mb-0 text-secondary">Tổng khách hàng</p>
                                         <!-- <h4 class="my-1 text-warning">{{ $countUser }}</h4> -->
-                                        <h4 class="my-1 text-warning">100</h4>
+                                        <h4 class="my-1 text-warning">${userServiceAdmin.countUser()}</h4>
                                     </div>
                                     <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto">
                                         <i class='bx bxs-group'></i>
@@ -152,7 +152,7 @@
                                             <div>
                                                 <p class="mb-0 text-secondary">Lượt Xem</p>
                                                 <!-- <h4 class="my-1">{{ $countView }}</h4> -->
-                                                <h4 class="my-1">1000</h4>
+                                                <h4 class="my-1">${postAdminService.sumViews()}</h4>
                                                 <!-- <p class="mb-0 font-13">+6.2% from last week</p> -->
                                             </div>
                                             <div class="widgets-icons-2 bg-gradient-cosmic text-white ms-auto"><i
@@ -167,7 +167,7 @@
                                             <div>
                                                 <p class="mb-0 text-secondary">Bình luận</p>
                                                 <!-- <h4 class="my-1">{{ $countComments }}</h4> -->
-                                                <h4 class="my-1">200</h4>
+                                                <h4 class="my-1">${commentAdminService.countComment()}</h4>
                                             </div>
                                             <div class="widgets-icons-2 bg-gradient-ibiza text-white ms-auto"><i
                                                     class='bx bxs-comment-detail'></i>

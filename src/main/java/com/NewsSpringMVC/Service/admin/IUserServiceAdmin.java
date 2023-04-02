@@ -18,5 +18,7 @@ public interface IUserServiceAdmin {
     public List<User> getDataUser();
     public int AddAccount(User user);
     public boolean isEmailAlreadyInUse(String userEmail);
+    public int countAdmin();
+    public int countUser();
     
 }

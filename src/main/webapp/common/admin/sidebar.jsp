@@ -178,7 +178,7 @@
         <hr>
 
         <li>
-            <a href="{{ route('home') }}">
+            <a href="<c:url value='/'/>">
                 <div class="parent-icon"><i class='bx bx-pointer'></i></div>
                 <div class="menu-title">Trang chủ</div>
             </a>
