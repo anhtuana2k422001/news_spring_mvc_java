@@ -11,7 +11,7 @@ public class ContactController extends BaseControllerAdmin{
     public ModelAndView listContact() {
         String viewName = "admin/contact/listcontact";
         _mvShareAdmin.addObject("listContactAdmin", _contactServiceAdmin.getDataContact());
-        _mvShareAdmin.setViewName(viewName);
+        Anthention(viewName); // Phân quyền
         return _mvShareAdmin;
     }
 }

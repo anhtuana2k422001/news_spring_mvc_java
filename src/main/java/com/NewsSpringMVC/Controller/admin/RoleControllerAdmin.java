@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.NewsSpringMVC.Entity.Category;
-import com.NewsSpringMVC.Entity.Post;
 import com.NewsSpringMVC.Entity.Role;
 
 @Controller(value = "roleControllerOfAdmin")
@@ -19,14 +17,14 @@ public class RoleControllerAdmin extends BaseControllerAdmin {
     public ModelAndView listRole() {
         String viewName = "admin/role/listrole";
         _mvShareAdmin.addObject("listRoleAdmin", _roleServiceAdmin.getDataRole());
-        _mvShareAdmin.setViewName(viewName);
+         Anthention(viewName); // Phân quyền
         return _mvShareAdmin;
     }
     
     @RequestMapping(value = "/admin/createrole", method = RequestMethod.GET)
     public ModelAndView CreateRole() {
         String viewName = "admin/role/createrole";
-        _mvShareAdmin.setViewName(viewName);
+         Anthention(viewName); // Phân quyền
         _mvShareAdmin.addObject("role", new Role());
       	return _mvShareAdmin;// Kế thừ từ BaseController
     }
@@ -51,7 +49,7 @@ public class RoleControllerAdmin extends BaseControllerAdmin {
 		String viewName = "admin/role/editrole";
 		_mvShareAdmin.addObject("roleDetail", _roleServiceAdmin.getRoleById(id));
 		 
-		_mvShareAdmin.setViewName(viewName);
+		 Anthention(viewName); // Phân quyền
 		_mvShareAdmin.addObject("role", new Role());
 		return _mvShareAdmin;// Kế thừ từ BaseController
 	}

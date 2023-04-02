@@ -1,32 +1,27 @@
 package com.NewsSpringMVC.Controller.admin;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.NewsSpringMVC.Entity.Post;
-import com.NewsSpringMVC.Entity.Role;
 import com.NewsSpringMVC.Entity.User;
-import com.NewsSpringMVC.Service.admin.ImageServiceImplAdmin;
 
 @Controller(value = "userControllerOfAdmin")
 public class UserController extends BaseControllerAdmin{
 	 
-	@RequestMapping(value = "/admin/listuser", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/listuser", method = RequestMethod.GET)
     public ModelAndView listUser() {
         String viewName = "admin/user/listuser";
+        Anthention(viewName); // Phân quyền 
         _mvShareAdmin.addObject("listUserAdmin", _userServiceAdmin.getDataUser());
-        _mvShareAdmin.setViewName(viewName);
         return _mvShareAdmin;
     }
 	@RequestMapping(value = "/admin/createuser", method = RequestMethod.GET)
     public ModelAndView CreateUser() {
         String viewName = "admin/user/createuser";
-        _mvShareAdmin.setViewName(viewName);
+          Anthention(viewName); // Phân quyền 
         _mvShareAdmin.addObject("user", new User());
       	return _mvShareAdmin; 
     }

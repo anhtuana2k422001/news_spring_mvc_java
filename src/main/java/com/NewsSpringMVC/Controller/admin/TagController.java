@@ -7,11 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "tagControllerOfAdmin")
 public class TagController extends BaseControllerAdmin{
-	@RequestMapping(value = "/admin/listtag", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/listtag", method = RequestMethod.GET)
     public ModelAndView listTag() {
         String viewName = "admin/tag/listtag";
         _mvShareAdmin.addObject("listTagAdmin", _tagServiceAdmin.getDataTag());
-        _mvShareAdmin.setViewName(viewName);
+        Anthention(viewName); // Phân quyền 
         return _mvShareAdmin;
     }
 }

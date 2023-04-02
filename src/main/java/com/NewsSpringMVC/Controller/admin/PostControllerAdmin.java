@@ -5,11 +5,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +19,6 @@ import org.apache.commons.io.FilenameUtils;
 
 import com.NewsSpringMVC.Entity.Image;
 import com.NewsSpringMVC.Entity.Post;
-import com.NewsSpringMVC.Entity.User;
  
  
 
@@ -36,9 +30,7 @@ public class PostControllerAdmin extends BaseControllerAdmin {
 	public ModelAndView listPost(@RequestParam(defaultValue = "0") int page) {
 	    String viewName = "admin/post/listpost";
 	    _mvShareAdmin.addObject("listPostAdmin", _postServiceAdmin.getDataPost());
-	    
-	    
-	    _mvShareAdmin.setViewName(viewName);
+	     Anthention(viewName); // Phân quyền
 	    return _mvShareAdmin;
 	}
 	
@@ -53,7 +45,7 @@ public class PostControllerAdmin extends BaseControllerAdmin {
 		String viewName = "admin/post/editpost";
 		_mvShareAdmin.addObject("postDetail", _postServiceAdmin.getPostById(id));
 		_mvShareAdmin.addObject("listCate", _categoryServiceAdmin.getDataCategory());
-		_mvShareAdmin.setViewName(viewName);
+		 Anthention(viewName); // Phân quyền
 		_mvShareAdmin.addObject("post", new Post());
 		return _mvShareAdmin;// Kế thừ từ BaseController
 	}
@@ -76,7 +68,7 @@ public class PostControllerAdmin extends BaseControllerAdmin {
 	@RequestMapping(value = "/admin/createpost", method = RequestMethod.GET)
 	public ModelAndView CreatePost() {
 		String viewName = "admin/post/createpost";
-		_mvShareAdmin.setViewName(viewName);
+		 Anthention(viewName); // Phân quyền
 		_mvShareAdmin.addObject("post", new Post());
 		_mvShareAdmin.addObject("image", new Image());
 		return _mvShareAdmin;// Kế thừ từ BaseController

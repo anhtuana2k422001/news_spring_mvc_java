@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.NewsSpringMVC.Entity.Category;
-import com.NewsSpringMVC.Entity.Post;
 
 @Controller(value = "categoryControllerOfAdmin")
 public class CategoryControllerAdmin extends BaseControllerAdmin {
@@ -18,14 +17,14 @@ public class CategoryControllerAdmin extends BaseControllerAdmin {
     public ModelAndView listCategory() {
         String viewName = "admin/category/listcategory";
         _mvShareAdmin.addObject("listCategoryAdmin", _categoryServiceAdmin.getDataCategory());
-        _mvShareAdmin.setViewName(viewName);
+      	 Anthention(viewName); // Phân quyền
         return _mvShareAdmin;
     }
     
     @RequestMapping(value = "/admin/createcategory", method = RequestMethod.GET)
     public ModelAndView CreateCategory() {
         String viewName = "admin/category/createcategory";
-        _mvShareAdmin.setViewName(viewName);
+        Anthention(viewName); // Phân quyền
         _mvShareAdmin.addObject("category", new Category());
       	return _mvShareAdmin;// Kế thừ từ BaseController
     }
@@ -49,8 +48,7 @@ public class CategoryControllerAdmin extends BaseControllerAdmin {
 	public ModelAndView editCategory(@PathVariable("id") int id) {
 		String viewName = "admin/category/editcategory";
 		_mvShareAdmin.addObject("categoryDetail", _categoryServiceAdmin.getCategoryById(id));
-		 
-		_mvShareAdmin.setViewName(viewName);
+		Anthention(viewName); // Phân quyền
 		_mvShareAdmin.addObject("category", new Category());
 		return _mvShareAdmin;// Kế thừ từ BaseController
 	}
