@@ -30,7 +30,7 @@ public class UserController {
     @RequestMapping(value = "/dang-nhap", method = RequestMethod.POST)
     public ModelAndView loginUser(HttpSession session, @ModelAttribute("user") User user) {
         ModelAndView mav = new ModelAndView();
-        // Kiểm tra email đã được sử dụng hay chưa
+          // Kiểm tra email đã được sử dụng hay chưa
         if (UserService.isEmailAlreadyInUse(user.getEmail())) {
             // Kiểm tra thông tin đăng nhập tài khoản 
             boolean check = UserService.CheckAcount(user);
@@ -86,7 +86,8 @@ public class UserController {
         int count = UserService.AddAcount(user);
         if (count == 1) {
             // Tạo tài khoản thành công
-            session.setAttribute("UserLogin", user);
+            User userlogin = UserService.UserLogin(user);
+            session.setAttribute("UserLogin", userlogin);
             mav.setViewName("redirect:/trang-chu");
         } else {
             // Tạo tài khoản thất bại
