@@ -45,7 +45,7 @@
                      </c:if>
                     <div class="row">
                          <c:if test="${not empty UserLogin}">
-                            <form method="POST" action="<c:url value='/tai-khoan-cua-toi'/>">
+                            <form method="POST" action="<c:url value='/tai-khoan-cua-toi'/>" enctype="multipart/form-data">
                                 <!-- left column -->
                                 <div class="col-md-4 col-sm-6 col-xs-12">
                                     <div class="text-center">
