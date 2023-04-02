@@ -14,7 +14,21 @@ public class Image {
         super();
     }
 
-    public int getId() {
+    public Image(  String name, String extension, String path, int imageable_id, String imageable_type,
+			String created_at, String updated_at) {
+		super();
+		 
+		this.name = name;
+		this.extension = extension;
+		this.path = path;
+		this.imageable_id = imageable_id;
+		this.imageable_type = imageable_type;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}
+ 
+
+	public int getId() {
         return id;
     }
 

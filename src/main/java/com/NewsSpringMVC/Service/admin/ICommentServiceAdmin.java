@@ -10,4 +10,6 @@ import com.NewsSpringMVC.Entity.Comment;
 public interface ICommentServiceAdmin {
 	@Autowired
     public List<Comment> getDataComment();
+	public Comment getCommentById(int id);
+	public int UpdateComment(Comment comment);
 }

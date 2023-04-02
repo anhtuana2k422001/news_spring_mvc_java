@@ -67,12 +67,12 @@
 
                                             </td>
                                             <td>
-                                                <a target="_blank" class="btn btn-primary btn-sm" href="http://localhost:3000/<?php echo Comment::GetPostById($item["post_id"])?>#comments_all">Xem bình luận</a>
+                                                <a target="_blank" class="btn btn-primary btn-sm" href="<c:url value='/${postAdminService.getPostById(comment.post_id).slug}#comments_all'/>">Xem bình luận</a>
                                             </td>
                                             <td>${comment.created_at}</td>
                                             <td>
                                                 <div class="d-flex order-actions">
-                                                    <a href="{{ route('admin.comments.edit', $comment)}}" class=""><i class='bx bxs-edit'></i></a>
+                                                    <a href="<c:url value='/admin/editcomment/${comment.id}' />" class=""><i class='bx bxs-edit'></i></a>
                                                     <a href="#" onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $comment->id }}').submit();" class="ms-3"><i class='bx bxs-trash'></i></a>
 
                                                     <form method="post" action="{{ route('admin.comments.destroy', $comment) }}" id="delete_form_{{ $comment->id }}">
@@ -86,14 +86,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                <?php
-                                if ($page > 1) {
-                                    echo  "<button class='btn btn-secondary me-4  mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page - 1) . "'\">Trang trước</button>";
-                                }
-                                if ($page < $pages) {
-                                    echo "<button class='btn btn-secondary mt-2 mt-lg-0' onclick=\"location.href='?page=" . ($page + 1) . "'\">Trang sau</button>";
-                                }
-                                ?>
+                                 
                             </div>
                         </div>
                     </div>

@@ -10,4 +10,7 @@ public interface ICategoryServiceAdmin {
     @Autowired
     public List<Category> getDataCategory();
     public String getNameCategoryById(int category_id);
+    public int AddCategory(Category category);
+    public int UpdateCategory(Category category);
+    public Category getCategoryById(int idCate);
 }

@@ -1,7 +1,12 @@
 package com.NewsSpringMVC.Dao;
 
 import com.NewsSpringMVC.Entity.Category;
+import com.NewsSpringMVC.Entity.Post;
 import com.NewsSpringMVC.Mapper.CategoryMapper;
+import com.NewsSpringMVC.Mapper.PostMapper;
+
+import static com.NewsSpringMVC.Handle.HandleUser.getCurrentDateTimeFormatted;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +59,45 @@ public class CategoryDao {
             return null;
         }
     }
+    
+ // thêm mới bài viết
+    @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
+    public int AddCategory(Category category) {
+        String dateTime = getCurrentDateTimeFormatted();
+        StringBuffer sql = new StringBuffer();
+        sql.append("INSERT ");
+        sql.append("INTO categories ");
+        sql.append("(name, ");
+        sql.append("slug, ");
+        sql.append("user_id, "); 
+        sql.append("created_at, ");
+        sql.append("updated_at) ");
+        sql.append("VALUES ( ");
+        sql.append("'"+category.getName()+"', ");
+        sql.append("'"+category.getSlug()+"', "); 
+        sql.append("233, "); 
+        sql.append("'"+dateTime+"', ");
+        sql.append("'"+dateTime+"' ");
+        sql.append(")");
+        int insert = _jdbcTemplate.update(sql.toString());
+        return insert; // cập nhật được bao nhiêu dòng
+    }
+    
+ // chỉnh sửa bài viết
+    @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
+    public int UpdateCategory(Category category) {
+        String dateTime = getCurrentDateTimeFormatted();
+        StringBuffer sql = new StringBuffer();
+        sql.append("UPDATE categories SET ");
+        sql.append("name = '"+category.getName()+"', ");
+        sql.append("slug = '"+category.getSlug()+"', "); 
+        sql.append("user_id = 13, "); 
+        sql.append("updated_at = '"+dateTime+"' ");
+        sql.append("WHERE id = "+category.getId());
+        int update = _jdbcTemplate.update(sql.toString());
+        return update; // cập nhật được bao nhiêu dòng
+    }
+    
+  
    
 }

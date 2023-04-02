@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Quản trị - Danh sách bài viết</title>
+<style>
+.imageuploadify {
+	margin: 0;
+	max-width: 100%;
+}
+</style>
+<script
+	src="https://cdn.tiny.cloud/1/ay1wga320sbuvneqpq9at398v0s3xkpr02tl89arjb1ncbtb/tinymce/6/tinymce.min.js"
+	referrerpolicy="origin"></script>
 </head>
 <body>
 	<!--wrapper-->
@@ -33,47 +42,30 @@
 
 				<div class="card">
 					<div class="card-body p-4">
-						 
-							
-						
-
-						<h5 class="card-title">${post.title}</h5>
 						<h5 class="card-title">${postDetail.title}</h5>
-					 
 						<hr />
-						<form action="{{ route('admin.posts.update', $post) }}"
-							method="POST" enctype="multipart/form-data">
+						<form:form modelAttribute="post" method="POST">
 							<div class="form-body mt-4">
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="border border-3 p-4 rounded">
 											<div class="mb-3">
 												<label for="inputProductTitle" class="form-label">Tiêu
-													đề bài viết</label> <input type="text" value='${editPost.title}'
+													đề bài viết</label> <input type="text" value='${postDetail.title}'
 													name="title" required class="inputPostTitle form-control"
 													id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
 
-												<!-- Hiển thị thông báo lỗi -->
-												<?php if (isset($message) && !empty($message)) : ?>
-												<p class="text-danger">
-													<?php echo $message; ?>
-												</p>
-												<?php endif; ?>
+
 
 											</div>
 
 											<div class="mb-3">
 												<label for="inputProductTitle" class="form-label">Slug
-													- liên kết</label> <input type="text" value='${editPost.slug}'
+													- liên kết</label> <input type="text" value='${postDetail.slug}'
 													name="slug" required class="slugPost form-control"
 													id="inputProductTitle" placeholder="Nhập slug">
 
-												<!-- Hiển thị thông báo lỗi -->
-												<?php if (isset($message) && !empty($message)) : ?>
-												<p class="text-danger">
-													<?php echo $message; ?>
-												</p>
-												<?php endif; ?>
+
 
 											</div>
 
@@ -81,14 +73,9 @@
 												<label for="inputProductDescription" class="form-label">Mô
 													tả</label>
 												<textarea required name="excerpt" class="form-control"
-													id="inputProductDescription" rows="3"><?php echo $post['excerpt'] ?></textarea>
+													id="inputProductDescription" rows="3">${postDetail.excerpt}</textarea>
 
-												<!-- Hiển thị thông báo lỗi -->
-												<?php if (isset($message) && !empty($message)) : ?>
-												<p class="text-danger">
-													<?php echo $message; ?>
-												</p>
-												<?php endif; ?>
+
 											</div>
 
 											<div class="mb-3">
@@ -101,17 +88,14 @@
 
 																<select name="category_id" required
 																	class="single-select">
-																	<?php
-                                                                    $cate = Category::GetCategory($post["category_id"]);
-                                                                    echo "<option value=" . $cate["id"] . ">" . $cate["name"] . "</option>";
-                                                                    $cates = Category::ListCategorie();
-                                                                    foreach ($cates as $item) {
-                                                                        if($item["name"] != $cate["name"])
-                                                                            echo "<option value=" . $item["id"] . ">" . $item["name"] . "</option>";
-                                                                    }
-
-                                                                    ?>
+																	<option value="${postDetail.category_id}">${categoryServiceAdmin.getNameCategoryById(postDetail.category_id)}</option>
+																	<c:forEach
+																		items="${categoryServiceAdmin.getDataCategory()}"
+																		var="category">
+																		<option value="${category.id}">${category.name}</option>
+																	</c:forEach>
 																</select>
+
 																<!-- <p class="text-danger">==> Còn lỗi sai, select còn chưa đúng</p> -->
 
 																<p class="text-danger">
@@ -123,7 +107,11 @@
 												</div>
 											</div>
 
-											 
+											<div class="mb-3">
+												<label class="form-label">Từ khóa</label> 
+												<input type="text"
+													class="form-control" value="${postDetail.id}"name="tags" data-role="tags" input>
+											</div>
 
 											<!-- <input id="image-uploadify" name="thumbnail" type="file" id="file" accept="image/*" multiple> -->
 											<div class="mb-3">
@@ -135,18 +123,16 @@
 																	ảnh bài viết</label> <input id="thumbnail" name="thumbnail"
 																	type="file" id="file" value="">
 
-																<!-- Hiển thị thông báo lỗi -->
-																<?php if (isset($message) && !empty($message)) : ?>
-																<p class="text-danger">
-																	<?php echo $message; ?>
-																</p>
-																<?php endif; ?>
+
 															</div>
 														</div>
 													</div>
 
 													<div class="col-md-7 text-center">
-														
+														<img id="preview"
+															style="width: 100%; border-radius: 16px;"
+															src="<c:url value='${imageServiceAdmin.getConfigPathImgPost(postDetail.id)}'/>"
+															class="img-responsive" alt="All thumbnail">
 													</div>
 												</div>
 											</div>
@@ -155,13 +141,8 @@
 												<label for="inputProductDescription" class="form-label">Nội
 													dung bài viết</label>
 												<textarea name="body" id="post_content" class="form-control"
-													id="inputProductDescription" rows="3"><?php echo $post['body'] ?></textarea>
-												<!-- Hiển thị thông báo lỗi -->
-												<?php if (isset($message) && !empty($message)) : ?>
-												<p class="text-danger">
-													<?php echo $message; ?>
-												</p>
-												<?php endif; ?>
+													id="inputProductDescription" rows="3">${postDetail.body}</textarea>
+
 												<script>
 													tinymce
 															.init({
@@ -172,7 +153,7 @@
 												</script>
 											</div>
 
-											
+
 
 											<button class="btn btn-primary" type="submit">Sửa
 												bài viết</button>
@@ -186,7 +167,7 @@
 								</div>
 							</div>
 
-						</form>
+						</form:form>
 
 						<form id="delete_post_{{ $post->id }}"
 							action="{{ route('admin.posts.destroy', $post) }}" method="post">

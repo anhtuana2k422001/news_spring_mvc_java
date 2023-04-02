@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.NewsSpringMVC.Dao.ImageDao;
+import com.NewsSpringMVC.Entity.Image;
 
 @Service
 public class ImageServiceImplAdmin implements IImageServiceAdmin {
@@ -15,5 +16,19 @@ public class ImageServiceImplAdmin implements IImageServiceAdmin {
     public String getConfigPathImgUser(int user_id) {
         return imageDao.getConfigPathImgUser(user_id);
     }
+
+	@Override
+	public String getConfigPathImgPost(int post_id) {
+		// TODO Auto-generated method stub
+		return imageDao.getConfigPathImgPost(post_id);
+	}
+
+	@Override
+	public int addImage(Image image) {
+		// TODO Auto-generated method stub
+		return imageDao.addImage(image);
+	}
+
+	
 
 }

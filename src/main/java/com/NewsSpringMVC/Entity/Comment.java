@@ -8,7 +8,18 @@ public class Comment {
     private String created_at;
     private String updated_at;
 
-    public Comment() {
+    
+    public Comment( String the_comment, int post_id, int user_id, String created_at, String updated_at) {
+		super();
+		 
+		this.the_comment = the_comment;
+		this.post_id = post_id;
+		this.user_id = user_id;
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}
+
+	public Comment() {
         super();
     }
 

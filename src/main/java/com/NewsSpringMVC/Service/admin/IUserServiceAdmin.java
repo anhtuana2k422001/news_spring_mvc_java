@@ -16,5 +16,7 @@ public interface IUserServiceAdmin {
     UserDao userDao = new UserDao();
     public User getUserById(int userId);
     public List<User> getDataUser();
+    public int AddAccount(User user);
+    public boolean isEmailAlreadyInUse(String userEmail);
     
 }
