@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CommentController extends BaseController {
 
     @RequestMapping(value = "/{slugPost}", method = RequestMethod.POST)
-    public ModelAndView AddComment(HttpSession session,
+    public ModelAndView AddComment(HttpSession session, 
             @PathVariable("slugPost") String slug,
             @RequestParam("the_comment") String commentContent) {
         Post postDetail = postService.getPostDetail(slug);
