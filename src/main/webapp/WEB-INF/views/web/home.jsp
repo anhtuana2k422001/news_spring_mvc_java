@@ -29,7 +29,8 @@
                                                             <a href="<c:url value='/${post.slug}'/>"
                                                                class="thumb"><img
                                                                     src="<c:url value='/template/web/storage/${imageService.getPathImgPost(post.id).path}'/>"
-                                                                    alt=""></a>
+                                                                    alt="">
+                                                            </a>
                                                             <a href="javascript:;" class="cat">${categoryService.getNameCategoryById(post.category_id)}</a>
 
                                                             <a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>

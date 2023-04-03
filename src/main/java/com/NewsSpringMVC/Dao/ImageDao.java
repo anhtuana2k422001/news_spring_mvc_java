@@ -20,12 +20,15 @@ public class ImageDao {
 
     // Lấy thông tin hình ảnh bài viết từ id 
     public Image getPathImgPost(int post_id) {
+         Image imgdefault = new Image(9999,"", "", "placeholders/placeholder-image.PNG", 100, "", "", "");
         try {
             String sql = "SELECT * FROM images WHERE imageable_type LIKE '%Post' AND imageable_id = ? ";
             Image image = _jdbcTemplate.queryForObject(sql, new Object[]{post_id}, new BeanPropertyRowMapper<>(Image.class));
+            if(image == null)
+                return imgdefault;
             return image;
         } catch (EmptyResultDataAccessException e) {
-            return null;
+            return imgdefault;
         }
     }
 

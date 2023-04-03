@@ -14,11 +14,11 @@ public class Image {
         super();
     }
 
-    public Image(  String name, String extension, String path, int imageable_id, String imageable_type,
+    public Image(  int id, String name, String extension, String path, int imageable_id, String imageable_type,
 			String created_at, String updated_at) {
 		super();
-		 
-		this.name = name;
+		this.id = id;
+                this.name = name;
 		this.extension = extension;
 		this.path = path;
 		this.imageable_id = imageable_id;

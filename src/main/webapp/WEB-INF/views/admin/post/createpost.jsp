@@ -39,7 +39,7 @@
                 <div class="card-body p-4">
                     <h5 class="card-title">Thêm bài viết mới</h5>
                     <hr />
-                    <form method="POST" enctype="multipart/form-data" modelAttribute="post"  >
+                    <form method="POST" modelAttribute="post"  >
                         <div class="form-body mt-4">
                             <div class="row">
                                 <div class="col-lg-12">

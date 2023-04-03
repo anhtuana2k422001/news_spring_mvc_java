@@ -75,30 +75,11 @@ public class PostControllerAdmin extends BaseControllerAdmin {
 	}
 
 	@RequestMapping(value = "/admin/createpost", method = RequestMethod.POST)
-	public ModelAndView createPost(@RequestPart("thumbnail") MultipartFile thumbnail, @ModelAttribute("post") Post post,
+	public ModelAndView createPost(@ModelAttribute("post") Post post,
 			BindingResult result) throws Exception {
 		ModelAndView mav = new ModelAndView("createpost");
 		// add post to database
 		int count = _postServiceAdmin.AddPost(post);
-
-		// add image to database
-		if (!thumbnail.isEmpty()) {
-			String fileName = thumbnail.getOriginalFilename();
-			String extension = FilenameUtils.getExtension(fileName);
-			String file_name = UUID.randomUUID().toString() + "." + extension;
-			String path = "images/" + file_name;
-			int imageable_id = post.getId();
-			String imageable_type = "App\\Models\\Post";
-			String dateTime = "";
-			Image image = new Image(fileName, extension, path, imageable_id, imageable_type, dateTime, dateTime);
-			try {
-				thumbnail.transferTo(new File("/template/web/storage/" + path));
-				_imageServiceAdmin.addImage(image);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
 		if (count == 1) {
 			mav.setViewName("redirect:/admin/listpost");
 		} else {
