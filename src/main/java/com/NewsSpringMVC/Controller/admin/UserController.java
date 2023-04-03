@@ -16,6 +16,7 @@ public class UserController extends BaseControllerAdmin{
         String viewName = "admin/user/listuser";
         Anthention(viewName); // Phân quyền 
         _mvShareAdmin.addObject("listUserAdmin", _userServiceAdmin.getDataUser());
+       
         return _mvShareAdmin;
     }
 	@RequestMapping(value = "/admin/createuser", method = RequestMethod.GET)

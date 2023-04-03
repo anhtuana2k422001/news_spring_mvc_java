@@ -38,4 +38,10 @@ public class CategoryServiceImplAdmin implements ICategoryServiceAdmin {
 		// TODO Auto-generated method stub
 		return categoryDao.getCategoryById(idCate);
 	}
+
+	@Override
+	public int countCategory() {
+		// TODO Auto-generated method stub
+		return categoryDao.countCategory();
+	}
 }

@@ -1,6 +1,7 @@
 package com.NewsSpringMVC.Controller.admin;
 
 import com.NewsSpringMVC.Entity.User;
+import com.NewsSpringMVC.Service.admin.AboutServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.CategoryServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.CommentServiceImplAdmin;
 import com.NewsSpringMVC.Service.admin.ContactServiceImplAdmin;
@@ -38,6 +39,8 @@ public class BaseControllerAdmin {
     ImageServiceImplAdmin _imageServiceAdmin;
     @Autowired
     ContactServiceImplAdmin _contactServiceAdmin;
+    @Autowired
+    AboutServiceImplAdmin _aboutServiceAdmin;
 
     public ModelAndView _mvShareAdmin = new ModelAndView();
     
@@ -81,6 +84,11 @@ public class BaseControllerAdmin {
     @ModelAttribute("contactServiceAdmin")
     public ContactServiceImplAdmin contactAdminService() {
         return _contactServiceAdmin;
+    }
+    
+    @ModelAttribute("aboutServiceAdmin")
+    public AboutServiceImplAdmin aboutAdminService() {
+        return _aboutServiceAdmin;
     }
     
     @ModelAttribute("userLogin")

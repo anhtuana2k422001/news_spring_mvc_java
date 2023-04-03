@@ -13,4 +13,5 @@ public interface ICategoryServiceAdmin {
     public int AddCategory(Category category);
     public int UpdateCategory(Category category);
     public Category getCategoryById(int idCate);
+    public int countCategory();
 }

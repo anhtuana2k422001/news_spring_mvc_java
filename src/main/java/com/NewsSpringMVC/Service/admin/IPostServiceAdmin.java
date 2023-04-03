@@ -15,4 +15,6 @@ public interface IPostServiceAdmin {
    public int UpdatePost(Post post);
    public int AddPost(Post post);
    public String getTitlePostId(int post_id);
+   public int countPost();
+   public int sumViews();
 }

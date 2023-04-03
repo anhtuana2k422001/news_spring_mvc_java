@@ -40,4 +40,16 @@ public class PostServiceImplAdmin implements IPostServiceAdmin {
 		return postDao.getTitlePostId(post_id);
 	}
 
+	@Override
+	public int countPost() {
+		// TODO Auto-generated method stub
+		return postDao.countPost();
+	}
+
+	@Override
+	public int sumViews() {
+		// TODO Auto-generated method stub
+		return postDao.sumViews();
+	}
+
 }

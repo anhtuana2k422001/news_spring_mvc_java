@@ -41,6 +41,18 @@ public class UserServiceImplAdmin implements IUserServiceAdmin {
 	       return user != null;
 	}
 
+	@Override
+	public int countAdmin() {
+		// TODO Auto-generated method stub
+		return userDao.countAdmin();
+	}
+
+	@Override
+	public int countUser() {
+		// TODO Auto-generated method stub
+		return userDao.countUser();
+	}
+
 	 
  
 

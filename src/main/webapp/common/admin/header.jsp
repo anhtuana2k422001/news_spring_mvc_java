@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%> 
+         <%@include file="/common/taglib.jsp"%>
 <!--start header -->
 <header>
     <div class="topbar d-flex align-items-center">
@@ -217,24 +218,24 @@
                             </a>
 
                             <div class="header-message-list">
-                                @for ($i = 0; $i < 10 ; $i++ ) <a class="dropdown-item"
-                                                                  href="{{ route('posts.show', $posts_comments[$i][0] ) }}">
+                                <c:forEach items="${commentAdminService.get10Comment()}" var="cmt">
+                                <a class="dropdown-item"
+                                    href="<c:url value='/${postAdminService.getPostById(cmt.post_id).slug}#comments_all'/>">
                                     <div class="d-flex align-items-center">
                                         <div class="user-online">
                                             <img class="img_admn--user img-avatar " width="50" height="50"
-                                                 style="border-radius: 50% ; margin: auto; background-size: cover ;  background-image: url('https://img-cache.coccoc.com/image2?i=3&l=44/829494444')"
+                                                 style="border-radius: 50% ; margin: auto; background-size: cover ;  background-image: url(<c:url value='${imageServiceAdmin.getConfigPathImgUser(cmt.user_id)}'/>)"
                                                  alt="">
                                         </div>
                                         <div style="margin-left: 10px;" class="flex-grow-1">
-                                            <h6 class="msg-name">{{
-                                                        $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->name
-                                                }}<span class="msg-time"> đã bình luận bài viết</span></h6>
-                                            <h6 class="msg-name">{{ Str::limit($posts_comments[$i][0]->title,32)
-                                                }}</h6>
+                                            <h6 class="msg-name">${userServiceAdmin.getUserById(cmt.user_id).name}
+                                            <span class="msg-time"> đã bình luận bài viết</span></h6>
+                                            <h6 class="msg-name">${postAdminService.getPostById(cmt.post_id).title}</h6>
+
                                         </div>
                                     </div>
                                 </a>
-                                @endfor
+                                </c:forEach>
 
                             </div>
                             <a href="javascript:;">
@@ -248,7 +249,7 @@
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img class="img_admn--user img-avatar " width="50" height="50"
-                         style="border-radius: 50% ; margin: auto; background-size: cover ; background-image: url('https://img-cache.coccoc.com/image2?i=3&l=44/829494444') "
+                         style="border-radius: 50% ; margin: auto; background-size: cover ; background-image: url(<c:url value='${imageServiceAdmin.getConfigPathImgUser(userLogin.id)}'/>) "
                          alt="">
                     <div class="user-info ps-3">
                         <!-- <p class="user-name mb-0">{{ auth()->user()->name }}</p>
@@ -267,10 +268,10 @@
                         <div class="dropdown-divider mb-0"></div>
                     </li>
 
-                    <li><a onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();"
-                           class="dropdown-item"><i class='bx bx-log-out-circle'></i><span>Đăng xuất</span></a>
-                        <form id="nav-logout-form" action="{{ route('logout') }}" method="POST">
-                        </form>
+                    <li>
+                    	<c:url var="logoutUrl" value="/dang-xuat" />
+                    	<a class="dropdown-item" href="${logoutUrl}"><i class='bx bx-log-out-circle'></i><span>Đăng xuất</span></a>
+                         
                     </li>
                 </ul>
             </div>

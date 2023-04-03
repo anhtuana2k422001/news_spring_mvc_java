@@ -27,6 +27,13 @@ public class CategoryDao {
         return listCategory;
     }
    
+   // Lấy ra tổng số danh mục 
+   public int countCategory() {
+       String sql = "SELECT COUNT(*) FROM categories";
+       int count = _jdbcTemplate.queryForObject(sql, Integer.class);
+       return count;
+   }
+   
     // Lấy tên chuyên mục theo slug
     public Category getCategoryBySlug(String slugCate) {
         try {

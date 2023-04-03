@@ -65,6 +65,22 @@ public class PostDao {
        return listPost;
     }
     
+ // Lấy ra tổng số bài viết 
+    public int countPost() {
+        String sql = "SELECT COUNT(*) FROM posts";
+        int count = _jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+    
+    // Lấy ra tổng số lượt xem 
+    public int sumViews() {
+        String sql = "SELECT SUM(views) FROM posts";
+        int count = _jdbcTemplate.queryForObject(sql, Integer.class);
+        return count;
+    }
+
+
+    
     // Lấy ra danh sách bài biết hot nhất, nhiều người bình luận nhất
     public List<Post> listHotPost() {
         List<Post> listPost = new ArrayList<Post>();
