@@ -10,12 +10,13 @@
 			<div class="float--left float--xs-none text-xs-center">
 				<!-- Header Topbar Info Start -->
 				<ul class="header--topbar-info nav">
-					<li><a href=""> <!-- <img style="border-radius: 12px; height: 40px;" src="./public/kcnew/frontend/img/image_logo.png" alt="logo"> -->
+					<li><a href=""> 
+                                                 <img style="border-radius: 12px; height: 40px;" src="<c:url value='/template/web/public/kcnew/frontend/img/Logo09_SIU.jpg'/>" alt="logo"> 
 					</a></li>
 					<li><i class="fa fm fa-map-marker"></i>Hồ Chí Minh</li>
 					<li><i class="fa fm fa-mixcloud"></i>28<sup>0</sup> C</li>
 					<li style="text-transform: capitalize"><i
-						class="fa fm fa-calendar"></i>Hôm nay (Thứ Hai, Ngày 06 Tháng 03
+						class="fa fm fa-calendar"></i>Hôm nay (Thứ Hai, Ngày 03 Tháng 04
 						Năm 2023)</li>
 				</ul>
 				<!-- Header Topbar Info End -->
